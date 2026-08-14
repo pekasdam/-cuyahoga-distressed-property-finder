@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'scraper.py'
       - '.github/workflows/smoke.yml'
 
 permissions:
@@ -40,6 +41,14 @@ jobs:
               r = requests.get(url, timeout=20, headers={'User-Agent':'Mozilla/5.0'})
               print(name, r.status_code, len(r.content))
               r.raise_for_status()
+          PY
+      - name: Verify Housing Court parser
+        run: |
+          python - <<'PY'
+          from scraper import make_session, scrape_evictions
+          rows = scrape_evictions(make_session())
+          print('eviction/default rows=', len(rows))
+          assert len(rows) > 0
           PY
       - name: Run one-document end-to-end foreclosure scan
         run: |
