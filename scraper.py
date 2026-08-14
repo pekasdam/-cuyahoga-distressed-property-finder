@@ -282,10 +282,12 @@ def parse_housing_docket(html: str) -> list[dict[str, str]]:
         if not headers or not any("case" in h for h in headers):
             continue
         for tr in table.find_all("tr"):
-            tds = tr.find_all("td")
-            if len(tds) < 5:
+            cells = tr.find_all(["th", "td"])
+            if len(cells) < 5:
                 continue
-            vals = [clean_text(td.get_text(" ", strip=True)) for td in tds]
+            vals = [clean_text(cell.get_text(" ", strip=True)) for cell in cells]
+            if vals[0].lower().startswith("case"):
+                continue
             hearing_type = vals[4]
             if "EVICTION" not in hearing_type.upper() and "DEFAULT" not in hearing_type.upper():
                 continue
@@ -574,7 +576,7 @@ def build_foreclosure_leads(session: requests.Session, rows: list[dict[str, Any]
     return leads
 
 
-def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]]) -> list[Lead]:
+def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]], max_owners: int = 30) -> list[Lead]:
     counts: dict[str, int] = {}
     display_names: dict[str, str] = {}
     latest_case: dict[str, dict[str, str]] = {}
@@ -588,7 +590,7 @@ def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]]) 
         latest_case[key] = row
 
     leads: list[Lead] = []
-    for owner_key, repeat_count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True):
+    for owner_key, repeat_count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True)[:max_owners]:
         owner = display_names[owner_key]
         # Prioritize likely owners/investors; skip institutional housing authorities.
         if "CUYAHOGA METROPOLITAN HOUSING AUTHORITY" in owner_key or owner_key == "CMHA":
@@ -689,6 +691,7 @@ def main() -> int:
     parser.add_argument("--no-documents", action="store_true", help="Skip foreclosure complaint ZIP inspection")
     parser.add_argument("--max-documents", type=int, default=int(os.getenv("MAX_FORECLOSURE_DOCUMENTS", "12")))
     parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))
+    parser.add_argument("--max-eviction-owners", type=int, default=int(os.getenv("MAX_EVICTION_OWNERS", "30")))
     parser.add_argument("--skip-evictions", action="store_true")
     parser.add_argument("--skip-foreclosures", action="store_true")
     args = parser.parse_args()
@@ -725,7 +728,7 @@ def main() -> int:
         try:
             evictions = scrape_evictions(session)
             stats["eviction_docket_rows"] = len(evictions)
-            ev_leads = build_eviction_leads(session, evictions)
+            ev_leads = build_eviction_leads(session, evictions, max_owners=max(1, args.max_eviction_owners))
             stats["tired_landlord_parcel_leads"] = len(ev_leads)
             stats["source_health"]["housing_court"] = "live"
             leads.extend(ev_leads)
