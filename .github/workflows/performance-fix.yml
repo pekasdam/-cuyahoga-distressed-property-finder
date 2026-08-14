@@ -1,4 +1,4 @@
-name: Apply Clerk Document Fix
+name: Diagnose Housing Docket Markup
 
 on:
   push:
@@ -7,149 +7,37 @@ on:
       - '.github/workflows/performance-fix.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  patch:
+  diagnose:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Add ASP.NET complaint-document postback support
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect live Housing Court markup
         run: |
+          pip install -q requests beautifulsoup4 lxml
           python - <<'PY'
-          from pathlib import Path
-          p = Path('scraper.py')
-          s = p.read_text()
-
-          old = '''        link = tr.find("a", href=True)
-          document_url = urljoin(base_url, link["href"]) if link else ""
-          records.append(
-              {
-                  "submission_id": vals[0],
-                  "title": vals[1],
-                  "submission_date": vals[2],
-                  "category": category,
-                  "status": vals[4],
-                  "document_url": document_url,
-              }
-          )'''.replace('          ', '')
-          new = '''        link = tr.find("a", href=True)
-          href = clean_text(link.get("href")) if link else ""
-          event_target = ""
-          event_argument = ""
-          if href.lower().startswith("javascript:__dopostback"):
-              match = re.search(r"__doPostBack\\('([^']*)','([^']*)'\\)", href, re.I)
-              if match:
-                  event_target, event_argument = match.groups()
-          document_url = base_url if event_target else (urljoin(base_url, href) if href else "")
-          records.append(
-              {
-                  "submission_id": vals[0],
-                  "title": vals[1],
-                  "submission_date": vals[2],
-                  "category": category,
-                  "status": vals[4],
-                  "document_url": document_url,
-                  "document_event_target": event_target,
-                  "document_event_argument": event_argument,
-              }
-          )'''.replace('          ', '')
-          if old not in s:
-              raise SystemExit('Foreclosure link parser block not found')
-          s = s.replace(old, new)
-
-          anchor = '\n\ndef scrape_foreclosures(\n'
-          helper = '''
-
-          def download_foreclosure_bundle(
-              session: requests.Session,
-              page_html: str,
-              event_target: str,
-              event_argument: str = "",
-          ) -> bytes:
-              """Submit the Clerk GridView LinkButton postback and return its ZIP bundle."""
-              soup = BeautifulSoup(page_html, "lxml")
-              form = soup.find("form")
-              if form is None:
-                  raise RuntimeError("Clerk foreclosure form not found")
-              data: dict[str, str] = {}
-              for field in form.find_all("input"):
-                  name = field.get("name")
-                  if not name:
-                      continue
-                  field_type = clean_text(field.get("type")).lower()
-                  if field_type == "hidden":
-                      data[name] = field.get("value", "")
-              data["__EVENTTARGET"] = event_target
-              data["__EVENTARGUMENT"] = event_argument
-              response = session.post(
-                  FORECLOSURE_URL,
-                  data=data,
-                  timeout=30,
-                  headers={"Referer": FORECLOSURE_URL},
-              )
-              response.raise_for_status()
-              if not zipfile.is_zipfile(io.BytesIO(response.content)):
-                  content_type = response.headers.get("Content-Type", "")
-                  raise RuntimeError(
-                      f"Clerk document postback did not return ZIP: {content_type or 'unknown content type'}"
-                  )
-              return response.content
-          '''.replace('          ', '')
-          if anchor not in s:
-              raise SystemExit('scrape_foreclosures anchor not found')
-          s = s.replace(anchor, helper + anchor, 1)
-
-          old_loop = '''        url = row.get("document_url")
-          if not url:
-              continue
-          try:
-              doc = request(session, url, timeout=45)
-              pins, addresses = extract_document_signals(doc.content)
-              row["parcel_candidates"] = pins
-              row["address_candidates"] = addresses
-          except Exception as exc:  # noqa: BLE001
-              LOGGER.warning("Could not inspect foreclosure documents %s: %s", row.get("submission_id"), exc)
-              row["parcel_candidates"] = []
-              row["address_candidates"] = []'''.replace('          ', '')
-          new_loop = '''        url = row.get("document_url")
-          event_target = clean_text(row.get("document_event_target"))
-          if not url and not event_target:
-              continue
-          try:
-              if event_target:
-                  bundle = download_foreclosure_bundle(
-                      session,
-                      resp.text,
-                      event_target,
-                      clean_text(row.get("document_event_argument")),
-                  )
-              else:
-                  bundle = request(session, url, timeout=30).content
-              pins, addresses = extract_document_signals(bundle)
-              row["parcel_candidates"] = pins
-              row["address_candidates"] = addresses
-              row["document_inspected"] = True
-          except Exception as exc:  # noqa: BLE001
-              LOGGER.warning("Could not inspect foreclosure documents %s: %s", row.get("submission_id"), exc)
-              row["parcel_candidates"] = []
-              row["address_candidates"] = []
-              row["document_inspected"] = False'''.replace('          ', '')
-          if old_loop not in s:
-              raise SystemExit('Document inspection loop not found')
-          s = s.replace(old_loop, new_loop)
-          p.write_text(s)
+          import re, requests
+          from bs4 import BeautifulSoup
+          url='https://www.clevelandhousingcourt.org/accessible-civil-docket'
+          html=requests.get(url, timeout=30, headers={'User-Agent':'Mozilla/5.0'}).text
+          soup=BeautifulSoup(html,'lxml')
+          print('length=', len(html), 'tables=', len(soup.find_all('table')), 'trs=', len(soup.find_all('tr')))
+          node=soup.find(string=re.compile(r'Housing Eviction', re.I))
+          if node:
+              print('NODE=', repr(str(node)[:300]))
+              parent=node.parent
+              for level in range(5):
+                  if not parent: break
+                  print(f'PARENT{level}=', str(parent)[:4000])
+                  parent=parent.parent
+          else:
+              idx=html.lower().find('housing eviction')
+              print('raw-index=', idx)
+              print(html[max(0,idx-2500):idx+2500])
           PY
-      - name: Install dependencies
-        run: python -m pip install -q -r requirements.txt pytest
-      - name: Validate patch
-        run: |
-          python -m pytest -q
-          python -m py_compile scraper.py app.py
-      - name: Commit scraper fix
-        run: |
-          git config user.name "cuyahoga-deal-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add scraper.py
-          git commit -m "Support Clerk complaint document postbacks" || exit 0
-          git push
