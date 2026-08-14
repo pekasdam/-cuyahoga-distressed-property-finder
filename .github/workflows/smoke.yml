@@ -1,5 +1,6 @@
 name: Smoke Test Live Sources
 
+# Final validation trigger after Housing Court parser fix.
 on:
   push:
     branches: [main]
