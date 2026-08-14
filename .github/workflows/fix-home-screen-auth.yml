@@ -32,40 +32,34 @@ jobs:
           from pathlib import Path
           p = Path('docs/index.html')
           s = p.read_text()
-
           old = "const TOKEN_KEY='cuyahoga_scan_github_token_v1';\nlet payload={leads:[],stats:{}},scanPoll=null,scanStartedAt=0,previousGenerated='';"
-          new = """const TOKEN_KEY='cuyahoga_scan_github_token_v1';
-const COOKIE_KEY='cuyahoga_scan_github_token_cookie_v1';
-function readCookie(name){const prefix=name+'=';const item=document.cookie.split('; ').find(x=>x.startsWith(prefix));return item?decodeURIComponent(item.slice(prefix.length)):''}
-function writeTokenCookie(token){document.cookie=`${COOKIE_KEY}=${encodeURIComponent(token)}; Max-Age=31536000; Path=/; Secure; SameSite=Strict`}
-function getAuthToken(){const local=localStorage.getItem(TOKEN_KEY)||'';const cookie=readCookie(COOKIE_KEY)||'';if(local&&!cookie)writeTokenCookie(local);if(cookie&&!local)localStorage.setItem(TOKEN_KEY,cookie);return local||cookie||''}
-function saveAuthToken(token){localStorage.setItem(TOKEN_KEY,token);writeTokenCookie(token)}
-function clearAuthToken(){localStorage.removeItem(TOKEN_KEY);document.cookie=`${COOKIE_KEY}=; Max-Age=0; Path=/; Secure; SameSite=Strict`}
-let payload={leads:[],stats:{}},scanPoll=null,scanStartedAt=0,previousGenerated='';"""
-          if old not in s: raise SystemExit('TOKEN_KEY anchor not found')
-          s = s.replace(old,new,1)
-
-          replacements = {
-            "function openGitHubSetup(){const saved=localStorage.getItem(TOKEN_KEY);$('ghToken').value=saved||'';$('auth').showModal()}":
-            "function openGitHubSetup(){const saved=getAuthToken();$('ghToken').value=saved||'';$('auth').showModal()}",
-            "function forgetToken(){localStorage.removeItem(TOKEN_KEY);$('ghToken').value='';alert('Saved GitHub access removed from this device.')}":
-            "function forgetToken(){clearAuthToken();$('ghToken').value='';alert('Saved GitHub access removed from this device.')}",
-            "localStorage.setItem(TOKEN_KEY,t);$('auth').close();startScan()":
-            "saveAuthToken(t);$('auth').close();startScan()",
-            "const token=localStorage.getItem(TOKEN_KEY);const headers=":
-            "const token=getAuthToken();const headers=",
-            "async function startScan(){const token=localStorage.getItem(TOKEN_KEY);if(!token)":
-            "async function startScan(){const token=getAuthToken();if(!token)",
-            "localStorage.removeItem(TOKEN_KEY);scanMessage('GitHub authorization needs to be connected again.'":
-            "clearAuthToken();scanMessage('GitHub authorization needs to be connected again.'",
-            "['q','type','score','special'].forEach(id=>$(id).addEventListener('input',render));load();":
-            "['q','type','score','special'].forEach(id=>$(id).addEventListener('input',render));getAuthToken();load();",
-            "The token is stored only in this app's browser storage on this device; it is not written into the public GitHub repository.":
-            "The token stays on this device and is also saved as a first-party cookie so iPhone can carry it into a newly installed Home Screen app; it is not written into the public GitHub repository."
-          }
-          for a,b in replacements.items():
-            if a not in s: raise SystemExit(f'anchor not found: {a[:70]}')
-            s = s.replace(a,b,1)
+          new = "\n".join([
+              "const TOKEN_KEY='cuyahoga_scan_github_token_v1';",
+              "const COOKIE_KEY='cuyahoga_scan_github_token_cookie_v1';",
+              "function readCookie(name){const prefix=name+'=';const item=document.cookie.split('; ').find(x=>x.startsWith(prefix));return item?decodeURIComponent(item.slice(prefix.length)):''}",
+              "function writeTokenCookie(token){document.cookie=`${COOKIE_KEY}=${encodeURIComponent(token)}; Max-Age=31536000; Path=/; Secure; SameSite=Strict`}",
+              "function getAuthToken(){const local=localStorage.getItem(TOKEN_KEY)||'';const cookie=readCookie(COOKIE_KEY)||'';if(local&&!cookie)writeTokenCookie(local);if(cookie&&!local)localStorage.setItem(TOKEN_KEY,cookie);return local||cookie||''}",
+              "function saveAuthToken(token){localStorage.setItem(TOKEN_KEY,token);writeTokenCookie(token)}",
+              "function clearAuthToken(){localStorage.removeItem(TOKEN_KEY);document.cookie=`${COOKIE_KEY}=; Max-Age=0; Path=/; Secure; SameSite=Strict`}",
+              "let payload={leads:[],stats:{}},scanPoll=null,scanStartedAt=0,previousGenerated='';",
+          ])
+          if old not in s:
+              raise SystemExit('TOKEN_KEY anchor not found')
+          s = s.replace(old, new, 1)
+          replacements = [
+              ("function openGitHubSetup(){const saved=localStorage.getItem(TOKEN_KEY);$('ghToken').value=saved||'';$('auth').showModal()}", "function openGitHubSetup(){const saved=getAuthToken();$('ghToken').value=saved||'';$('auth').showModal()}"),
+              ("function forgetToken(){localStorage.removeItem(TOKEN_KEY);$('ghToken').value='';alert('Saved GitHub access removed from this device.')}", "function forgetToken(){clearAuthToken();$('ghToken').value='';alert('Saved GitHub access removed from this device.')}"),
+              ("localStorage.setItem(TOKEN_KEY,t);$('auth').close();startScan()", "saveAuthToken(t);$('auth').close();startScan()"),
+              ("const token=localStorage.getItem(TOKEN_KEY);const headers=", "const token=getAuthToken();const headers="),
+              ("async function startScan(){const token=localStorage.getItem(TOKEN_KEY);if(!token)", "async function startScan(){const token=getAuthToken();if(!token)"),
+              ("localStorage.removeItem(TOKEN_KEY);scanMessage('GitHub authorization needs to be connected again.'", "clearAuthToken();scanMessage('GitHub authorization needs to be connected again.'"),
+              ("['q','type','score','special'].forEach(id=>$(id).addEventListener('input',render));load();", "['q','type','score','special'].forEach(id=>$(id).addEventListener('input',render));getAuthToken();load();"),
+              ("The token is stored only in this app's browser storage on this device; it is not written into the public GitHub repository.", "The token stays on this device and is also saved as a first-party cookie so iPhone can carry it into a newly installed Home Screen app; it is not written into the public GitHub repository."),
+          ]
+          for a, b in replacements:
+              if a not in s:
+                  raise SystemExit('anchor not found: ' + a[:70])
+              s = s.replace(a, b, 1)
           p.write_text(s)
           PY
       - name: Verify patch
