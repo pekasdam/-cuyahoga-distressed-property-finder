@@ -74,9 +74,12 @@ jobs:
 
           scan = Path('.github/workflows/scan.yml')
           t = scan.read_text()
-          t = t.replace("          MAX_FORECLOSURE_DOCUMENTS: '8'\n", "          MAX_FORECLOSURE_DOCUMENTS: '8'\n          MAX_FORECLOSURE_RECORDS: '30'\n")
+          if "MAX_FORECLOSURE_RECORDS" not in t:
+              t = t.replace("          MAX_FORECLOSURE_DOCUMENTS: '8'\n", "          MAX_FORECLOSURE_DOCUMENTS: '8'\n          MAX_FORECLOSURE_RECORDS: '30'\n")
           scan.write_text(t)
           PY
+      - name: Install test dependency
+        run: python -m pip install -q pytest
       - name: Validate patch
         run: |
           python -m pytest -q
