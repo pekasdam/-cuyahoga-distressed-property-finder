@@ -78,8 +78,8 @@ jobs:
               t = t.replace("          MAX_FORECLOSURE_DOCUMENTS: '8'\n", "          MAX_FORECLOSURE_DOCUMENTS: '8'\n          MAX_FORECLOSURE_RECORDS: '30'\n")
           scan.write_text(t)
           PY
-      - name: Install test dependency
-        run: python -m pip install -q pytest
+      - name: Install dependencies
+        run: python -m pip install -q -r requirements.txt pytest
       - name: Validate patch
         run: |
           python -m pytest -q
