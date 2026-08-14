@@ -1,0 +1,81 @@
+name: Make Research Buttons Property Aware
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/make-research-property-aware.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: property-aware-research
+  cancel-in-progress: true
+
+jobs:
+  patch-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Make research buttons property aware
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('docs/index.html')
+          s = p.read_text()
+
+          old_store = "window.currentOwnerSearch=owner;$('detailBody').innerHTML="
+          new_store = "window.currentOwnerSearch=owner;window.currentResearchLead=l;$('detailBody').innerHTML="
+          if old_store not in s:
+              raise SystemExit('lead storage anchor not found')
+          s = s.replace(old_store,new_store,1)
+
+          old_buttons = '''<a target="_blank" rel="noopener" href="https://cpdocket.cp.cuyahogacounty.gov/Search.aspx">⚖️ Cuyahoga Court Docket</a><a target="_blank" rel="noopener" href="https://cuyahoga.oh.publicsearch.us">📜 Cuyahoga Public Search</a><a target="_blank" rel="noopener" href="https://aca-prod.accela.com/COC/Cap/CapHome.aspx?module=BuildingHousing&TabName=BuildingHousing&TabList=Home%7C0%7CBuildingHousing%7C1%7CLicenses%7C2%7CPublicHealth%7C3%7CPublicSafety%7C4%7CPublicService%7C5%7CPlanning%7C6%7CCurrentTabIndex%7C1">🏗️ Building & Housing</a>'''
+          new_buttons = '''<button type="button" onclick="openPropertyResearch('court')">⚖️ Court Docket</button><button type="button" onclick="openPropertyResearch('records')">📜 Public Search</button><button type="button" onclick="openPropertyResearch('building')">🏗️ Building & Housing</button>'''
+          if old_buttons not in s:
+              raise SystemExit('research button anchor not found')
+          s = s.replace(old_buttons,new_buttons,1)
+
+          anchor = "function toggleOwnerSearch(){const p=$('ownerSearchPanel');if(p)p.classList.toggle('show')}\n"
+          helper = r'''function cleanStreetAddress(v=''){return String(v).split(',')[0].trim()}
+          function researchValue(kind,l){const p=(l&&l.parcel)||{},owner=(p.owner||l?.owner_or_defendant||'').trim(),caseNo=(l?.case_number||'').trim(),pin=(p.parcel_pin||'').trim(),street=cleanStreetAddress(p.property_address||'');if(kind==='court'){if(l?.lead_type==='foreclosure'&&caseNo)return {value:caseNo,label:'case number'};return {value:owner,label:'owner name'}}if(kind==='records')return {value:pin,label:'parcel PIN'};return {value:street,label:'street address'}}
+          function openPropertyResearch(kind){const l=window.currentResearchLead;if(!l)return;const court='https://cpdocket.cp.cuyahogacounty.gov/Search.aspx',records='https://cuyahoga.oh.publicsearch.us',building='https://aca-prod.accela.com/COC/Cap/CapHome.aspx?module=BuildingHousing&TabName=BuildingHousing&TabList=Home%7C0%7CBuildingHousing%7C1%7CLicenses%7C2%7CPublicHealth%7C3%7CPublicSafety%7C4%7CPublicService%7C5%7CPlanning%7C6%7CCurrentTabIndex%7C1',url=kind==='court'?court:kind==='records'?records:building,rv=researchValue(kind,l),w=window.open(url,'_blank','noopener');if(rv.value&&navigator.clipboard?.writeText){navigator.clipboard.writeText(rv.value).then(()=>scanMessage(`${rv.label} copied: ${rv.value} — paste it into the search field on the site.`,'ok')).catch(()=>scanMessage(`Opened research site. Search for ${rv.label}: ${rv.value}`,'working'))}else if(rv.value){scanMessage(`Opened research site. Search for ${rv.label}: ${rv.value}`,'working')}if(!w)scanMessage(`Popup blocked. Allow popups, then try again. ${rv.label}: ${rv.value}`,'bad')}
+          '''
+          helper='\n'.join(line.strip() for line in helper.splitlines())+'\n'
+          if anchor not in s:
+              raise SystemExit('helper anchor not found')
+          s = s.replace(anchor,anchor+helper,1)
+          p.write_text(s)
+          PY
+      - name: Verify property-aware research buttons
+        run: |
+          grep -q "openPropertyResearch('court')" docs/index.html
+          grep -q "openPropertyResearch('records')" docs/index.html
+          grep -q "openPropertyResearch('building')" docs/index.html
+          grep -q "currentResearchLead" docs/index.html
+          grep -q "parcel PIN" docs/index.html
+      - name: Commit property-aware buttons
+        run: |
+          git config user.name "cuyahoga-deal-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          git commit -m "Make research buttons property aware"
+          git push
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
