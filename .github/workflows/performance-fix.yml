@@ -1,0 +1,91 @@
+name: Apply Performance Fix
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/performance-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Limit scans to newest foreclosure filings
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('scraper.py')
+          s = p.read_text()
+          old = '''def scrape_foreclosures(session: requests.Session, inspect_documents: bool = True, max_documents: int = 30) -> list[dict[str, Any]]:
+              resp = request(session, FORECLOSURE_URL)
+              rows = parse_foreclosure_table(resp.text)
+              LOGGER.info("Found %s foreclosure submissions", len(rows))
+
+              if not inspect_documents:
+                  return rows
+
+              for idx, row in enumerate(rows[:max_documents]):'''.replace('              ', '')
+          new = '''def scrape_foreclosures(
+              session: requests.Session,
+              inspect_documents: bool = True,
+              max_documents: int = 30,
+              max_records: int = 30,
+          ) -> list[dict[str, Any]]:
+              resp = request(session, FORECLOSURE_URL)
+              all_rows = parse_foreclosure_table(resp.text)
+              LOGGER.info("Found %s foreclosure submissions", len(all_rows))
+
+              # The Clerk page is chronological oldest-to-newest. For an hourly acquisition
+              # scanner we only need the newest filings; limiting the records also prevents
+              # hundreds of unnecessary GIS owner lookups on every run.
+              if max_records > 0:
+                  rows = list(reversed(all_rows[-max_records:]))
+              else:
+                  rows = list(reversed(all_rows))
+              LOGGER.info("Processing %s newest foreclosure submissions", len(rows))
+
+              if not inspect_documents:
+                  return rows
+
+              for idx, row in enumerate(rows[:max_documents]):'''.replace('              ', '')
+          if old not in s:
+              raise SystemExit('Expected scrape_foreclosures block not found')
+          s = s.replace(old, new)
+          s = s.replace(
+              '    parser.add_argument("--max-documents", type=int, default=int(os.getenv("MAX_FORECLOSURE_DOCUMENTS", "30")))\n',
+              '    parser.add_argument("--max-documents", type=int, default=int(os.getenv("MAX_FORECLOSURE_DOCUMENTS", "12")))\n'
+              '    parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))\n'
+          )
+          s = s.replace(
+              '                max_documents=max(0, args.max_documents),\n            )',
+              '                max_documents=max(0, args.max_documents),\n                max_records=max(0, args.max_foreclosures),\n            )'
+          )
+          p.write_text(s)
+
+          smoke = Path('.github/workflows/smoke.yml')
+          t = smoke.read_text()
+          t = t.replace('python scraper.py --max-documents 1 --skip-evictions --output /tmp/leads.json',
+                        'python scraper.py --max-documents 1 --max-foreclosures 2 --skip-evictions --output /tmp/leads.json')
+          smoke.write_text(t)
+
+          scan = Path('.github/workflows/scan.yml')
+          t = scan.read_text()
+          t = t.replace("          MAX_FORECLOSURE_DOCUMENTS: '8'\n", "          MAX_FORECLOSURE_DOCUMENTS: '8'\n          MAX_FORECLOSURE_RECORDS: '30'\n")
+          scan.write_text(t)
+          PY
+      - name: Validate patch
+        run: |
+          python -m pytest -q
+          python -m py_compile scraper.py app.py
+      - name: Commit fix
+        run: |
+          rm -f .github/workflows/performance-fix.yml
+          git config user.name "cuyahoga-deal-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Optimize newest foreclosure scanning"
+          git push
