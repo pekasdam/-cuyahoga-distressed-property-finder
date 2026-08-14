@@ -1,4 +1,4 @@
-name: Apply Housing Court Fix
+name: Apply Clerk Document Fix
 
 on:
   push:
@@ -15,39 +15,109 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Patch Housing Court parser and cap owner lookups
+      - name: Patch Clerk ASP.NET document download
         run: |
           python - <<'PY'
           from pathlib import Path
           p = Path('scraper.py')
           s = p.read_text()
 
-          replacements = [
-              ('            tds = tr.find_all("td")',
-               '            cells = tr.find_all(["th", "td"])'),
-              ('            if len(tds) < 5:',
-               '            if len(cells) < 5:'),
-              ('            vals = [clean_text(td.get_text(" ", strip=True)) for td in tds]',
-               '            vals = [clean_text(cell.get_text(" ", strip=True)) for cell in cells]\n'
-               '            if vals[0].lower().startswith("case"):\n'
-               '                continue'),
-              ('def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]]) -> list[Lead]:',
-               'def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]], max_owners: int = 30) -> list[Lead]:'),
-              ('    for owner_key, repeat_count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True):',
-               '    for owner_key, repeat_count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True)[:max_owners]:'),
-              ('    parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))\n',
-               '    parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))\n'
-               '    parser.add_argument("--max-eviction-owners", type=int, default=int(os.getenv("MAX_EVICTION_OWNERS", "30")))\n'),
-              ('            ev_leads = build_eviction_leads(session, evictions)',
-               '            ev_leads = build_eviction_leads(session, evictions, max_owners=max(1, args.max_eviction_owners))'),
-          ]
+          old = '        document_url = urljoin(base_url, link["href"]) if link else ""'
+          new = '''        href = clean_text(link.get("href")) if link else ""
+          event_target = ""
+          event_argument = ""
+          if href.lower().startswith("javascript:__dopostback"):
+              match = re.search(r"__doPostBack\\('([^']*)','([^']*)'\\)", href, re.I)
+              if match:
+                  event_target, event_argument = match.groups()
+          document_url = base_url if event_target else (urljoin(base_url, href) if href else "")'''.replace('\n          ', '\n        ')
+          if s.count(old) != 1:
+              raise SystemExit(f'document_url match count={s.count(old)}')
+          s = s.replace(old, new, 1)
 
-          for old, new in replacements:
-              count = s.count(old)
-              if count != 1:
-                  raise SystemExit(f'Expected exactly one match, got {count}: {old[:80]}')
-              s = s.replace(old, new, 1)
+          old = '                "document_url": document_url,\n'
+          new = ('                "document_url": document_url,\n'
+                 '                "document_event_target": event_target,\n'
+                 '                "document_event_argument": event_argument,\n')
+          if s.count(old) != 1:
+              raise SystemExit(f'document dict match count={s.count(old)}')
+          s = s.replace(old, new, 1)
 
+          anchor = '\n\ndef scrape_foreclosures(\n'
+          helper = '''
+
+          def download_foreclosure_bundle(
+              session: requests.Session,
+              page_html: str,
+              event_target: str,
+              event_argument: str = "",
+          ) -> bytes:
+              """Submit the ASP.NET postback behind the Clerk's Documents link."""
+              soup = BeautifulSoup(page_html, "lxml")
+              form = soup.find("form")
+              if form is None:
+                  raise RuntimeError("Clerk foreclosure form not found")
+              data: dict[str, str] = {}
+              for field in form.find_all("input"):
+                  name = field.get("name")
+                  if name and clean_text(field.get("type")).lower() == "hidden":
+                      data[name] = field.get("value", "")
+              data["__EVENTTARGET"] = event_target
+              data["__EVENTARGUMENT"] = event_argument
+              response = session.post(
+                  FORECLOSURE_URL,
+                  data=data,
+                  timeout=30,
+                  headers={"Referer": FORECLOSURE_URL},
+              )
+              response.raise_for_status()
+              if not zipfile.is_zipfile(io.BytesIO(response.content)):
+                  ctype = response.headers.get("Content-Type", "unknown")
+                  raise RuntimeError(f"Clerk postback returned {ctype}, not a ZIP")
+              return response.content
+          '''.replace('\n          ', '\n')
+          if s.count(anchor) != 1:
+              raise SystemExit(f'scrape anchor count={s.count(anchor)}')
+          s = s.replace(anchor, helper + anchor, 1)
+
+          old = '''        url = row.get("document_url")
+          if not url:
+              continue
+          try:
+              doc = request(session, url, timeout=45)
+              pins, addresses = extract_document_signals(doc.content)
+              row["parcel_candidates"] = pins
+              row["address_candidates"] = addresses
+          except Exception as exc:  # noqa: BLE001
+              LOGGER.warning("Could not inspect foreclosure documents %s: %s", row.get("submission_id"), exc)
+              row["parcel_candidates"] = []
+              row["address_candidates"] = []'''.replace('\n          ', '\n        ')
+          new = '''        url = row.get("document_url")
+          event_target = clean_text(row.get("document_event_target"))
+          if not url and not event_target:
+              continue
+          try:
+              if event_target:
+                  bundle = download_foreclosure_bundle(
+                      session,
+                      resp.text,
+                      event_target,
+                      clean_text(row.get("document_event_argument")),
+                  )
+              else:
+                  bundle = request(session, url, timeout=30).content
+              pins, addresses = extract_document_signals(bundle)
+              row["parcel_candidates"] = pins
+              row["address_candidates"] = addresses
+              row["document_inspected"] = True
+          except Exception as exc:  # noqa: BLE001
+              LOGGER.warning("Could not inspect foreclosure documents %s: %s", row.get("submission_id"), exc)
+              row["parcel_candidates"] = []
+              row["address_candidates"] = []
+              row["document_inspected"] = False'''.replace('\n          ', '\n        ')
+          if s.count(old) != 1:
+              raise SystemExit(f'document loop match count={s.count(old)}')
+          s = s.replace(old, new, 1)
           p.write_text(s)
           PY
       - name: Install dependencies
@@ -56,19 +126,22 @@ jobs:
         run: |
           python -m pytest -q
           python -m py_compile scraper.py app.py
-      - name: Live-check Housing Court parser
+      - name: Live-check one Clerk document
         run: |
           python - <<'PY'
-          from scraper import make_session, scrape_evictions
-          rows = scrape_evictions(make_session())
-          print('eviction/default rows=', len(rows))
-          assert len(rows) > 0
+          from scraper import make_session, scrape_foreclosures
+          rows = scrape_foreclosures(make_session(), inspect_documents=True, max_documents=1, max_records=2)
+          print('rows=', len(rows))
+          print('document inspected=', rows[0].get('document_inspected'))
+          print('pins=', rows[0].get('parcel_candidates'))
+          print('addresses=', rows[0].get('address_candidates'))
+          assert rows and rows[0].get('document_inspected') is True
           PY
-      - name: Commit Housing Court fix
+      - name: Commit Clerk document fix
         run: |
           git config user.name "cuyahoga-deal-bot"
           git config user.email "actions@users.noreply.github.com"
           git add scraper.py
-          git commit -m "Fix Housing Court eviction parsing" || exit 0
+          git commit -m "Support Clerk foreclosure document downloads" || exit 0
           git pull --rebase origin main
           git push
