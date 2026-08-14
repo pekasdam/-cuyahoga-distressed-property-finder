@@ -1,0 +1,77 @@
+name: Remove Non-Automatic Title Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/remove-title-check.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  patch-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove misleading title check
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('docs/index.html')
+          s=p.read_text()
+
+          # Remove title-check helper functions.
+          s=re.sub(r"function titleName\(v=''\)\{.*?\}\nfunction titlePrecheck\(l\)\{.*?\}\nfunction toggleTitleCheck\(\)\{.*?\}\nfunction openTitleSource\(kind\)\{.*?return w\}\n", "", s, count=1)
+
+          # Remove title-check calculations/state from openLead.
+          s=s.replace(",tc=titlePrecheck(l),titleIssues=tc.issues.length?tc.issues.map(x=>`<li>${esc(x)}</li>`).join(''):'<li>No additional red flags found in the data currently collected by this app.</li>',titleFacts=tc.facts.map(x=>`<li>${esc(x)}</li>`).join('');window.currentOwnerSearch=owner;window.currentTitleLead=l;", ";window.currentOwnerSearch=owner;")
+
+          # Remove the Title Check button only.
+          s=s.replace('<button type="button" onclick="toggleTitleCheck()">📑 Title Check</button>', '')
+
+          # Remove the title-check panel, preserving the owner-search panel that follows it.
+          s=re.sub(r'<div id="titleCheckPanel" class="ownersearch">.*?</div></div><div id="ownerSearchPanel" class="ownersearch">', '<div id="ownerSearchPanel" class="ownersearch">', s, count=1)
+
+          p.write_text(s)
+          PY
+      - name: Validate app
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('docs/index.html').read_text()
+          m=re.search(r'<script>([\s\S]*?)</script>',s)
+          if not m: raise SystemExit('No inline script found')
+          Path('/tmp/app.js').write_text(m.group(1))
+          PY
+          node --check /tmp/app.js
+          if grep -q 'Title Check' docs/index.html; then exit 1; fi
+          if grep -q 'titlePrecheck' docs/index.html; then exit 1; fi
+          grep -q 'Find Owner Online' docs/index.html
+          grep -q 'google.com/maps/place/' docs/index.html
+          grep -q '>🏠 Zillow<' docs/index.html
+          grep -q '>🔴 Redfin<' docs/index.html
+          grep -q '>🏡 Realtor.com<' docs/index.html
+      - name: Commit cleanup
+        run: |
+          git config user.name "cuyahoga-deal-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          git commit -m "Remove non-automatic title check"
+          git push
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
