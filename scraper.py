@@ -236,10 +236,24 @@ def parse_foreclosure_table(html: str, base_url: str = FORECLOSURE_URL) -> list[
     return records
 
 
-def scrape_foreclosures(session: requests.Session, inspect_documents: bool = True, max_documents: int = 30) -> list[dict[str, Any]]:
+def scrape_foreclosures(
+    session: requests.Session,
+    inspect_documents: bool = True,
+    max_documents: int = 30,
+    max_records: int = 30,
+) -> list[dict[str, Any]]:
     resp = request(session, FORECLOSURE_URL)
-    rows = parse_foreclosure_table(resp.text)
-    LOGGER.info("Found %s foreclosure submissions", len(rows))
+    all_rows = parse_foreclosure_table(resp.text)
+    LOGGER.info("Found %s foreclosure submissions", len(all_rows))
+
+    # The Clerk page is chronological oldest-to-newest. For an hourly acquisition
+    # scanner we only need the newest filings; limiting the records also prevents
+    # hundreds of unnecessary GIS owner lookups on every run.
+    if max_records > 0:
+        rows = list(reversed(all_rows[-max_records:]))
+    else:
+        rows = list(reversed(all_rows))
+    LOGGER.info("Processing %s newest foreclosure submissions", len(rows))
 
     if not inspect_documents:
         return rows
@@ -673,7 +687,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Cuyahoga distressed-property public-record scraper")
     parser.add_argument("--output", default="data/leads.json")
     parser.add_argument("--no-documents", action="store_true", help="Skip foreclosure complaint ZIP inspection")
-    parser.add_argument("--max-documents", type=int, default=int(os.getenv("MAX_FORECLOSURE_DOCUMENTS", "30")))
+    parser.add_argument("--max-documents", type=int, default=int(os.getenv("MAX_FORECLOSURE_DOCUMENTS", "12")))
+    parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))
     parser.add_argument("--skip-evictions", action="store_true")
     parser.add_argument("--skip-foreclosures", action="store_true")
     args = parser.parse_args()
@@ -691,6 +706,7 @@ def main() -> int:
                 session,
                 inspect_documents=not args.no_documents,
                 max_documents=max(0, args.max_documents),
+                max_records=max(0, args.max_foreclosures),
             )
             stats["foreclosure_submissions"] = len(foreclosures)
             fc_leads = build_foreclosure_leads(session, foreclosures)
