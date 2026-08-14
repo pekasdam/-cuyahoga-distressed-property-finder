@@ -1,0 +1,188 @@
+name: Optimize Lead Dashboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/optimize-lead-dashboard.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: optimize-lead-dashboard
+  cancel-in-progress: true
+
+jobs:
+  build-test-scan-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+      - name: Add lead quality and scan tracking
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          # ---------- scraper.py ----------
+          p = Path('scraper.py')
+          s = p.read_text()
+
+          anchor = '''def is_multifamily(parcel: Parcel) -> bool:\n    lu = parcel.land_use.upper()\n    return any(k in lu for k in ("TWO", "THREE", "MULTI", "APART", "DUPLEX"))\n'''
+          helpers = '''\n\nINSTITUTIONAL_OWNER_MARKERS = (\n    "CHN HOUSING",\n    "CLEVELAND HOUSING NETWORK",\n    "CUYAHOGA METROPOLITAN HOUSING AUTHORITY",\n    "CMHA",\n    "CITY OF CLEVELAND",\n    "CUYAHOGA COUNTY LAND REUTILIZATION",\n    "LAND REUTILIZATION",\n    "LAND BANK",\n    "LIHTC",\n)\n\n\ndef owner_is_institutional(owner: str) -> bool:\n    n = normalize_owner(owner)\n    return any(marker in n for marker in INSTITUTIONAL_OWNER_MARKERS)\n\n\ndef lead_quality_flags(lead: Lead) -> list[str]:\n    flags: list[str] = []\n    parcel = lead.parcel\n    if parcel is None:\n        return ["missing_parcel"]\n    owner = parcel.owner or lead.owner_or_defendant\n    address = clean_text(parcel.property_address)\n    if owner_is_institutional(owner):\n        flags.append("institutional_owner")\n    if not address:\n        flags.append("missing_address")\n    elif re.match(r"^0+\\b", address):\n        flags.append("zero_address")\n    if not is_residential(parcel):\n        flags.append("nonresidential")\n    if parcel.residential_buildings is not None and parcel.residential_buildings <= 0:\n        flags.append("no_residential_building")\n    return flags\n\n\ndef is_best_deal(lead: Lead) -> bool:\n    hard_excludes = {\n        "missing_parcel", "institutional_owner", "missing_address",\n        "zero_address", "nonresidential", "no_residential_building",\n    }\n    return lead.score >= 70 and not (hard_excludes & set(lead_quality_flags(lead)))\n'''
+          if anchor not in s:
+              raise SystemExit('is_multifamily anchor not found')
+          s = s.replace(anchor, anchor + helpers, 1)
+
+          old = '''def lead_to_dict(lead: Lead) -> dict[str, Any]:\n    out = asdict(lead)\n    if lead.parcel:\n        out["parcel"]["absentee"] = lead.parcel.absentee\n        out["parcel"]["is_residential"] = is_residential(lead.parcel)\n        out["parcel"]["is_multifamily"] = is_multifamily(lead.parcel)\n    return out\n'''
+          new = '''def lead_to_dict(lead: Lead) -> dict[str, Any]:\n    out = asdict(lead)\n    if lead.parcel:\n        out["parcel"]["absentee"] = lead.parcel.absentee\n        out["parcel"]["is_residential"] = is_residential(lead.parcel)\n        out["parcel"]["is_multifamily"] = is_multifamily(lead.parcel)\n    out["quality_flags"] = lead_quality_flags(lead)\n    out["best_deal"] = is_best_deal(lead)\n    return out\n'''
+          if old not in s:
+              raise SystemExit('lead_to_dict anchor not found')
+          s = s.replace(old, new, 1)
+
+          old = '''def save_json(path: Path, leads: list[Lead], stats: dict[str, Any]) -> None:\n    path.parent.mkdir(parents=True, exist_ok=True)\n    payload = {\n        "generated_at": now_iso(),\n        "stats": stats,\n        "leads": [lead_to_dict(l) for l in sorted(leads, key=lambda x: x.score, reverse=True)],\n    }\n    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")\n'''
+          new = '''def comparable_lead(raw: dict[str, Any]) -> str:\n    ignored = {"generated_at", "scan_status", "best_deal", "quality_flags"}\n    stable = {k: v for k, v in raw.items() if k not in ignored}\n    return json.dumps(stable, sort_keys=True, ensure_ascii=False, default=str)\n\n\ndef save_json(path: Path, leads: list[Lead], stats: dict[str, Any], previous: dict[str, Any] | None = None) -> None:\n    path.parent.mkdir(parents=True, exist_ok=True)\n    previous = previous or {"leads": []}\n    prev_by_id = {clean_text(x.get("lead_id")): x for x in previous.get("leads", []) if x.get("lead_id")}\n    rows: list[dict[str, Any]] = []\n    new_count = 0\n    updated_count = 0\n    best_count = 0\n    for lead in sorted(leads, key=lambda x: x.score, reverse=True):\n        raw = lead_to_dict(lead)\n        prior = prev_by_id.get(lead.lead_id)\n        if prior is None:\n            raw["scan_status"] = "new"\n            new_count += 1\n        elif comparable_lead(raw) != comparable_lead(prior):\n            raw["scan_status"] = "updated"\n            updated_count += 1\n        else:\n            raw["scan_status"] = "seen"\n        if raw.get("best_deal"):\n            best_count += 1\n        rows.append(raw)\n    stats["new_leads"] = new_count\n    stats["updated_leads"] = updated_count\n    stats["best_deal_leads"] = best_count\n    payload = {\n        "generated_at": now_iso(),\n        "stats": stats,\n        "leads": rows,\n    }\n    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")\n'''
+          if old not in s:
+              raise SystemExit('save_json anchor not found')
+          s = s.replace(old, new, 1)
+
+          old = '    save_json(output_path, leads, stats)\n'
+          new = '    save_json(output_path, leads, stats, previous)\n'
+          if old not in s:
+              raise SystemExit('save_json call anchor not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s)
+
+          # ---------- tests ----------
+          p = Path('tests/test_scraper.py')
+          t = p.read_text()
+          t = t.replace('from scraper import (\n    Parcel,', 'from scraper import (\n    Lead,\n    Parcel,', 1)
+          t = t.replace('    score_foreclosure,\n    split_style,', '    score_foreclosure,\n    is_best_deal,\n    owner_is_institutional,\n    split_style,', 1)
+          t += '''\n\ndef test_best_deal_quality_filter():\n    parcel = Parcel(\n        parcel_pin="125-19-001",\n        owner="Jane Doe",\n        property_address="12519 TEST AVE",\n        mailing_address="PO BOX 123",\n        land_use="TWO FAMILY",\n        certified_tax_total=65000,\n        residential_buildings=1,\n    )\n    lead = Lead(lead_id="x", lead_type="foreclosure", score=82, status="Hot", title="Test", parcel=parcel)\n    assert is_best_deal(lead)\n\n    parcel.owner = "CHN HOUSING PARTNERS LIHTC"\n    assert owner_is_institutional(parcel.owner)\n    assert not is_best_deal(lead)\n\n\ndef test_zero_address_not_best_deal():\n    parcel = Parcel(\n        parcel_pin="125-19-002", owner="Jane Doe", property_address="0 TEST AVE",\n        land_use="SINGLE FAMILY", residential_buildings=1, certified_tax_total=50000,\n    )\n    lead = Lead(lead_id="y", lead_type="foreclosure", score=90, status="Hot", title="Test", parcel=parcel)\n    assert not is_best_deal(lead)\n'''
+          p.write_text(t)
+
+          # ---------- docs/index.html ----------
+          p = Path('docs/index.html')
+          h = p.read_text()
+
+          old = '.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}'
+          new = '.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:12px}'
+          if old not in h:
+              raise SystemExit('metrics css anchor not found')
+          h = h.replace(old, new, 1)
+
+          old = '.ownerhint{font-size:12px;color:#6b7280;margin-top:9px}.empty'
+          new = '.ownerhint{font-size:12px;color:#6b7280;margin-top:9px}.detailgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}.detailgrid div{padding:9px;background:#f8fafc;border-radius:10px}.detailgrid span{display:block;font-size:11px;color:#6b7280;margin-bottom:3px}.detailgrid b{font-size:13px;overflow-wrap:anywhere}.empty'
+          if old not in h:
+              raise SystemExit('detail css anchor not found')
+          h = h.replace(old, new, 1)
+
+          old = '<section class="metrics"><div class="metric"><b id="mTotal">—</b><span>All leads</span></div><div class="metric"><b id="mHot">—</b><span>Hot leads</span></div><div class="metric"><b id="mFc">—</b><span>Foreclosures</span></div><div class="metric"><b id="mEv">—</b><span>Tired-landlord parcels</span></div></section>'
+          new = '<section class="metrics"><div class="metric"><b id="mTotal">—</b><span>All leads</span></div><div class="metric"><b id="mBest">—</b><span>Best deals</span></div><div class="metric"><b id="mNew">—</b><span>New this scan</span></div><div class="metric"><b id="mHot">—</b><span>Hot leads</span></div><div class="metric"><b id="mFc">—</b><span>Foreclosures</span></div><div class="metric"><b id="mEv">—</b><span>Tired-landlord parcels</span></div></section>'
+          if old not in h:
+              raise SystemExit('metrics html anchor not found')
+          h = h.replace(old, new, 1)
+
+          old = '<select id="special"><option value="">Any property</option>'
+          new = '<select id="special"><option value="">Any property</option><option value="best">🔥 Best Deals</option><option value="new">🆕 New since last scan</option><option value="updated">Updated since last scan</option>'
+          if old not in h:
+              raise SystemExit('special filter anchor not found')
+          h = h.replace(old, new, 1)
+
+          old = "function typeName(x){return x==='foreclosure'?'Foreclosure':'Tired landlord'}\n"
+          new = old + "function bestDeal(l){if(typeof l.best_deal==='boolean')return l.best_deal;const p=l.parcel||{},owner=(p.owner||l.owner_or_defendant||'').toUpperCase(),addr=(p.property_address||'').trim(),inst=['CHN HOUSING','CLEVELAND HOUSING NETWORK','CUYAHOGA METROPOLITAN HOUSING AUTHORITY','CMHA','CITY OF CLEVELAND','LAND REUTILIZATION','LAND BANK','LIHTC'].some(x=>owner.includes(x));return (l.score||0)>=70&&!!p.is_residential&&!!addr&&!/^0+\\b/.test(addr)&&p.residential_buildings!==0&&!inst}\n"
+          if old not in h:
+              raise SystemExit('typeName anchor not found')
+          h = h.replace(old, new, 1)
+
+          old = "if(special==='tax'&&!l.tax_foreclosure)return false;return true}"
+          new = "if(special==='tax'&&!l.tax_foreclosure)return false;if(special==='best'&&!bestDeal(l))return false;if(special==='new'&&l.scan_status!=='new')return false;if(special==='updated'&&l.scan_status!=='updated')return false;return true}"
+          if old not in h:
+              raise SystemExit('filter logic anchor not found')
+          h = h.replace(old, new, 1)
+
+          old = "tags=[l.tax_foreclosure?'Tax foreclosure':'',p.is_multifamily?'Multi-family':'',p.absentee?'Absentee':'',l.repeat_eviction_count>1?`${l.repeat_eviction_count} eviction hits`:'' ].filter(Boolean)"
+          new = "tags=[l.scan_status==='new'?'🆕 NEW':'',l.scan_status==='updated'?'UPDATED':'',bestDeal(l)?'🔥 Best Deal':'',l.tax_foreclosure?'Tax foreclosure':'',p.is_multifamily?'Multi-family':'',p.absentee?'Absentee':'',l.repeat_eviction_count>1?`${l.repeat_eviction_count} eviction hits`:'' ].filter(Boolean)"
+          if old not in h:
+              raise SystemExit('card tag anchor not found')
+          h = h.replace(old, new, 1)
+
+          old = "$('mTotal').textContent=s.total_leads??payload.leads.length;$('mHot').textContent=s.hot_leads??payload.leads.filter(x=>x.score>=70).length;"
+          new = "$('mTotal').textContent=s.total_leads??payload.leads.length;$('mBest').textContent=s.best_deal_leads??payload.leads.filter(bestDeal).length;$('mNew').textContent=s.new_leads??payload.leads.filter(x=>x.scan_status==='new').length;$('mHot').textContent=s.hot_leads??payload.leads.filter(x=>x.score>=70).length;"
+          if old not in h:
+              raise SystemExit('metrics load anchor not found')
+          h = h.replace(old, new, 1)
+
+          old = '<h3>Why it scored this way</h3><ul>${notes}</ul>'
+          new = '''<h3>Property details</h3><div class="detailgrid"><div><span>Owner mailing address</span><b>${esc([p.mailing_address,p.mailing_city,p.mailing_state,p.mailing_zip].filter(Boolean).join(', ')||'—')}</b></div><div><span>Living area</span><b>${p.living_area_sqft?Number(p.living_area_sqft).toLocaleString()+' sq ft':'—'}</b></div><div><span>Last recorded sale</span><b>${money(p.last_sale_amount)}</b></div><div><span>Last transfer</span><b>${esc(p.transfer_date||'—')}</b></div><div><span>Residential buildings</span><b>${p.residential_buildings??'—'}</b></div><div><span>Absentee owner</span><b>${p.absentee?'Yes':'No'}</b></div><div><span>Owner portfolio match</span><b>${l.portfolio_count||'—'}</b></div><div><span>Eviction/default hits</span><b>${l.repeat_eviction_count||'—'}</b></div><div><span>Scan status</span><b>${l.scan_status==='new'?'🆕 NEW':l.scan_status==='updated'?'UPDATED':'Previously seen'}</b></div><div><span>Best Deals filter</span><b>${bestDeal(l)?'🔥 Included':'Not included'}</b></div></div><h3>Why it scored this way</h3><ul>${notes}</ul>'''
+          if old not in h:
+              raise SystemExit('property detail anchor not found')
+          h = h.replace(old, new, 1)
+
+          p.write_text(h)
+          PY
+      - name: Validate tests and dashboard
+        run: |
+          python -m pytest -q
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('docs/index.html').read_text()
+          m=re.search(r'<script>([\s\S]*?)</script>',s)
+          if not m:
+              raise SystemExit('No inline script')
+          Path('/tmp/app.js').write_text(m.group(1))
+          PY
+          node --check /tmp/app.js
+          grep -q '🔥 Best Deals' docs/index.html
+          grep -q 'New since last scan' docs/index.html
+          grep -q 'Owner mailing address' docs/index.html
+          grep -q 'best_deal' scraper.py
+          grep -q 'scan_status' scraper.py
+      - name: Run upgraded scraper
+        env:
+          MAX_FORECLOSURE_DOCUMENTS: '8'
+          MAX_FORECLOSURE_RECORDS: '30'
+          MAX_EVICTION_OWNERS: '30'
+        run: python scraper.py --output data/leads.json
+      - name: Publish dashboard data
+        run: |
+          cp data/leads.json docs/data/leads.json
+          python - <<'PY'
+          import json
+          d=json.load(open('data/leads.json'))
+          assert 'new_leads' in d['stats']
+          assert 'best_deal_leads' in d['stats']
+          assert all('scan_status' in x and 'best_deal' in x for x in d['leads'])
+          print('total', d['stats']['total_leads'], 'best', d['stats']['best_deal_leads'], 'new', d['stats']['new_leads'], 'updated', d['stats']['updated_leads'])
+          PY
+      - name: Commit upgraded app and fresh scan
+        run: |
+          git config user.name "cuyahoga-deal-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add scraper.py tests/test_scraper.py docs/index.html data/leads.json docs/data/leads.json
+          git commit -m "Add best deals new-lead tracking and expanded details"
+          git pull --rebase origin main
+          git push
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
