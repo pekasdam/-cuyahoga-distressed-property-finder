@@ -2,6 +2,11 @@ name: Scan Cuyahoga Distressed Leads
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/scan.yml'
   schedule:
     - cron: '17 * * * *'
 
