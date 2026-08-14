@@ -8,8 +8,6 @@ on:
     paths:
       - 'docs/**'
       - '.github/workflows/pages.yml'
-  schedule:
-    - cron: '32 * * * *'
 
 permissions:
   contents: read
