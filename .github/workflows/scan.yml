@@ -15,12 +15,12 @@ permissions:
 
 concurrency:
   group: distressed-lead-scan
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,7 +33,7 @@ jobs:
         run: python -m pytest -q
       - name: Run scraper
         env:
-          MAX_FORECLOSURE_DOCUMENTS: '40'
+          MAX_FORECLOSURE_DOCUMENTS: '8'
         run: python scraper.py --output data/leads.json
       - name: Update mobile dashboard data
         run: |
