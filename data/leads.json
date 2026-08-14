@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-08-14T03:53:34+00:00",
+  "generated_at": "2026-08-14T04:39:15+00:00",
   "stats": {
     "source_health": {
       "foreclosures": "live",
       "housing_court": "live"
     },
-    "previous_generated_at": "2026-08-14T03:48:12+00:00",
-    "foreclosure_submissions": 30,
-    "foreclosure_leads": 63,
+    "previous_generated_at": "2026-08-14T03:53:34+00:00",
+    "foreclosure_submissions": 28,
+    "foreclosure_leads": 58,
     "eviction_docket_rows": 787,
     "tired_landlord_parcel_leads": 149,
-    "total_leads": 212,
-    "hot_leads": 152
+    "total_leads": 207,
+    "hot_leads": 150
   },
   "leads": [
     {
@@ -62,7 +62,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:10604102",
@@ -112,7 +112,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:29+00:00"
+      "generated_at": "2026-08-14T04:39:10+00:00"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:10604060",
@@ -162,7 +162,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:29+00:00"
+      "generated_at": "2026-08-14T04:39:10+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10716081",
@@ -211,7 +211,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12918037",
@@ -260,7 +260,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10417025",
@@ -309,7 +309,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11909049",
@@ -358,7 +358,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11909033",
@@ -407,7 +407,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12525064",
@@ -456,7 +456,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709105",
@@ -505,7 +505,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10619045",
@@ -554,7 +554,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10415065",
@@ -603,7 +603,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10416029",
@@ -652,7 +652,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709004",
@@ -701,7 +701,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11927022",
@@ -750,7 +750,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11015194",
@@ -799,7 +799,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10528064",
@@ -848,7 +848,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12134009",
@@ -897,7 +897,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10911071",
@@ -946,7 +946,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10605049",
@@ -995,7 +995,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01505053",
@@ -1044,7 +1044,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01922066",
@@ -1093,7 +1093,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11011030",
@@ -1142,7 +1142,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10705005",
@@ -1191,7 +1191,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:13129010",
@@ -1240,7 +1240,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11022120",
@@ -1289,7 +1289,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10605081",
@@ -1338,7 +1338,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10421141",
@@ -1387,7 +1387,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12534012",
@@ -1436,7 +1436,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12430037",
@@ -1485,7 +1485,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:13506022",
@@ -1534,7 +1534,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12321069",
@@ -1583,7 +1583,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11635033",
@@ -1632,7 +1632,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10923003",
@@ -1681,7 +1681,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610171",
@@ -1730,7 +1730,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:00610101",
@@ -1779,7 +1779,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:13619046",
@@ -1828,7 +1828,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709048",
@@ -1877,7 +1877,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12430038",
@@ -1926,7 +1926,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610170",
@@ -1975,7 +1975,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610116",
@@ -2024,7 +2024,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:13614049",
@@ -2073,7 +2073,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709047",
@@ -2122,7 +2122,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610169",
@@ -2171,7 +2171,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709213",
@@ -2220,7 +2220,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610051",
@@ -2269,7 +2269,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01503007",
@@ -2318,7 +2318,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610105",
@@ -2367,7 +2367,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10802053",
@@ -2416,7 +2416,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:59+00:00"
+      "generated_at": "2026-08-14T04:38:39+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11116049",
@@ -2465,7 +2465,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12804065",
@@ -2514,7 +2514,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13013063",
@@ -2563,7 +2563,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01403109",
@@ -2612,7 +2612,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:00518020",
@@ -2661,7 +2661,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13518092",
@@ -2710,7 +2710,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13211073",
@@ -2759,7 +2759,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11805036",
@@ -2808,7 +2808,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:10712118",
@@ -2857,7 +2857,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11503042",
@@ -2906,7 +2906,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12720028",
@@ -2955,7 +2955,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13420009",
@@ -3004,7 +3004,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11528100",
@@ -3053,7 +3053,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:02011094",
@@ -3102,7 +3102,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12825111",
@@ -3151,7 +3151,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11122006",
@@ -3200,7 +3200,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:10908023",
@@ -3249,7 +3249,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01104187",
@@ -3298,7 +3298,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13423072",
@@ -3347,7 +3347,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13008094",
@@ -3396,7 +3396,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11708081",
@@ -3445,7 +3445,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13411074",
@@ -3494,7 +3494,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11010070",
@@ -3543,7 +3543,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13421047",
@@ -3592,7 +3592,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:296 TRISKETT LLC:02436003",
@@ -3641,7 +3641,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:25+00:00"
+      "generated_at": "2026-08-14T04:39:06+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01104187",
@@ -3690,7 +3690,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01507047",
@@ -3739,7 +3739,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01512014",
@@ -3788,7 +3788,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01502033",
@@ -3837,7 +3837,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:13419074",
@@ -3886,7 +3886,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00531121",
@@ -3935,7 +3935,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02436066",
@@ -3984,7 +3984,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01728173",
@@ -4033,7 +4033,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02210041",
@@ -4082,7 +4082,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02005068",
@@ -4131,7 +4131,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02014036",
@@ -4180,7 +4180,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01508069",
@@ -4229,7 +4229,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01610014",
@@ -4278,7 +4278,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02201138",
@@ -4327,7 +4327,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01104184",
@@ -4376,7 +4376,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02436065",
@@ -4425,7 +4425,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01730113",
@@ -4474,7 +4474,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00610003",
@@ -4523,7 +4523,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01509079",
@@ -4572,7 +4572,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02631018",
@@ -4621,7 +4621,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01620011",
@@ -4670,7 +4670,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:14305005",
@@ -4719,7 +4719,7 @@
         "Possible multi-family use",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:29+00:00"
+      "generated_at": "2026-08-14T04:39:10+00:00"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:10917057",
@@ -4768,7 +4768,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:29+00:00"
+      "generated_at": "2026-08-14T04:39:10+00:00"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:13710059",
@@ -4817,7 +4817,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:29+00:00"
+      "generated_at": "2026-08-14T04:39:10+00:00"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:11122012",
@@ -4866,7 +4866,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:29+00:00"
+      "generated_at": "2026-08-14T04:39:10+00:00"
     },
     {
       "lead_id": "fc:3945544:11912095",
@@ -4905,7 +4905,7 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl149$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl56$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
@@ -4913,7 +4913,7 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:18+00:00"
+      "generated_at": "2026-08-14T04:38:00+00:00"
     },
     {
       "lead_id": "fc:3945466:54616021",
@@ -4952,7 +4952,7 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl144$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl51$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
@@ -4960,7 +4960,7 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:23+00:00"
+      "generated_at": "2026-08-14T04:38:06+00:00"
     },
     {
       "lead_id": "fc:3945353:67111202",
@@ -4999,7 +4999,7 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl133$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl40$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
@@ -5007,7 +5007,7 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:27+00:00"
+      "generated_at": "2026-08-14T04:38:09+00:00"
     },
     {
       "lead_id": "fc:3945167:12710040",
@@ -5046,7 +5046,7 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl126$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl33$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
@@ -5054,101 +5054,7 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:33+00:00"
-    },
-    {
-      "lead_id": "fc:3944627:67226103",
-      "lead_type": "foreclosure",
-      "score": 76,
-      "status": "Hot",
-      "title": "TREASURER OF CUYAHOGA COUNTY, OHIO vs Coventry Road, LLC",
-      "owner_or_defendant": "Coventry Road, LLC",
-      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
-      "case_number": "",
-      "submission_id": "3944627",
-      "filed_or_hearing_date": "8/12/2026 3:17:14 PM",
-      "hearing_type": "",
-      "tax_foreclosure": true,
-      "repeat_eviction_count": 0,
-      "portfolio_count": 0,
-      "parcel": {
-        "parcel_pin": "672-26-103",
-        "owner": "1519 COVENTRY ROAD, LLC",
-        "property_address": "1527 COVENTRY RD, EAST CLEVELAND, OH, 44118",
-        "city": "EAST CLEVELAND",
-        "zip_code": "44118",
-        "mailing_address": "4515 SUPERIOR AVE",
-        "mailing_city": "CLEVELAND",
-        "mailing_state": "OH",
-        "mailing_zip": "44103",
-        "land_use": "1-FAMILY PLATTED LOT",
-        "certified_tax_total": 66000.0,
-        "residential_buildings": 1.0,
-        "living_area_sqft": 1140.0,
-        "last_sale_amount": 0.0,
-        "transfer_date": "2021-02-12",
-        "myplace_url": "https://myplace.cuyahogacounty.gov/NjcyMjYxMDM%3D?city=OTk%3D&searchBy=UGFyY2Vs",
-        "absentee": true,
-        "is_residential": true,
-        "is_multifamily": false
-      },
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl84$lbDocs','')",
-      "notes": [
-        "New foreclosure filing",
-        "County Treasurer tax foreclosure",
-        "Mailing address differs from property",
-        "Residential parcel",
-        "Certified tax value at or below $100k"
-      ],
-      "generated_at": "2026-08-14T03:52:46+00:00"
-    },
-    {
-      "lead_id": "fc:3944627:67226063",
-      "lead_type": "foreclosure",
-      "score": 76,
-      "status": "Hot",
-      "title": "TREASURER OF CUYAHOGA COUNTY, OHIO vs Coventry Road, LLC",
-      "owner_or_defendant": "Coventry Road, LLC",
-      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
-      "case_number": "",
-      "submission_id": "3944627",
-      "filed_or_hearing_date": "8/12/2026 3:17:14 PM",
-      "hearing_type": "",
-      "tax_foreclosure": true,
-      "repeat_eviction_count": 0,
-      "portfolio_count": 0,
-      "parcel": {
-        "parcel_pin": "672-26-063",
-        "owner": "1519 COVENTRY ROAD, LLC",
-        "property_address": "1525 COVENTRY RD, EAST CLEVELAND, OH, 44118",
-        "city": "EAST CLEVELAND",
-        "zip_code": "44118",
-        "mailing_address": "1527 COVENTRY RD",
-        "mailing_city": "EAST CLEVELAND",
-        "mailing_state": "OH",
-        "mailing_zip": "44112",
-        "land_use": "1-FAMILY PLATTED LOT",
-        "certified_tax_total": 69500.0,
-        "residential_buildings": 1.0,
-        "living_area_sqft": 1140.0,
-        "last_sale_amount": 0.0,
-        "transfer_date": "2021-02-12",
-        "myplace_url": "https://myplace.cuyahogacounty.gov/NjcyMjYwNjM%3D?city=OTk%3D&searchBy=UGFyY2Vs",
-        "absentee": true,
-        "is_residential": true,
-        "is_multifamily": false
-      },
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl84$lbDocs','')",
-      "notes": [
-        "New foreclosure filing",
-        "County Treasurer tax foreclosure",
-        "Mailing address differs from property",
-        "Residential parcel",
-        "Certified tax value at or below $100k"
-      ],
-      "generated_at": "2026-08-14T03:52:46+00:00"
+      "generated_at": "2026-08-14T04:38:16+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01828083",
@@ -5196,7 +5102,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01710066",
@@ -5244,7 +5150,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:00112075",
@@ -5292,7 +5198,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01517144",
@@ -5340,7 +5246,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12925146",
@@ -5388,7 +5294,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:02227053",
@@ -5436,7 +5342,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01006051",
@@ -5484,7 +5390,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01827032",
@@ -5532,7 +5438,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01705093",
@@ -5580,7 +5486,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13616027",
@@ -5628,7 +5534,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:00228067",
@@ -5676,7 +5582,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12510067",
@@ -5724,7 +5630,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:02803131",
@@ -5772,7 +5678,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:17+00:00"
+      "generated_at": "2026-08-14T04:38:58+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01705093",
@@ -5820,7 +5726,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00228067",
@@ -5868,7 +5774,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02418020",
@@ -5916,7 +5822,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00112038",
@@ -5964,7 +5870,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01809018",
@@ -6012,7 +5918,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00121077",
@@ -6060,7 +5966,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01829061",
@@ -6108,7 +6014,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01213123",
@@ -6156,7 +6062,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02628001",
@@ -6204,7 +6110,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01204018",
@@ -6252,7 +6158,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:11424014",
@@ -6300,7 +6206,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02309087",
@@ -6348,7 +6254,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01730128",
@@ -6396,7 +6302,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02228164",
@@ -6444,7 +6350,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01321153",
@@ -6492,7 +6398,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00119044",
@@ -6540,7 +6446,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02201067",
@@ -6588,7 +6494,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00508142",
@@ -6636,7 +6542,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01108008",
@@ -6684,7 +6590,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00923108",
@@ -6732,7 +6638,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01203122",
@@ -6780,7 +6686,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01725108",
@@ -6828,7 +6734,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01409053",
@@ -6876,7 +6782,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01327017",
@@ -6924,7 +6830,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02101084",
@@ -6972,7 +6878,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02224032",
@@ -7020,7 +6926,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00531119",
@@ -7068,7 +6974,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00917127",
@@ -7116,7 +7022,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02009152",
@@ -7164,7 +7070,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:27+00:00"
+      "generated_at": "2026-08-14T04:39:08+00:00"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:13513018",
@@ -7212,7 +7118,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:29+00:00"
+      "generated_at": "2026-08-14T04:39:10+00:00"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:10703055",
@@ -7260,7 +7166,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:29+00:00"
+      "generated_at": "2026-08-14T04:39:10+00:00"
     },
     {
       "lead_id": "ev:GMAREC8 LLC:13120170",
@@ -7309,7 +7215,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:34+00:00"
+      "generated_at": "2026-08-14T04:39:15+00:00"
     },
     {
       "lead_id": "ev:GMAREC8 LLC:01609068",
@@ -7358,7 +7264,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:34+00:00"
+      "generated_at": "2026-08-14T04:39:15+00:00"
     },
     {
       "lead_id": "ev:GMAREC8 LLC:00613072",
@@ -7407,7 +7313,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:34+00:00"
+      "generated_at": "2026-08-14T04:39:15+00:00"
     },
     {
       "lead_id": "fc:3945544:11912096",
@@ -7446,14 +7352,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl149$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl56$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:18+00:00"
+      "generated_at": "2026-08-14T04:38:00+00:00"
     },
     {
       "lead_id": "fc:3945244:00418073",
@@ -7492,14 +7398,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl134$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl41$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:25+00:00"
+      "generated_at": "2026-08-14T04:38:07+00:00"
     },
     {
       "lead_id": "fc:3945244:00418074",
@@ -7538,14 +7444,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl134$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl41$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:25+00:00"
+      "generated_at": "2026-08-14T04:38:07+00:00"
     },
     {
       "lead_id": "fc:3945244:00418163",
@@ -7584,14 +7490,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl134$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl41$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:25+00:00"
+      "generated_at": "2026-08-14T04:38:07+00:00"
     },
     {
       "lead_id": "fc:3945244:00419195",
@@ -7630,14 +7536,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl134$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl41$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:25+00:00"
+      "generated_at": "2026-08-14T04:38:07+00:00"
     },
     {
       "lead_id": "fc:3945353:67111201",
@@ -7676,14 +7582,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl133$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl40$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:27+00:00"
+      "generated_at": "2026-08-14T04:38:09+00:00"
     },
     {
       "lead_id": "fc:3945353:67306028",
@@ -7722,14 +7628,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl133$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl40$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:27+00:00"
+      "generated_at": "2026-08-14T04:38:09+00:00"
     },
     {
       "lead_id": "fc:3945353:67306025",
@@ -7768,14 +7674,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl133$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl40$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:27+00:00"
+      "generated_at": "2026-08-14T04:38:09+00:00"
     },
     {
       "lead_id": "fc:3945353:67306026",
@@ -7814,14 +7720,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl133$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl40$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:27+00:00"
+      "generated_at": "2026-08-14T04:38:09+00:00"
     },
     {
       "lead_id": "fc:3945353:67111200",
@@ -7860,14 +7766,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl133$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl40$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:27+00:00"
+      "generated_at": "2026-08-14T04:38:09+00:00"
     },
     {
       "lead_id": "fc:3945244:00418077",
@@ -7906,14 +7812,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl134$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl41$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Mailing address differs from property",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:25+00:00"
+      "generated_at": "2026-08-14T04:38:07+00:00"
     },
     {
       "lead_id": "fc:3945690:00917177",
@@ -7952,14 +7858,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945662:01611150",
@@ -7998,14 +7904,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3945662:00721090",
@@ -8044,14 +7950,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3945662:00629101",
@@ -8090,14 +7996,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3945662:01507059",
@@ -8136,14 +8042,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3945662:00630053",
@@ -8182,14 +8088,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "ev:RAL PROPERTY MANAGEMENT LLC:14321070",
@@ -8236,7 +8142,7 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:52:53+00:00"
+      "generated_at": "2026-08-14T04:38:32+00:00"
     },
     {
       "lead_id": "fc:3945036:67206008",
@@ -8275,13 +8181,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl124$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl31$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:37+00:00"
+      "generated_at": "2026-08-14T04:38:20+00:00"
     },
     {
       "lead_id": "fc:3945293:02520074",
@@ -8320,13 +8226,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl123$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl30$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T03:52:39+00:00"
+      "generated_at": "2026-08-14T04:38:22+00:00"
     },
     {
       "lead_id": "fc:3945293:58229008",
@@ -8365,103 +8271,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl123$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl30$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T03:52:39+00:00"
-    },
-    {
-      "lead_id": "fc:3944627:68510063",
-      "lead_type": "foreclosure",
-      "score": 60,
-      "status": "Review",
-      "title": "TREASURER OF CUYAHOGA COUNTY, OHIO vs Coventry Road, LLC",
-      "owner_or_defendant": "Coventry Road, LLC",
-      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
-      "case_number": "",
-      "submission_id": "3944627",
-      "filed_or_hearing_date": "8/12/2026 3:17:14 PM",
-      "hearing_type": "",
-      "tax_foreclosure": true,
-      "repeat_eviction_count": 0,
-      "portfolio_count": 0,
-      "parcel": {
-        "parcel_pin": "685-10-063",
-        "owner": "COVENTRY ROAD LLC",
-        "property_address": "1800 COVENTRY RD, CLEVELAND HEIGHTS, OH, 44118",
-        "city": "CLEVELAND HEIGHTS",
-        "zip_code": "44118",
-        "mailing_address": "13219 SHAKER SQ",
-        "mailing_city": "CLEVELAND",
-        "mailing_state": "OH",
-        "mailing_zip": "44120",
-        "land_use": "STORE W/ WALKUP APTS",
-        "certified_tax_total": 2677400.0,
-        "residential_buildings": 0.0,
-        "living_area_sqft": 0.0,
-        "last_sale_amount": 3500000.0,
-        "transfer_date": "2006-05-05",
-        "myplace_url": "https://myplace.cuyahogacounty.gov/Njg1MTAwNjM%3D?city=OTk%3D&searchBy=UGFyY2Vs",
-        "absentee": true,
-        "is_residential": false,
-        "is_multifamily": false
-      },
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl84$lbDocs','')",
-      "notes": [
-        "New foreclosure filing",
-        "County Treasurer tax foreclosure",
-        "Mailing address differs from property"
-      ],
-      "generated_at": "2026-08-14T03:52:46+00:00"
-    },
-    {
-      "lead_id": "fc:3944627:68511013",
-      "lead_type": "foreclosure",
-      "score": 60,
-      "status": "Review",
-      "title": "TREASURER OF CUYAHOGA COUNTY, OHIO vs Coventry Road, LLC",
-      "owner_or_defendant": "Coventry Road, LLC",
-      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
-      "case_number": "",
-      "submission_id": "3944627",
-      "filed_or_hearing_date": "8/12/2026 3:17:14 PM",
-      "hearing_type": "",
-      "tax_foreclosure": true,
-      "repeat_eviction_count": 0,
-      "portfolio_count": 0,
-      "parcel": {
-        "parcel_pin": "685-11-013",
-        "owner": "1850 COVENTRY ROAD, LLC",
-        "property_address": "1850-52 COVENTRY RD, CLEVELAND HEIGHTS, OH, 44118",
-        "city": "CLEVELAND HEIGHTS",
-        "zip_code": "44118",
-        "mailing_address": "5900 SOM CENTER RD #12-336",
-        "mailing_city": "WILLOUGHBY",
-        "mailing_state": "OH",
-        "mailing_zip": "44094",
-        "land_use": "STORE W/ WALKUP APTS",
-        "certified_tax_total": 1563700.0,
-        "residential_buildings": 0.0,
-        "living_area_sqft": 0.0,
-        "last_sale_amount": 0.0,
-        "transfer_date": "2017-11-03",
-        "myplace_url": "https://myplace.cuyahogacounty.gov/Njg1MTEwMTM%3D?city=OTk%3D&searchBy=UGFyY2Vs",
-        "absentee": true,
-        "is_residential": false,
-        "is_multifamily": false
-      },
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl84$lbDocs','')",
-      "notes": [
-        "New foreclosure filing",
-        "County Treasurer tax foreclosure",
-        "Mailing address differs from property"
-      ],
-      "generated_at": "2026-08-14T03:52:46+00:00"
+      "generated_at": "2026-08-14T04:38:22+00:00"
     },
     {
       "lead_id": "fc:3945976:14002072",
@@ -8500,14 +8316,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl162$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl69$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:06+00:00"
+      "generated_at": "2026-08-14T04:37:48+00:00"
     },
     {
       "lead_id": "fc:3945690:01812040",
@@ -8546,14 +8362,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945662:01417028",
@@ -8592,14 +8408,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3945662:01105060",
@@ -8638,14 +8454,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3945662:01206026",
@@ -8684,14 +8500,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3945662:01226110",
@@ -8730,14 +8546,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3945662:01105132",
@@ -8776,14 +8592,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl155$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl62$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:13+00:00"
+      "generated_at": "2026-08-14T04:37:55+00:00"
     },
     {
       "lead_id": "fc:3944913:64221095",
@@ -8822,14 +8638,14 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl97$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl04$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:42+00:00"
+      "generated_at": "2026-08-14T04:38:25+00:00"
     },
     {
       "lead_id": "ev:THE HAYMAN COMPANY:32112095",
@@ -8876,7 +8692,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:08+00:00"
+      "generated_at": "2026-08-14T04:38:48+00:00"
     },
     {
       "lead_id": "ev:THE HAYMAN COMPANY:30407054",
@@ -8923,7 +8739,7 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T03:53:08+00:00"
+      "generated_at": "2026-08-14T04:38:48+00:00"
     },
     {
       "lead_id": "fc:3946334:95517038",
@@ -8962,13 +8778,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl183$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl90$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T03:52:01+00:00"
+      "generated_at": "2026-08-14T04:37:43+00:00"
     },
     {
       "lead_id": "fc:3945686:67217077",
@@ -9007,13 +8823,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl158$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl65$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:08+00:00"
+      "generated_at": "2026-08-14T04:37:50+00:00"
     },
     {
       "lead_id": "fc:3945690:02318136",
@@ -9052,13 +8868,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945690:01729116",
@@ -9097,13 +8913,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945690:01815106",
@@ -9142,13 +8958,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945690:00726098",
@@ -9187,13 +9003,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945644:13806135",
@@ -9232,13 +9048,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl156$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl63$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:11+00:00"
+      "generated_at": "2026-08-14T04:37:54+00:00"
     },
     {
       "lead_id": "fc:3945326:12817130",
@@ -9277,13 +9093,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl131$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl38$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T03:52:28+00:00"
+      "generated_at": "2026-08-14T04:38:11+00:00"
     },
     {
       "lead_id": "fc:3945288:14123070",
@@ -9322,58 +9138,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl125$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl32$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Mailing address differs from property",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T03:52:35+00:00"
-    },
-    {
-      "lead_id": "fc:3944716:13918049",
-      "lead_type": "foreclosure",
-      "score": 54,
-      "status": "Review",
-      "title": "CITIZENS BANK, NA vs JACQUALYN BOWMAN, ET AL.",
-      "owner_or_defendant": "JACQUALYN BOWMAN, ET AL",
-      "plaintiff": "CITIZENS BANK, NA",
-      "case_number": "",
-      "submission_id": "3944716",
-      "filed_or_hearing_date": "8/12/2026 3:37:34 PM",
-      "hearing_type": "",
-      "tax_foreclosure": false,
-      "repeat_eviction_count": 0,
-      "portfolio_count": 0,
-      "parcel": {
-        "parcel_pin": "139-18-049",
-        "owner": "BOWMAN, JACQUALYN",
-        "property_address": "3793 E 153 ST, CLEVELAND, OH, 44128",
-        "city": "CLEVELAND",
-        "zip_code": "44128",
-        "mailing_address": "3793 E 153 ST",
-        "mailing_city": "Cleveland",
-        "mailing_state": "OH",
-        "mailing_zip": "44128",
-        "land_use": "1-FAMILY PLATTED LOT",
-        "certified_tax_total": 69500.0,
-        "residential_buildings": 1.0,
-        "living_area_sqft": 864.0,
-        "last_sale_amount": 63000.0,
-        "transfer_date": "1998-10-23",
-        "myplace_url": "https://myplace.cuyahogacounty.gov/MTM5MTgwNDk%3D?city=OTk%3D&searchBy=UGFyY2Vs",
-        "absentee": false,
-        "is_residential": true,
-        "is_multifamily": false
-      },
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl89$lbDocs','')",
-      "notes": [
-        "New foreclosure filing",
-        "Residential parcel",
-        "Certified tax value at or below $100k"
-      ],
-      "generated_at": "2026-08-14T03:52:44+00:00"
+      "generated_at": "2026-08-14T04:38:18+00:00"
     },
     {
       "lead_id": "fc:3946387",
@@ -9392,13 +9163,13 @@
       "portfolio_count": 0,
       "parcel": null,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl185$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl92$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T03:51:58+00:00"
+      "generated_at": "2026-08-14T04:37:39+00:00"
     },
     {
       "lead_id": "fc:3945526",
@@ -9417,13 +9188,13 @@
       "portfolio_count": 0,
       "parcel": null,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl147$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl54$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T03:52:20+00:00"
+      "generated_at": "2026-08-14T04:38:02+00:00"
     },
     {
       "lead_id": "fc:3945330",
@@ -9442,13 +9213,13 @@
       "portfolio_count": 0,
       "parcel": null,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl129$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl36$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "County Treasurer tax foreclosure",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T03:52:30+00:00"
+      "generated_at": "2026-08-14T04:38:13+00:00"
     },
     {
       "lead_id": "fc:3946352:64224109",
@@ -9487,13 +9258,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl184$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl91$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:51:59+00:00"
+      "generated_at": "2026-08-14T04:37:41+00:00"
     },
     {
       "lead_id": "fc:3945690:01215067",
@@ -9532,13 +9303,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945690:02225046",
@@ -9577,13 +9348,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945690:01612071",
@@ -9622,13 +9393,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945288:81107003",
@@ -9667,13 +9438,13 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl125$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl32$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T03:52:35+00:00"
+      "generated_at": "2026-08-14T04:38:18+00:00"
     },
     {
       "lead_id": "fc:3945690:01019026",
@@ -9712,12 +9483,12 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl157$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl64$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T03:52:10+00:00"
+      "generated_at": "2026-08-14T04:37:52+00:00"
     },
     {
       "lead_id": "fc:3945630:01113010",
@@ -9756,12 +9527,12 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl153$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl60$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T03:52:14+00:00"
+      "generated_at": "2026-08-14T04:37:57+00:00"
     },
     {
       "lead_id": "fc:3945515:47201050",
@@ -9800,12 +9571,12 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl146$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl53$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T03:52:21+00:00"
+      "generated_at": "2026-08-14T04:38:04+00:00"
     },
     {
       "lead_id": "fc:3945314:01110024",
@@ -9844,12 +9615,12 @@
         "is_multifamily": false
       },
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl128$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl35$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T03:52:32+00:00"
+      "generated_at": "2026-08-14T04:38:14+00:00"
     },
     {
       "lead_id": "fc:3946388",
@@ -9868,12 +9639,12 @@
       "portfolio_count": 0,
       "parcel": null,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl186$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl93$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T03:51:56+00:00"
+      "generated_at": "2026-08-14T04:37:38+00:00"
     },
     {
       "lead_id": "fc:3946166",
@@ -9892,12 +9663,12 @@
       "portfolio_count": 0,
       "parcel": null,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl170$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl77$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T03:52:03+00:00"
+      "generated_at": "2026-08-14T04:37:45+00:00"
     },
     {
       "lead_id": "fc:3946052",
@@ -9916,12 +9687,12 @@
       "portfolio_count": 0,
       "parcel": null,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl165$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl72$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T03:52:05+00:00"
+      "generated_at": "2026-08-14T04:37:47+00:00"
     },
     {
       "lead_id": "fc:3945611",
@@ -9940,12 +9711,12 @@
       "portfolio_count": 0,
       "parcel": null,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl152$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl59$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T03:52:16+00:00"
+      "generated_at": "2026-08-14T04:37:58+00:00"
     },
     {
       "lead_id": "fc:3944925",
@@ -9964,12 +9735,12 @@
       "portfolio_count": 0,
       "parcel": null,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y",
-      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl98$lbDocs','')",
+      "source_document_url": "javascript:__doPostBack('ctl00$SheetContentPlaceHolder$gvEfileComplaints$ctl05$lbDocs','')",
       "notes": [
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T03:52:40+00:00"
+      "generated_at": "2026-08-14T04:38:23+00:00"
     }
   ]
 }
