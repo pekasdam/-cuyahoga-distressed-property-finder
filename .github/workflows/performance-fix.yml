@@ -15,33 +15,54 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Patch Clerk ASP.NET document download
+      - name: Patch Clerk document postback precisely
         run: |
           python - <<'PY'
           from pathlib import Path
           p = Path('scraper.py')
           s = p.read_text()
 
-          old = '        document_url = urljoin(base_url, link["href"]) if link else ""'
-          new = '''        href = clean_text(link.get("href")) if link else ""
-          event_target = ""
-          event_argument = ""
-          if href.lower().startswith("javascript:__dopostback"):
-              match = re.search(r"__doPostBack\\('([^']*)','([^']*)'\\)", href, re.I)
-              if match:
-                  event_target, event_argument = match.groups()
-          document_url = base_url if event_target else (urljoin(base_url, href) if href else "")'''.replace('\n          ', '\n        ')
-          if s.count(old) != 1:
-              raise SystemExit(f'document_url match count={s.count(old)}')
-          s = s.replace(old, new, 1)
+          replacements = [
+              ('        document_url = urljoin(base_url, link["href"]) if link else ""',
+               '        href = clean_text(link.get("href")) if link else ""\n'
+               '        event_target = ""\n'
+               '        event_argument = ""\n'
+               '        if href.lower().startswith("javascript:__dopostback"):\n'
+               '            match = re.search(r"__doPostBack\\(\\\'([^\\\']*)\\\',\\\'([^\\\']*)\\\'\\)", href, re.I)\n'
+               '            if match:\n'
+               '                event_target, event_argument = match.groups()\n'
+               '        document_url = base_url if event_target else (urljoin(base_url, href) if href else "")'),
+              ('                "document_url": document_url,\n',
+               '                "document_url": document_url,\n'
+               '                "document_event_target": event_target,\n'
+               '                "document_event_argument": event_argument,\n'),
+              ('        url = row.get("document_url")\n        if not url:',
+               '        url = row.get("document_url")\n'
+               '        event_target = clean_text(row.get("document_event_target"))\n'
+               '        if not url and not event_target:'),
+              ('            doc = request(session, url, timeout=45)\n            pins, addresses = extract_document_signals(doc.content)',
+               '            if event_target:\n'
+               '                bundle = download_foreclosure_bundle(\n'
+               '                    session, resp.text, event_target, clean_text(row.get("document_event_argument"))\n'
+               '                )\n'
+               '            else:\n'
+               '                bundle = request(session, url, timeout=30).content\n'
+               '            pins, addresses = extract_document_signals(bundle)'),
+              ('            row["address_candidates"] = addresses\n        except Exception as exc:',
+               '            row["address_candidates"] = addresses\n'
+               '            row["document_inspected"] = True\n'
+               '        except Exception as exc:'),
+              ('            row["address_candidates"] = []\n    return rows',
+               '            row["address_candidates"] = []\n'
+               '            row["document_inspected"] = False\n'
+               '    return rows'),
+          ]
 
-          old = '                "document_url": document_url,\n'
-          new = ('                "document_url": document_url,\n'
-                 '                "document_event_target": event_target,\n'
-                 '                "document_event_argument": event_argument,\n')
-          if s.count(old) != 1:
-              raise SystemExit(f'document dict match count={s.count(old)}')
-          s = s.replace(old, new, 1)
+          for old, new in replacements:
+              count = s.count(old)
+              if count != 1:
+                  raise SystemExit(f'Expected one match, got {count}: {old[:80]}')
+              s = s.replace(old, new, 1)
 
           anchor = '\n\ndef scrape_foreclosures(\n'
           helper = '''
@@ -77,67 +98,28 @@ jobs:
               return response.content
           '''.replace('\n          ', '\n')
           if s.count(anchor) != 1:
-              raise SystemExit(f'scrape anchor count={s.count(anchor)}')
+              raise SystemExit(f'anchor count={s.count(anchor)}')
           s = s.replace(anchor, helper + anchor, 1)
-
-          old = '''        url = row.get("document_url")
-          if not url:
-              continue
-          try:
-              doc = request(session, url, timeout=45)
-              pins, addresses = extract_document_signals(doc.content)
-              row["parcel_candidates"] = pins
-              row["address_candidates"] = addresses
-          except Exception as exc:  # noqa: BLE001
-              LOGGER.warning("Could not inspect foreclosure documents %s: %s", row.get("submission_id"), exc)
-              row["parcel_candidates"] = []
-              row["address_candidates"] = []'''.replace('\n          ', '\n        ')
-          new = '''        url = row.get("document_url")
-          event_target = clean_text(row.get("document_event_target"))
-          if not url and not event_target:
-              continue
-          try:
-              if event_target:
-                  bundle = download_foreclosure_bundle(
-                      session,
-                      resp.text,
-                      event_target,
-                      clean_text(row.get("document_event_argument")),
-                  )
-              else:
-                  bundle = request(session, url, timeout=30).content
-              pins, addresses = extract_document_signals(bundle)
-              row["parcel_candidates"] = pins
-              row["address_candidates"] = addresses
-              row["document_inspected"] = True
-          except Exception as exc:  # noqa: BLE001
-              LOGGER.warning("Could not inspect foreclosure documents %s: %s", row.get("submission_id"), exc)
-              row["parcel_candidates"] = []
-              row["address_candidates"] = []
-              row["document_inspected"] = False'''.replace('\n          ', '\n        ')
-          if s.count(old) != 1:
-              raise SystemExit(f'document loop match count={s.count(old)}')
-          s = s.replace(old, new, 1)
           p.write_text(s)
           PY
       - name: Install dependencies
         run: python -m pip install -q -r requirements.txt pytest
-      - name: Validate patched code
+      - name: Validate code
         run: |
           python -m pytest -q
           python -m py_compile scraper.py app.py
-      - name: Live-check one Clerk document
+      - name: Test one live Clerk document
         run: |
           python - <<'PY'
           from scraper import make_session, scrape_foreclosures
           rows = scrape_foreclosures(make_session(), inspect_documents=True, max_documents=1, max_records=2)
           print('rows=', len(rows))
-          print('document inspected=', rows[0].get('document_inspected'))
+          print('inspected=', rows[0].get('document_inspected'))
           print('pins=', rows[0].get('parcel_candidates'))
           print('addresses=', rows[0].get('address_candidates'))
           assert rows and rows[0].get('document_inspected') is True
           PY
-      - name: Commit Clerk document fix
+      - name: Commit Clerk fix
         run: |
           git config user.name "cuyahoga-deal-bot"
           git config user.email "actions@users.noreply.github.com"
