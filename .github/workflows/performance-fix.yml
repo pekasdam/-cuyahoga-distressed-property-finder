@@ -1,4 +1,4 @@
-name: Apply Performance Fix
+name: Apply Scraper Performance Fix
 
 on:
   push:
@@ -65,18 +65,6 @@ jobs:
               '                max_documents=max(0, args.max_documents),\n                max_records=max(0, args.max_foreclosures),\n            )'
           )
           p.write_text(s)
-
-          smoke = Path('.github/workflows/smoke.yml')
-          t = smoke.read_text()
-          t = t.replace('python scraper.py --max-documents 1 --skip-evictions --output /tmp/leads.json',
-                        'python scraper.py --max-documents 1 --max-foreclosures 2 --skip-evictions --output /tmp/leads.json')
-          smoke.write_text(t)
-
-          scan = Path('.github/workflows/scan.yml')
-          t = scan.read_text()
-          if "MAX_FORECLOSURE_RECORDS" not in t:
-              t = t.replace("          MAX_FORECLOSURE_DOCUMENTS: '8'\n", "          MAX_FORECLOSURE_DOCUMENTS: '8'\n          MAX_FORECLOSURE_RECORDS: '30'\n")
-          scan.write_text(t)
           PY
       - name: Install dependencies
         run: python -m pip install -q -r requirements.txt pytest
@@ -84,11 +72,10 @@ jobs:
         run: |
           python -m pytest -q
           python -m py_compile scraper.py app.py
-      - name: Commit fix
+      - name: Commit scraper fix
         run: |
-          rm -f .github/workflows/performance-fix.yml
           git config user.name "cuyahoga-deal-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A
-          git commit -m "Optimize newest foreclosure scanning"
+          git add scraper.py
+          git commit -m "Optimize newest foreclosure scanning" || exit 0
           git push
