@@ -1,4 +1,4 @@
-name: Apply Court Parser Fixes
+name: Apply Housing Court Fix
 
 on:
   push:
@@ -15,167 +15,39 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Patch live court parsers
+      - name: Patch Housing Court parser and cap owner lookups
         run: |
           python - <<'PY'
           from pathlib import Path
           p = Path('scraper.py')
           s = p.read_text()
 
-          old_link = '''        link = tr.find("a", href=True)
-          document_url = urljoin(base_url, link["href"]) if link else ""
-          records.append(
-              {
-                  "submission_id": vals[0],
-                  "title": vals[1],
-                  "submission_date": vals[2],
-                  "category": category,
-                  "status": vals[4],
-                  "document_url": document_url,
-              }
-          )'''.replace('\n          ', '\n        ')
-          new_link = '''        link = tr.find("a", href=True)
-          href = clean_text(link.get("href")) if link else ""
-          event_target = ""
-          event_argument = ""
-          if href.lower().startswith("javascript:__dopostback"):
-              match = re.search(r"__doPostBack\\('([^']*)','([^']*)'\\)", href, re.I)
-              if match:
-                  event_target, event_argument = match.groups()
-          document_url = base_url if event_target else (urljoin(base_url, href) if href else "")
-          records.append(
-              {
-                  "submission_id": vals[0],
-                  "title": vals[1],
-                  "submission_date": vals[2],
-                  "category": category,
-                  "status": vals[4],
-                  "document_url": document_url,
-                  "document_event_target": event_target,
-                  "document_event_argument": event_argument,
-              }
-          )'''.replace('\n          ', '\n        ')
-          if old_link not in s:
-              raise SystemExit('foreclosure link parser block not found')
-          s = s.replace(old_link, new_link, 1)
+          replacements = [
+              ('            tds = tr.find_all("td")',
+               '            cells = tr.find_all(["th", "td"])'),
+              ('            if len(tds) < 5:',
+               '            if len(cells) < 5:'),
+              ('            vals = [clean_text(td.get_text(" ", strip=True)) for td in tds]',
+               '            vals = [clean_text(cell.get_text(" ", strip=True)) for cell in cells]\n'
+               '            if vals[0].lower().startswith("case"):\n'
+               '                continue'),
+              ('def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]]) -> list[Lead]:',
+               'def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]], max_owners: int = 30) -> list[Lead]:'),
+              ('    for owner_key, repeat_count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True):',
+               '    for owner_key, repeat_count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True)[:max_owners]:'),
+              ('    parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))\n',
+               '    parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))\n'
+               '    parser.add_argument("--max-eviction-owners", type=int, default=int(os.getenv("MAX_EVICTION_OWNERS", "30")))\n'),
+              ('            ev_leads = build_eviction_leads(session, evictions)',
+               '            ev_leads = build_eviction_leads(session, evictions, max_owners=max(1, args.max_eviction_owners))'),
+          ]
 
-          anchor = '\n\ndef scrape_foreclosures(\n'
-          helper = '''
+          for old, new in replacements:
+              count = s.count(old)
+              if count != 1:
+                  raise SystemExit(f'Expected exactly one match, got {count}: {old[:80]}')
+              s = s.replace(old, new, 1)
 
-          def download_foreclosure_bundle(
-              session: requests.Session,
-              page_html: str,
-              event_target: str,
-              event_argument: str = "",
-          ) -> bytes:
-              """Submit the Clerk GridView postback used by its Documents link."""
-              soup = BeautifulSoup(page_html, "lxml")
-              form = soup.find("form")
-              if form is None:
-                  raise RuntimeError("Clerk foreclosure form not found")
-              data: dict[str, str] = {}
-              for field in form.find_all("input"):
-                  name = field.get("name")
-                  if name and clean_text(field.get("type")).lower() == "hidden":
-                      data[name] = field.get("value", "")
-              data["__EVENTTARGET"] = event_target
-              data["__EVENTARGUMENT"] = event_argument
-              response = session.post(
-                  FORECLOSURE_URL,
-                  data=data,
-                  timeout=30,
-                  headers={"Referer": FORECLOSURE_URL},
-              )
-              response.raise_for_status()
-              if not zipfile.is_zipfile(io.BytesIO(response.content)):
-                  content_type = response.headers.get("Content-Type", "")
-                  raise RuntimeError(
-                      f"Clerk document postback did not return ZIP: {content_type or 'unknown content type'}"
-                  )
-              return response.content
-          '''.replace('\n          ', '\n')
-          if anchor not in s:
-              raise SystemExit('scrape_foreclosures anchor not found')
-          s = s.replace(anchor, helper + anchor, 1)
-
-          old_docs = '''        url = row.get("document_url")
-          if not url:
-              continue
-          try:
-              doc = request(session, url, timeout=45)
-              pins, addresses = extract_document_signals(doc.content)
-              row["parcel_candidates"] = pins
-              row["address_candidates"] = addresses
-          except Exception as exc:  # noqa: BLE001
-              LOGGER.warning("Could not inspect foreclosure documents %s: %s", row.get("submission_id"), exc)
-              row["parcel_candidates"] = []
-              row["address_candidates"] = []'''.replace('\n          ', '\n        ')
-          new_docs = '''        url = row.get("document_url")
-          event_target = clean_text(row.get("document_event_target"))
-          if not url and not event_target:
-              continue
-          try:
-              if event_target:
-                  bundle = download_foreclosure_bundle(
-                      session,
-                      resp.text,
-                      event_target,
-                      clean_text(row.get("document_event_argument")),
-                  )
-              else:
-                  bundle = request(session, url, timeout=30).content
-              pins, addresses = extract_document_signals(bundle)
-              row["parcel_candidates"] = pins
-              row["address_candidates"] = addresses
-              row["document_inspected"] = True
-          except Exception as exc:  # noqa: BLE001
-              LOGGER.warning("Could not inspect foreclosure documents %s: %s", row.get("submission_id"), exc)
-              row["parcel_candidates"] = []
-              row["address_candidates"] = []
-              row["document_inspected"] = False'''.replace('\n          ', '\n        ')
-          if old_docs not in s:
-              raise SystemExit('foreclosure document loop not found')
-          s = s.replace(old_docs, new_docs, 1)
-
-          old_housing = '''        for tr in table.find_all("tr"):
-              tds = tr.find_all("td")
-              if len(tds) < 5:
-                  continue
-              vals = [clean_text(td.get_text(" ", strip=True)) for td in tds]
-              hearing_type = vals[4]'''.replace('\n              ', '\n            ')
-          new_housing = '''        for tr in table.find_all("tr"):
-              cells = tr.find_all(["th", "td"])
-              if len(cells) < 5:
-                  continue
-              vals = [clean_text(cell.get_text(" ", strip=True)) for cell in cells]
-              if vals[0].lower().startswith("case"):
-                  continue
-              hearing_type = vals[4]'''.replace('\n              ', '\n            ')
-          if old_housing not in s:
-              raise SystemExit('housing row parser block not found')
-          s = s.replace(old_housing, new_housing, 1)
-
-          s = s.replace(
-              'def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]]) -> list[Lead]:',
-              'def build_eviction_leads(session: requests.Session, rows: list[dict[str, str]], max_owners: int = 30) -> list[Lead]:',
-              1,
-          )
-          s = s.replace(
-              '    for owner_key, repeat_count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True):',
-              '    for owner_key, repeat_count in sorted(counts.items(), key=lambda kv: kv[1], reverse=True)[:max_owners]:',
-              1,
-          )
-          s = s.replace(
-              '    parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))\n',
-              '    parser.add_argument("--max-foreclosures", type=int, default=int(os.getenv("MAX_FORECLOSURE_RECORDS", "30")))\n'
-              '    parser.add_argument("--max-eviction-owners", type=int, default=int(os.getenv("MAX_EVICTION_OWNERS", "30")))\n',
-              1,
-          )
-          s = s.replace(
-              '            ev_leads = build_eviction_leads(session, evictions)',
-              '            ev_leads = build_eviction_leads(session, evictions, max_owners=max(1, args.max_eviction_owners))',
-              1,
-          )
           p.write_text(s)
           PY
       - name: Install dependencies
@@ -184,11 +56,19 @@ jobs:
         run: |
           python -m pytest -q
           python -m py_compile scraper.py app.py
-      - name: Commit parser fixes
+      - name: Live-check Housing Court parser
+        run: |
+          python - <<'PY'
+          from scraper import make_session, scrape_evictions
+          rows = scrape_evictions(make_session())
+          print('eviction/default rows=', len(rows))
+          assert len(rows) > 0
+          PY
+      - name: Commit Housing Court fix
         run: |
           git config user.name "cuyahoga-deal-bot"
           git config user.email "actions@users.noreply.github.com"
           git add scraper.py
-          git commit -m "Fix live court parsers" || exit 0
+          git commit -m "Fix Housing Court eviction parsing" || exit 0
           git pull --rebase origin main
           git push
