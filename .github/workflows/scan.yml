@@ -1,16 +1,7 @@
 name: Scan Cuyahoga Distressed Leads
 
-# Final production trigger after Housing Court parser fix.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - 'scraper.py'
-      - '.github/workflows/scan.yml'
-  schedule:
-    - cron: '17 * * * *'
 
 permissions:
   contents: write
