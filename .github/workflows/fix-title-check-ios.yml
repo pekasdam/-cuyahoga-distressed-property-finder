@@ -1,0 +1,71 @@
+name: Fix Title Check iPhone Links
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-title-check-ios.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  patch-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix Title Check links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('docs/index.html')
+          s=p.read_text()
+          old="async function openTitleSource(kind){const l=window.currentTitleLead;if(!l)return;const p=l.parcel||{},pin=(p.parcel_pin||'').trim(),owner=(p.owner||l.owner_or_defendant||'').trim(),caseNo=(l.case_number||'').trim();let copy='',url='';if(kind==='recorder'){copy=pin;url='https://cuyahoga.oh.publicsearch.us/search/advanced'}else if(kind==='court'){copy=caseNo||owner;url='https://cpdocket.cp.cuyahogacounty.gov/Search.aspx'}else if(kind==='sheriff'){copy=pin;url='https://cpdocket.cp.cuyahogacounty.gov/sheriffsearch/search.aspx'}if(copy){try{await navigator.clipboard.writeText(copy)}catch{}}window.open(url,'_blank','noopener')}"
+          new="function openTitleSource(kind){const l=window.currentTitleLead;if(!l)return;const p=l.parcel||{},pin=(p.parcel_pin||'').trim(),owner=(p.owner||l.owner_or_defendant||'').trim(),caseNo=(l.case_number||'').trim();let copy='',url='';if(kind==='recorder'){copy=pin;url='https://cuyahoga.oh.publicsearch.us/'}else if(kind==='court'){copy=caseNo||owner;url='https://cpdocket.cp.cuyahogacounty.gov/Search.aspx'}else if(kind==='sheriff'){copy=pin;url='https://cpdocket.cp.cuyahogacounty.gov/sheriffsearch/search.aspx'}const w=window.open(url,'_blank');if(copy&&navigator.clipboard){navigator.clipboard.writeText(copy).catch(()=>{})}return w}"
+          if old not in s:
+              raise SystemExit('openTitleSource anchor not found')
+          s=s.replace(old,new,1)
+          old2='<div class="ownerhint"><b>Still needs official document review:</b>'
+          new2='<div class="ownerhint"><b>How the buttons work:</b> the official county page opens immediately and the parcel/case value is copied so you can paste it into the search field. The county sites do not provide a reliable property-prefilled URL.<br><br><b>Still needs official document review:</b>'
+          if old2 not in s:
+              raise SystemExit('title note anchor not found')
+          s=s.replace(old2,new2,1)
+          p.write_text(s)
+          PY
+      - name: Validate app
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('docs/index.html').read_text()
+          m=re.search(r'<script>([\s\S]*?)</script>',s)
+          if not m: raise SystemExit('No inline script found')
+          Path('/tmp/app.js').write_text(m.group(1))
+          PY
+          node --check /tmp/app.js
+          grep -q "url='https://cuyahoga.oh.publicsearch.us/'" docs/index.html
+          grep -q "const w=window.open(url,'_blank')" docs/index.html
+          grep -q '📑 Title Check' docs/index.html
+          grep -q 'Find Owner Online' docs/index.html
+          grep -q 'google.com/maps/place/' docs/index.html
+      - name: Commit fix
+        run: |
+          git config user.name "cuyahoga-deal-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          git commit -m "Fix title check links on iPhone"
+          git push
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
