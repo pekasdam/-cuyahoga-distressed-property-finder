@@ -34,7 +34,7 @@ jobs:
           urls = {
               'foreclosures': 'https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y',
               'housing': 'https://www.clevelandhousingcourt.org/accessible-civil-docket',
-              'gis': 'https://gis.cuyahogacounty.gov/server/rest/services/Open_Data_Parcels/MapServer/0/query?where=1%3D1&outFields=PARCEL&resultRecordCount=1&f=json',
+              'gis': 'https://gis.cuyahogacounty.gov/server/rest/services/Open_Data_Parcels/MapServer/0/query?where=1%3D1&outFields=parcelpin&resultRecordCount=1&f=json',
           }
           for name, url in urls.items():
               r = requests.get(url, timeout=20, headers={'User-Agent':'Mozilla/5.0'})
@@ -43,7 +43,7 @@ jobs:
           PY
       - name: Run one-document end-to-end foreclosure scan
         run: |
-          python scraper.py --max-documents 1 --skip-evictions --output /tmp/leads.json
+          python scraper.py --max-documents 1 --max-foreclosures 2 --skip-evictions --output /tmp/leads.json
           python - <<'PY'
           import json
           p=json.load(open('/tmp/leads.json'))
