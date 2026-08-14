@@ -1,0 +1,47 @@
+name: Scan Cuyahoga Distressed Leads
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: distressed-lead-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+      - name: Validate scraper
+        run: python -m pytest -q
+      - name: Run scraper
+        env:
+          MAX_FORECLOSURE_DOCUMENTS: '40'
+        run: python scraper.py --output data/leads.json
+      - name: Update mobile dashboard data
+        run: |
+          mkdir -p docs/data
+          cp data/leads.json docs/data/leads.json
+      - name: Commit updated leads
+        run: |
+          if git diff --quiet -- data/leads.json docs/data/leads.json; then
+            echo "No lead changes"
+            exit 0
+          fi
+          git config user.name "cuyahoga-deal-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/leads.json docs/data/leads.json
+          git commit -m "Update distressed property leads"
+          git push
