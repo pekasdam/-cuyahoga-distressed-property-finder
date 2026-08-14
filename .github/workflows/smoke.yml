@@ -1,0 +1,53 @@
+name: Smoke Test Live Sources
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/smoke.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: distressed-smoke
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+      - name: Run unit tests
+        run: python -m pytest -q
+      - name: Check live public sources
+        run: |
+          python - <<'PY'
+          import requests
+          urls = {
+              'foreclosures': 'https://cpdocket.cp.cuyahogacounty.gov/SubmittedEfilingComplaints.aspx?isprint=Y',
+              'housing': 'https://www.clevelandhousingcourt.org/accessible-civil-docket',
+              'gis': 'https://gis.cuyahogacounty.gov/server/rest/services/Open_Data_Parcels/MapServer/0/query?where=1%3D1&outFields=PARCEL&resultRecordCount=1&f=json',
+          }
+          for name, url in urls.items():
+              r = requests.get(url, timeout=20, headers={'User-Agent':'Mozilla/5.0'})
+              print(name, r.status_code, len(r.content))
+              r.raise_for_status()
+          PY
+      - name: Run one-document end-to-end foreclosure scan
+        run: |
+          python scraper.py --max-documents 1 --skip-evictions --output /tmp/leads.json
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/leads.json'))
+          print('stats=', p.get('stats', {}))
+          print('leads=', len(p.get('leads', [])))
+          assert p.get('stats', {}).get('source_health', {}).get('foreclosures') == 'live'
+          PY
