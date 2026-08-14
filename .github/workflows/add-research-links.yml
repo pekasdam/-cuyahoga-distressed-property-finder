@@ -1,0 +1,64 @@
+name: Add Property Research Links
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-research-links.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: property-research-links
+  cancel-in-progress: true
+
+jobs:
+  patch-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Add research shortcuts to lead popup
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('docs/index.html')
+          s = p.read_text()
+          anchor = '<button type="button" onclick="toggleOwnerSearch()">🔎 Find Owner Online</button>'
+          addition = '''<a target="_blank" rel="noopener" href="https://cpdocket.cp.cuyahogacounty.gov/Search.aspx">⚖️ Cuyahoga Court Docket</a><a target="_blank" rel="noopener" href="https://cuyahoga.oh.publicsearch.us">📜 Cuyahoga Public Search</a><a target="_blank" rel="noopener" href="https://aca-prod.accela.com/COC/Cap/CapHome.aspx?module=BuildingHousing&TabName=BuildingHousing&TabList=Home%7C0%7CBuildingHousing%7C1%7CLicenses%7C2%7CPublicHealth%7C3%7CPublicSafety%7C4%7CPublicService%7C5%7CPlanning%7C6%7CCurrentTabIndex%7C1">🏗️ Building & Housing</a>'''
+          if addition in s:
+              raise SystemExit('research links already present')
+          if anchor not in s:
+              raise SystemExit('owner search button anchor not found')
+          s = s.replace(anchor, anchor + addition, 1)
+          p.write_text(s)
+          PY
+      - name: Verify research links
+        run: |
+          grep -q 'cpdocket.cp.cuyahogacounty.gov/Search.aspx' docs/index.html
+          grep -q 'cuyahoga.oh.publicsearch.us' docs/index.html
+          grep -q 'aca-prod.accela.com/COC/Cap/CapHome.aspx' docs/index.html
+      - name: Commit research shortcuts
+        run: |
+          git config user.name "cuyahoga-deal-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          git commit -m "Add court, public-record and building research shortcuts"
+          git push
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
