@@ -451,6 +451,52 @@ def is_multifamily(parcel: Parcel) -> bool:
     return any(k in lu for k in ("TWO", "THREE", "MULTI", "APART", "DUPLEX"))
 
 
+INSTITUTIONAL_OWNER_MARKERS = (
+    "CHN HOUSING",
+    "CLEVELAND HOUSING NETWORK",
+    "CUYAHOGA METROPOLITAN HOUSING AUTHORITY",
+    "CMHA",
+    "CITY OF CLEVELAND",
+    "CUYAHOGA COUNTY LAND REUTILIZATION",
+    "LAND REUTILIZATION",
+    "LAND BANK",
+    "LIHTC",
+)
+
+
+def owner_is_institutional(owner: str) -> bool:
+    n = normalize_owner(owner)
+    return any(marker in n for marker in INSTITUTIONAL_OWNER_MARKERS)
+
+
+def lead_quality_flags(lead: Lead) -> list[str]:
+    flags: list[str] = []
+    parcel = lead.parcel
+    if parcel is None:
+        return ["missing_parcel"]
+    owner = parcel.owner or lead.owner_or_defendant
+    address = clean_text(parcel.property_address)
+    if owner_is_institutional(owner):
+        flags.append("institutional_owner")
+    if not address:
+        flags.append("missing_address")
+    elif re.match(r"^0+\b", address):
+        flags.append("zero_address")
+    if not is_residential(parcel):
+        flags.append("nonresidential")
+    if parcel.residential_buildings is not None and parcel.residential_buildings <= 0:
+        flags.append("no_residential_building")
+    return flags
+
+
+def is_best_deal(lead: Lead) -> bool:
+    hard_excludes = {
+        "missing_parcel", "institutional_owner", "missing_address",
+        "zero_address", "nonresidential", "no_residential_building",
+    }
+    return lead.score >= 70 and not (hard_excludes & set(lead_quality_flags(lead)))
+
+
 def score_foreclosure(parcel: Parcel | None, tax_foreclosure: bool, document_match: bool) -> tuple[int, list[str]]:
     score = 38
     notes = ["New foreclosure filing"]
@@ -636,6 +682,8 @@ def lead_to_dict(lead: Lead) -> dict[str, Any]:
         out["parcel"]["absentee"] = lead.parcel.absentee
         out["parcel"]["is_residential"] = is_residential(lead.parcel)
         out["parcel"]["is_multifamily"] = is_multifamily(lead.parcel)
+    out["quality_flags"] = lead_quality_flags(lead)
+    out["best_deal"] = is_best_deal(lead)
     return out
 
 
@@ -675,12 +723,41 @@ def previous_leads_of_type(payload: dict[str, Any], lead_type: str) -> list[Lead
             continue
     return out
 
-def save_json(path: Path, leads: list[Lead], stats: dict[str, Any]) -> None:
+def comparable_lead(raw: dict[str, Any]) -> str:
+    ignored = {"generated_at", "scan_status", "best_deal", "quality_flags"}
+    stable = {k: v for k, v in raw.items() if k not in ignored}
+    return json.dumps(stable, sort_keys=True, ensure_ascii=False, default=str)
+
+
+def save_json(path: Path, leads: list[Lead], stats: dict[str, Any], previous: dict[str, Any] | None = None) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    previous = previous or {"leads": []}
+    prev_by_id = {clean_text(x.get("lead_id")): x for x in previous.get("leads", []) if x.get("lead_id")}
+    rows: list[dict[str, Any]] = []
+    new_count = 0
+    updated_count = 0
+    best_count = 0
+    for lead in sorted(leads, key=lambda x: x.score, reverse=True):
+        raw = lead_to_dict(lead)
+        prior = prev_by_id.get(lead.lead_id)
+        if prior is None:
+            raw["scan_status"] = "new"
+            new_count += 1
+        elif comparable_lead(raw) != comparable_lead(prior):
+            raw["scan_status"] = "updated"
+            updated_count += 1
+        else:
+            raw["scan_status"] = "seen"
+        if raw.get("best_deal"):
+            best_count += 1
+        rows.append(raw)
+    stats["new_leads"] = new_count
+    stats["updated_leads"] = updated_count
+    stats["best_deal_leads"] = best_count
     payload = {
         "generated_at": now_iso(),
         "stats": stats,
-        "leads": [lead_to_dict(l) for l in sorted(leads, key=lambda x: x.score, reverse=True)],
+        "leads": rows,
     }
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
@@ -742,7 +819,7 @@ def main() -> int:
 
     stats["total_leads"] = len(leads)
     stats["hot_leads"] = sum(1 for l in leads if l.score >= 70)
-    save_json(output_path, leads, stats)
+    save_json(output_path, leads, stats, previous)
     LOGGER.info("Saved %s leads to %s", len(leads), args.output)
     return 0
 

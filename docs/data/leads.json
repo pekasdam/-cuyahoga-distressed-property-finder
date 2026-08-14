@@ -1,17 +1,20 @@
 {
-  "generated_at": "2026-08-14T21:29:53+00:00",
+  "generated_at": "2026-08-14T22:15:12+00:00",
   "stats": {
     "source_health": {
       "foreclosures": "live",
       "housing_court": "live"
     },
-    "previous_generated_at": "2026-08-14T05:24:07+00:00",
+    "previous_generated_at": "2026-08-14T21:29:53+00:00",
     "foreclosure_submissions": 30,
     "foreclosure_leads": 55,
     "eviction_docket_rows": 787,
     "tired_landlord_parcel_leads": 149,
     "total_leads": 204,
-    "hot_leads": 162
+    "hot_leads": 162,
+    "new_leads": 0,
+    "updated_leads": 0,
+    "best_deal_leads": 111
   },
   "leads": [
     {
@@ -62,7 +65,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:10604102",
@@ -112,7 +120,13 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:47+00:00"
+      "generated_at": "2026-08-14T22:15:06+00:00",
+      "quality_flags": [
+        "zero_address",
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:10604060",
@@ -162,7 +176,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:47+00:00"
+      "generated_at": "2026-08-14T22:15:06+00:00",
+      "quality_flags": [
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10716081",
@@ -211,7 +230,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12918037",
@@ -260,7 +284,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10417025",
@@ -309,7 +338,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11909049",
@@ -358,7 +392,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11909033",
@@ -407,7 +446,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12525064",
@@ -456,7 +500,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709105",
@@ -505,7 +554,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10619045",
@@ -554,7 +608,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10415065",
@@ -603,7 +662,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10416029",
@@ -652,7 +716,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709004",
@@ -701,7 +770,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11927022",
@@ -750,7 +824,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11015194",
@@ -799,7 +878,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10528064",
@@ -848,7 +932,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12134009",
@@ -897,7 +986,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10911071",
@@ -946,7 +1040,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10605049",
@@ -995,7 +1094,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01505053",
@@ -1044,7 +1148,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01922066",
@@ -1093,7 +1202,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11011030",
@@ -1142,7 +1256,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10705005",
@@ -1191,7 +1310,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:13129010",
@@ -1240,7 +1364,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11022120",
@@ -1289,7 +1418,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10605081",
@@ -1338,7 +1472,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10421141",
@@ -1387,7 +1526,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12534012",
@@ -1436,7 +1580,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12430037",
@@ -1485,7 +1634,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:13506022",
@@ -1534,7 +1688,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12321069",
@@ -1583,7 +1742,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:11635033",
@@ -1632,7 +1796,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10923003",
@@ -1681,7 +1850,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610171",
@@ -1730,7 +1904,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:00610101",
@@ -1779,7 +1958,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:13619046",
@@ -1828,7 +2012,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709048",
@@ -1877,7 +2066,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:12430038",
@@ -1926,7 +2120,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610170",
@@ -1975,7 +2174,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610116",
@@ -2024,7 +2228,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:13614049",
@@ -2073,7 +2282,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709047",
@@ -2122,7 +2336,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610169",
@@ -2171,7 +2390,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10709213",
@@ -2220,7 +2444,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610051",
@@ -2269,7 +2498,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01503007",
@@ -2318,7 +2552,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:01610105",
@@ -2367,7 +2606,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:CHN HOUSING PARTNERS:10802053",
@@ -2416,7 +2660,12 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:18+00:00"
+      "generated_at": "2026-08-14T22:14:37+00:00",
+      "quality_flags": [
+        "institutional_owner"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11116049",
@@ -2465,7 +2714,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12804065",
@@ -2514,7 +2766,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13013063",
@@ -2563,7 +2818,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01403109",
@@ -2612,7 +2870,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:00518020",
@@ -2661,7 +2922,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13518092",
@@ -2710,7 +2974,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13211073",
@@ -2759,7 +3026,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11805036",
@@ -2808,7 +3078,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:10712118",
@@ -2857,7 +3130,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11503042",
@@ -2906,7 +3182,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12720028",
@@ -2955,7 +3234,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13420009",
@@ -3004,7 +3286,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11528100",
@@ -3053,7 +3338,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:02011094",
@@ -3102,7 +3390,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12825111",
@@ -3151,7 +3442,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11122006",
@@ -3200,7 +3494,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:10908023",
@@ -3249,7 +3546,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01104187",
@@ -3298,7 +3598,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13423072",
@@ -3347,7 +3650,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13008094",
@@ -3396,7 +3702,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11708081",
@@ -3445,7 +3754,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13411074",
@@ -3494,7 +3806,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:11010070",
@@ -3543,7 +3858,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13421047",
@@ -3592,7 +3910,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:296 TRISKETT LLC:02436003",
@@ -3641,7 +3962,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:44+00:00"
+      "generated_at": "2026-08-14T22:15:03+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:00624067",
@@ -3689,7 +4013,12 @@
         "Possible multi-family use",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01104187",
@@ -3738,7 +4067,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01507047",
@@ -3787,7 +4119,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01512014",
@@ -3836,7 +4171,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01502033",
@@ -3885,7 +4223,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:13419074",
@@ -3934,7 +4275,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00531121",
@@ -3983,7 +4327,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02436066",
@@ -4032,7 +4379,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01728173",
@@ -4081,7 +4431,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02210041",
@@ -4130,7 +4483,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02005068",
@@ -4179,7 +4535,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02014036",
@@ -4228,7 +4587,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01508069",
@@ -4277,7 +4639,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01610014",
@@ -4326,7 +4691,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02201138",
@@ -4375,7 +4743,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01104184",
@@ -4424,7 +4795,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02436065",
@@ -4473,7 +4847,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01730113",
@@ -4522,7 +4899,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00610003",
@@ -4571,7 +4951,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01509079",
@@ -4620,7 +5003,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02631018",
@@ -4669,7 +5055,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01620011",
@@ -4718,7 +5107,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:14305005",
@@ -4767,7 +5159,12 @@
         "Possible multi-family use",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:47+00:00"
+      "generated_at": "2026-08-14T22:15:06+00:00",
+      "quality_flags": [
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:10917057",
@@ -4816,7 +5213,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:47+00:00"
+      "generated_at": "2026-08-14T22:15:06+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:13710059",
@@ -4865,7 +5265,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:47+00:00"
+      "generated_at": "2026-08-14T22:15:06+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:11122012",
@@ -4914,7 +5317,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:47+00:00"
+      "generated_at": "2026-08-14T22:15:06+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947065:11203063",
@@ -4961,7 +5367,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:26+00:00"
+      "generated_at": "2026-08-14T22:13:46+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:01511079",
@@ -5008,7 +5417,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:01608041",
@@ -5055,7 +5467,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:00733065",
@@ -5102,7 +5517,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:00528073",
@@ -5149,7 +5567,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:00526006",
@@ -5196,7 +5617,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:11012052",
@@ -5243,7 +5667,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:01608018",
@@ -5290,7 +5717,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946830:10923030",
@@ -5337,7 +5767,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:45+00:00"
+      "generated_at": "2026-08-14T22:14:04+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946770:11621010",
@@ -5384,7 +5817,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:46+00:00"
+      "generated_at": "2026-08-14T22:14:06+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946741:01612170",
@@ -5431,7 +5867,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:48+00:00"
+      "generated_at": "2026-08-14T22:14:08+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946741:01617052",
@@ -5478,7 +5917,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:48+00:00"
+      "generated_at": "2026-08-14T22:14:08+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01828083",
@@ -5526,7 +5968,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01710066",
@@ -5574,7 +6019,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:00112075",
@@ -5622,7 +6070,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01517144",
@@ -5670,7 +6121,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12925146",
@@ -5718,7 +6172,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:02227053",
@@ -5766,7 +6223,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01006051",
@@ -5814,7 +6274,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01827032",
@@ -5862,7 +6325,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:01705093",
@@ -5910,7 +6376,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:13616027",
@@ -5958,7 +6427,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:00228067",
@@ -6006,7 +6478,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:12510067",
@@ -6054,7 +6529,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:K & D MANAGEMENT LLC:02803131",
@@ -6102,7 +6580,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:36+00:00"
+      "generated_at": "2026-08-14T22:14:55+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946965:00627165",
@@ -6149,7 +6630,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:24+00:00"
+      "generated_at": "2026-08-14T22:13:44+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946957:64204032",
@@ -6196,7 +6680,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:36+00:00"
+      "generated_at": "2026-08-14T22:13:56+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946649:68102046",
@@ -6243,7 +6730,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:53+00:00"
+      "generated_at": "2026-08-14T22:14:13+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01705093",
@@ -6291,7 +6781,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00228067",
@@ -6339,7 +6832,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02418020",
@@ -6387,7 +6883,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00112038",
@@ -6435,7 +6934,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01809018",
@@ -6483,7 +6985,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00121077",
@@ -6531,7 +7036,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01829061",
@@ -6579,7 +7087,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01213123",
@@ -6627,7 +7138,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02628001",
@@ -6675,7 +7189,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01204018",
@@ -6723,7 +7240,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:11424014",
@@ -6771,7 +7291,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02309087",
@@ -6819,7 +7342,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01730128",
@@ -6867,7 +7393,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02228164",
@@ -6915,7 +7444,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01321153",
@@ -6963,7 +7495,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00119044",
@@ -7011,7 +7546,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02201067",
@@ -7059,7 +7597,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00508142",
@@ -7107,7 +7648,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01108008",
@@ -7155,7 +7699,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00923108",
@@ -7203,7 +7750,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01203122",
@@ -7251,7 +7801,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01725108",
@@ -7299,7 +7852,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01409053",
@@ -7347,7 +7903,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:01327017",
@@ -7395,7 +7954,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02101084",
@@ -7443,7 +8005,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02224032",
@@ -7491,7 +8056,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00531119",
@@ -7539,7 +8107,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:00917127",
@@ -7587,7 +8158,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:WESTHAVEN MANAGEMENT LLC:02009152",
@@ -7635,7 +8209,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:46+00:00"
+      "generated_at": "2026-08-14T22:15:05+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:13513018",
@@ -7683,7 +8260,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:47+00:00"
+      "generated_at": "2026-08-14T22:15:06+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:PILOT PROPERTY INVESTMENT LLC:10703055",
@@ -7731,7 +8311,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:47+00:00"
+      "generated_at": "2026-08-14T22:15:06+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:GMAREC8 LLC:13120170",
@@ -7780,7 +8363,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:53+00:00"
+      "generated_at": "2026-08-14T22:15:11+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:GMAREC8 LLC:01609068",
@@ -7829,7 +8415,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:53+00:00"
+      "generated_at": "2026-08-14T22:15:11+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:GMAREC8 LLC:00613072",
@@ -7878,7 +8467,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:53+00:00"
+      "generated_at": "2026-08-14T22:15:11+00:00",
+      "quality_flags": [],
+      "best_deal": true,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947171:20226025",
@@ -7924,7 +8516,10 @@
         "Mailing address differs from property",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:21+00:00"
+      "generated_at": "2026-08-14T22:13:40+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946965:12022113",
@@ -7970,7 +8565,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:24+00:00"
+      "generated_at": "2026-08-14T22:13:44+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946965:12022112",
@@ -8016,7 +8614,14 @@
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:24+00:00"
+      "generated_at": "2026-08-14T22:13:44+00:00",
+      "quality_flags": [
+        "zero_address",
+        "nonresidential",
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946965:67226102",
@@ -8062,7 +8667,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:24+00:00"
+      "generated_at": "2026-08-14T22:13:44+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:00430006",
@@ -8108,7 +8716,13 @@
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [
+        "nonresidential",
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946927:10523112",
@@ -8154,7 +8768,13 @@
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:38+00:00"
+      "generated_at": "2026-08-14T22:13:57+00:00",
+      "quality_flags": [
+        "nonresidential",
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946927:31211924",
@@ -8200,7 +8820,14 @@
         "Mailing address differs from property",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:38+00:00"
+      "generated_at": "2026-08-14T22:13:57+00:00",
+      "quality_flags": [
+        "zero_address",
+        "nonresidential",
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946741:01609164",
@@ -8246,7 +8873,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:48+00:00"
+      "generated_at": "2026-08-14T22:14:08+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946676:01728063",
@@ -8292,7 +8922,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:51+00:00"
+      "generated_at": "2026-08-14T22:14:11+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946989:00816035",
@@ -8338,7 +8971,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:33+00:00"
+      "generated_at": "2026-08-14T22:13:52+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946741:43323068",
@@ -8384,7 +9020,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:48+00:00"
+      "generated_at": "2026-08-14T22:14:08+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946999:73515305",
@@ -8430,7 +9069,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:31+00:00"
+      "generated_at": "2026-08-14T22:13:51+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946999:73515331",
@@ -8476,7 +9118,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:31+00:00"
+      "generated_at": "2026-08-14T22:13:51+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:RAL PROPERTY MANAGEMENT LLC:14321070",
@@ -8523,7 +9168,10 @@
         "Certified tax value at or below $100k",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:11+00:00"
+      "generated_at": "2026-08-14T22:14:31+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947171:72225025",
@@ -8568,7 +9216,10 @@
         "County Treasurer tax foreclosure",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:21+00:00"
+      "generated_at": "2026-08-14T22:13:40+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947171:23510046",
@@ -8613,7 +9264,10 @@
         "County Treasurer tax foreclosure",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:21+00:00"
+      "generated_at": "2026-08-14T22:13:40+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947122:72213033",
@@ -8658,7 +9312,10 @@
         "County Treasurer tax foreclosure",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:22+00:00"
+      "generated_at": "2026-08-14T22:13:42+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946965:31415112",
@@ -8703,7 +9360,10 @@
         "County Treasurer tax foreclosure",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:24+00:00"
+      "generated_at": "2026-08-14T22:13:44+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946965:70421062",
@@ -8748,7 +9408,10 @@
         "County Treasurer tax foreclosure",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:24+00:00"
+      "generated_at": "2026-08-14T22:13:44+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946927:44220048",
@@ -8793,7 +9456,13 @@
         "County Treasurer tax foreclosure",
         "Mailing address differs from property"
       ],
-      "generated_at": "2026-08-14T21:28:38+00:00"
+      "generated_at": "2026-08-14T22:13:57+00:00",
+      "quality_flags": [
+        "nonresidential",
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946770:11003066",
@@ -8838,7 +9507,13 @@
         "County Treasurer tax foreclosure",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:28:46+00:00"
+      "generated_at": "2026-08-14T22:14:06+00:00",
+      "quality_flags": [
+        "nonresidential",
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947245:02208003",
@@ -8884,7 +9559,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:19+00:00"
+      "generated_at": "2026-08-14T22:13:39+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946999:73516802",
@@ -8930,7 +9608,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:31+00:00"
+      "generated_at": "2026-08-14T22:13:51+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946979:01328089",
@@ -8976,7 +9657,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:34+00:00"
+      "generated_at": "2026-08-14T22:13:54+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3945976:14002072",
@@ -9022,7 +9706,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:29:03+00:00"
+      "generated_at": "2026-08-14T22:14:22+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:THE HAYMAN COMPANY:32112095",
@@ -9069,7 +9756,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:27+00:00"
+      "generated_at": "2026-08-14T22:14:46+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "ev:THE HAYMAN COMPANY:30407054",
@@ -9116,7 +9806,10 @@
         "Residential parcel",
         "Eviction docket identifies the landlord; parcel is matched from the owner's Cleveland portfolio and may not be the exact eviction address."
       ],
-      "generated_at": "2026-08-14T21:29:27+00:00"
+      "generated_at": "2026-08-14T22:14:46+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947607:44519100",
@@ -9161,7 +9854,10 @@
         "Mailing address differs from property",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:17+00:00"
+      "generated_at": "2026-08-14T22:13:37+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946890:95517038",
@@ -9206,7 +9902,10 @@
         "Mailing address differs from property",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:39+00:00"
+      "generated_at": "2026-08-14T22:13:59+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3945686:67217077",
@@ -9251,7 +9950,10 @@
         "Residential parcel",
         "Certified tax value at or below $100k"
       ],
-      "generated_at": "2026-08-14T21:29:05+00:00"
+      "generated_at": "2026-08-14T22:14:24+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946927:53114005",
@@ -9295,7 +9997,13 @@
         "New foreclosure filing",
         "County Treasurer tax foreclosure"
       ],
-      "generated_at": "2026-08-14T21:28:38+00:00"
+      "generated_at": "2026-08-14T22:13:57+00:00",
+      "quality_flags": [
+        "nonresidential",
+        "no_residential_building"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946696",
@@ -9320,7 +10028,12 @@
         "County Treasurer tax foreclosure",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T21:28:50+00:00"
+      "generated_at": "2026-08-14T22:14:09+00:00",
+      "quality_flags": [
+        "missing_parcel"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946387",
@@ -9345,7 +10058,12 @@
         "County Treasurer tax foreclosure",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T21:28:56+00:00"
+      "generated_at": "2026-08-14T22:14:16+00:00",
+      "quality_flags": [
+        "missing_parcel"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947009:02316130",
@@ -9390,7 +10108,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:28+00:00"
+      "generated_at": "2026-08-14T22:13:47+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946352:64224109",
@@ -9435,7 +10156,10 @@
         "Residential parcel",
         "Certified tax value at or below $150k"
       ],
-      "generated_at": "2026-08-14T21:28:58+00:00"
+      "generated_at": "2026-08-14T22:14:17+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946961:39731013",
@@ -9479,7 +10203,10 @@
         "New foreclosure filing",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:29+00:00"
+      "generated_at": "2026-08-14T22:13:49+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946650:66104017",
@@ -9523,7 +10250,10 @@
         "New foreclosure filing",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:41+00:00"
+      "generated_at": "2026-08-14T22:14:01+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946843:21311060",
@@ -9567,7 +10297,10 @@
         "New foreclosure filing",
         "Residential parcel"
       ],
-      "generated_at": "2026-08-14T21:28:43+00:00"
+      "generated_at": "2026-08-14T22:14:03+00:00",
+      "quality_flags": [],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3947651",
@@ -9591,7 +10324,12 @@
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T21:28:15+00:00"
+      "generated_at": "2026-08-14T22:13:35+00:00",
+      "quality_flags": [
+        "missing_parcel"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946388",
@@ -9615,7 +10353,12 @@
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T21:28:55+00:00"
+      "generated_at": "2026-08-14T22:14:14+00:00",
+      "quality_flags": [
+        "missing_parcel"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946166",
@@ -9639,7 +10382,12 @@
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T21:28:59+00:00"
+      "generated_at": "2026-08-14T22:14:19+00:00",
+      "quality_flags": [
+        "missing_parcel"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     },
     {
       "lead_id": "fc:3946052",
@@ -9663,7 +10411,12 @@
         "New foreclosure filing",
         "Complaint document did not yield a parcel match"
       ],
-      "generated_at": "2026-08-14T21:29:01+00:00"
+      "generated_at": "2026-08-14T22:14:21+00:00",
+      "quality_flags": [
+        "missing_parcel"
+      ],
+      "best_deal": false,
+      "scan_status": "seen"
     }
   ]
 }
