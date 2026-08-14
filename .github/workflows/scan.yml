@@ -6,6 +6,7 @@ on:
     branches:
       - main
     paths:
+      - 'scraper.py'
       - '.github/workflows/scan.yml'
   schedule:
     - cron: '17 * * * *'
@@ -35,6 +36,7 @@ jobs:
         env:
           MAX_FORECLOSURE_DOCUMENTS: '8'
           MAX_FORECLOSURE_RECORDS: '30'
+          MAX_EVICTION_OWNERS: '30'
         run: python scraper.py --output data/leads.json
       - name: Update mobile dashboard data
         run: |
