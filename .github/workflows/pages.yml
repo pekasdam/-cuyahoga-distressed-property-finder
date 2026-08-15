@@ -47,6 +47,7 @@ jobs:
               '<script src="./screenshot-ocr.js?v=3"></script>',
               '<script src="./screenshot-ocr.js?v=4"></script>',
               '<script src="./ocr-recovery.js?v=1"></script>',
+              '<script src="./all-parcel-recovery.js?v=1"></script>',
               '<script src="./opening-bid-fix.js?v=1"></script>',
               '<script src="./full-auction-record.js?v=1"></script>',
               '<script src="./full-auction-record.js?v=2"></script>',
@@ -68,6 +69,7 @@ jobs:
               '<script src="./opening-bid-fix.js?v=1"></script>',
               '<script src="./full-auction-record.js?v=2"></script>',
               '<script src="./ocr-recovery.js?v=1"></script>',
+              '<script src="./all-parcel-recovery.js?v=1"></script>',
               '<script src="./screenshot-ocr.js?v=3"></script>',
               '<script src="./bid-filter.js?v=2"></script>',
               '<script src="./simple-mode.js?v=3"></script>'
