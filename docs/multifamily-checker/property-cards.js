@@ -29,7 +29,13 @@ tableWrap.insertAdjacentElement('afterend',cards);
 const oldRender=render;
 function safe(v){return typeof esc==='function'?esc(v):String(v??'');}
 function shownRows(){
-  try{return results.filter(r=>filter==='multi'?r.c.key==='multi':filter==='notmulti'?r.c.key!=='multi':true)}catch{return[]}
+  try{
+    return results.filter(r=>
+      filter==='multi'?r.c.key==='multi':
+      filter==='condo'?r.c.key==='condo':
+      filter==='notmulti'?r.c.key!=='multi':true
+    );
+  }catch{return[]}
 }
 function mapsUrl(a){
   const q=[a?.par_addr_all,a?.par_city,a?.par_zip?Math.trunc(Number(a.par_zip)):null].filter(Boolean).join(', ');
@@ -63,6 +69,8 @@ function renderCards(){
   const list=shownRows();
   cards.innerHTML=list.map(cardHTML).join('');
   cards.hidden=!list.length;
+  const empty=document.getElementById('empty');
+  if(empty&&window.matchMedia('(max-width:700px)').matches)empty.hidden=!!list.length;
 }
 render=function(){const out=oldRender.apply(this,arguments);renderCards();return out;};
 renderCards();
