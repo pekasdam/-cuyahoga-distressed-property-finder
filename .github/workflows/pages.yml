@@ -42,12 +42,13 @@ jobs:
               '<script src="./auto-underwrite.js?v=4"></script>',
               '<script src="./auto-underwrite.js?v=5"></script>',
               '<script src="./auction-parser.js?v=1"></script>',
+              '<script src="./auction-parser.js?v=2"></script>',
               '<script src="./screenshot-ocr.js?v=1"></script>'
           ):
               s = s.replace(old, '')
           tags = '\n'.join((
               '<script src="./auto-underwrite.js?v=5"></script>',
-              '<script src="./auction-parser.js?v=1"></script>',
+              '<script src="./auction-parser.js?v=2"></script>',
               '<script src="./screenshot-ocr.js?v=1"></script>'
           ))
           s = s.replace('</body>', tags + '\n</body>')
