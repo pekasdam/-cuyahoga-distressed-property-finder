@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Apply underwriting rules, auction parser, and screenshot OCR
+      - name: Apply underwriting rules, auction parser, screenshot OCR, and bid recovery
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -43,13 +43,15 @@ jobs:
               '<script src="./auto-underwrite.js?v=5"></script>',
               '<script src="./auction-parser.js?v=1"></script>',
               '<script src="./auction-parser.js?v=2"></script>',
-              '<script src="./screenshot-ocr.js?v=1"></script>'
+              '<script src="./screenshot-ocr.js?v=1"></script>',
+              '<script src="./opening-bid-fix.js?v=1"></script>'
           ):
               s = s.replace(old, '')
           tags = '\n'.join((
               '<script src="./auto-underwrite.js?v=5"></script>',
               '<script src="./auction-parser.js?v=2"></script>',
-              '<script src="./screenshot-ocr.js?v=1"></script>'
+              '<script src="./screenshot-ocr.js?v=1"></script>',
+              '<script src="./opening-bid-fix.js?v=1"></script>'
           ))
           s = s.replace('</body>', tags + '\n</body>')
           p.write_text(s)
