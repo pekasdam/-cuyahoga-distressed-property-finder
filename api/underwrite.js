@@ -1,3 +1,5 @@
+import { getVercelOidcToken } from '@vercel/oidc';
+
 const ALLOWED_ORIGINS = new Set([
   'https://pekasdam.github.io',
   'http://localhost:3000',
@@ -113,7 +115,6 @@ function deterministic(packet) {
   if (!rent) failures.push('Reliable monthly rent estimate is missing.');
   if (!arv) failures.push('Reliable ARV estimate is missing.');
   if (arv > 0 && arv < MIN_ARV) failures.push(`ARV is below the $${MIN_ARV.toLocaleString()} refinance threshold.`);
-  if (rent > 0 && maxAllIn > rentCap + 0.01) failures.push('1% rule failed.');
   if (maxBid <= 0) failures.push('Rehab and other costs leave no positive acquisition bid under the all-in cap.');
   if (opening > 0 && maxBid > 0 && opening > maxBid) failures.push('Opening bid is already above the deterministic maximum bid.');
   if (/canceled|cancelled|withdrawn|sold|postponed/i.test(packet.auction.status)) failures.push(`Auction status is ${packet.auction.status}.`);
@@ -165,6 +166,12 @@ function extractOutputText(data) {
   return '';
 }
 
+async function gatewayAuth() {
+  if (process.env.AI_GATEWAY_API_KEY) return process.env.AI_GATEWAY_API_KEY;
+  if (process.env.VERCEL_OIDC_TOKEN) return process.env.VERCEL_OIDC_TOKEN;
+  try { return await getVercelOidcToken(); } catch { return ''; }
+}
+
 export default async function handler(req, res) {
   cors(req, res);
   if (req.method === 'OPTIONS') return res.status(204).end();
@@ -175,10 +182,10 @@ export default async function handler(req, res) {
   try {
     const packet = normalizePacket(req.body || {});
     const rules = deterministic(packet);
-    const auth = process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN;
-    if (!auth) return res.status(503).json({ error: 'AI service is not authenticated on the server.' });
+    const auth = await gatewayAuth();
+    if (!auth) return res.status(503).json({ error: 'AI service authentication is not available on the server.' });
 
-    const instructions = `You are an acquisition underwriter for a conservative long-term rental investor buying distressed Cuyahoga County properties at sheriff/tax sale. The deterministic rules below are NON-NEGOTIABLE and you may never recommend a bid above the deterministic maxBid.\n\nHard rules:\n- Vacant land: PASS.\n- Minimum ARV: $80,000.\n- Absolute all-in cost cap: $45,000 including purchase, rehab, and other costs.\n- Preferred all-in target: $40,000.\n- Minimum rent rule: monthly stabilized rent must be at least 1% of all-in cost.\n- Acquisition safety ceiling: 70% of ARV.\n- The 75% ARV figure is only an illustrative refinance ceiling, not permission to bid higher.\n- If the opening bid is above deterministic maxBid: PASS.\n- Do not invent missing facts. Lower confidence when rent, ARV, comps, condition, title, liens, occupancy, HOA, taxes, insurance, or rehab scope are uncertain.\n- Preferred Cleveland ZIPs can be a positive factor but never override the economics.\n- Multifamily can be a positive factor only when the numbers support it.\n\nYour job is to provide a second-opinion decision using the supplied deal packet. Favor capital preservation, refinance optionality, and margin for error. If the deterministic rules hard-fail, verdict must be PASS and recommendedBid must be 0. Otherwise, recommendedBid must be at or below deterministic maxBid and should usually leave some cushion rather than simply echoing the maximum.`;
+    const instructions = `You are an acquisition underwriter for a conservative long-term rental investor buying distressed Cuyahoga County properties at sheriff/tax sale. The deterministic rules below are NON-NEGOTIABLE and you may never recommend a bid above the deterministic maxBid.\n\nHard rules:\n- Vacant land: PASS.\n- Minimum ARV: $80,000.\n- Absolute all-in cost cap: $45,000 including purchase, rehab, and other costs.\n- Preferred all-in target: $40,000.\n- Minimum rent rule: monthly stabilized rent must be at least 1% of all-in cost.\n- Acquisition safety ceiling: 70% of ARV.\n- The 75% ARV figure is only an illustrative refinance ceiling, not permission to bid higher.\n- If the opening bid is above deterministic maxBid: PASS.\n- Do not invent missing facts. Lower confidence when rent, ARV, comps, condition, title, liens, occupancy, HOA, taxes, insurance, or rehab scope are uncertain.\n- Preferred ZIPs 44105, 44120, 44128, 44112, and 44137 can be a positive factor but never override the economics.\n- Multifamily can be a positive factor only when the numbers support it.\n\nYour job is to provide a second-opinion decision using the supplied deal packet. Favor capital preservation, refinance optionality, and margin for error. If the deterministic rules hard-fail, verdict must be PASS and recommendedBid must be 0. Otherwise, recommendedBid must be at or below deterministic maxBid and should usually leave some cushion rather than simply echoing the maximum.`;
 
     const aiResponse = await fetch(GATEWAY, {
       method: 'POST',
@@ -205,7 +212,15 @@ export default async function handler(req, res) {
 
     const raw = await aiResponse.text();
     if (!aiResponse.ok) {
+      let gatewayError = '';
+      try { gatewayError = JSON.parse(raw)?.error?.message || ''; } catch {}
       console.error('AI gateway error', aiResponse.status, raw.slice(0, 1500));
+      if (/credit card|verification|required|billing/i.test(gatewayError)) {
+        return res.status(503).json({
+          code: 'AI_GATEWAY_BILLING_REQUIRED',
+          error: 'OpenAI underwriting is connected, but Vercel AI Gateway needs a payment method on file before it will run model requests.'
+        });
+      }
       return res.status(502).json({ error: 'AI underwriting service returned an error.' });
     }
 
