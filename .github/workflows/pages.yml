@@ -29,13 +29,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Apply optimized property checker tools
+      - name: Apply simple property screening tools
         run: |
           python - <<'PY'
           from pathlib import Path
           p = Path('docs/multifamily-checker/index.html')
           s = p.read_text()
-          s = s.replace('$65,000', '$45,000').replace('65000', '45000')
           for old in (
               '<script src="./auto-underwrite.js?v=2"></script>',
               '<script src="./auto-underwrite.js?v=3"></script>',
@@ -55,19 +54,20 @@ jobs:
               '<script src="./ai-underwriter.js?v=3"></script>',
               '<script src="./ai-underwriter.js?v=4"></script>',
               '<script src="./bid-filter.js?v=1"></script>',
+              '<script src="./bid-filter.js?v=2"></script>',
               '<script src="./simple-mode.js?v=1"></script>',
+              '<script src="./simple-mode.js?v=2"></script>',
               '<script src="./screening-optimizer.js?v=1"></script>',
               '<script src="./three-source-arv.js?v=1"></script>'
           ):
               s = s.replace(old, '')
           tags = '\n'.join((
-              '<script src="./auto-underwrite.js?v=5"></script>',
               '<script src="./auction-parser.js?v=2"></script>',
               '<script src="./opening-bid-fix.js?v=1"></script>',
               '<script src="./full-auction-record.js?v=2"></script>',
               '<script src="./screenshot-ocr.js?v=3"></script>',
-              '<script src="./screening-optimizer.js?v=1"></script>',
-              '<script src="./three-source-arv.js?v=1"></script>'
+              '<script src="./bid-filter.js?v=2"></script>',
+              '<script src="./simple-mode.js?v=2"></script>'
           ))
           s = s.replace('</body>', tags + '\n</body>')
           p.write_text(s)
