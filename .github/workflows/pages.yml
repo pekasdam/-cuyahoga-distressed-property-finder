@@ -47,7 +47,8 @@ jobs:
               '<script src="./screenshot-ocr.js?v=2"></script>',
               '<script src="./opening-bid-fix.js?v=1"></script>',
               '<script src="./full-auction-record.js?v=1"></script>',
-              '<script src="./ai-underwriter.js?v=1"></script>'
+              '<script src="./ai-underwriter.js?v=1"></script>',
+              '<script src="./ai-underwriter.js?v=2"></script>'
           ):
               s = s.replace(old, '')
           tags = '\n'.join((
@@ -56,7 +57,7 @@ jobs:
               '<script src="./opening-bid-fix.js?v=1"></script>',
               '<script src="./full-auction-record.js?v=1"></script>',
               '<script src="./screenshot-ocr.js?v=2"></script>',
-              '<script src="./ai-underwriter.js?v=1"></script>'
+              '<script src="./ai-underwriter.js?v=2"></script>'
           ))
           s = s.replace('</body>', tags + '\n</body>')
           p.write_text(s)
