@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Apply underwriting rules and inject engine
+      - name: Apply underwriting rules and auction parser
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -38,12 +38,14 @@ jobs:
           s = s.replace('$65,000', '$45,000').replace('65000', '45000')
           for old in (
               '<script src="./auto-underwrite.js?v=2"></script>',
-              '<script src="./auto-underwrite.js?v=3"></script>'
+              '<script src="./auto-underwrite.js?v=3"></script>',
+              '<script src="./auto-underwrite.js?v=4"></script>',
+              '<script src="./auto-underwrite.js?v=5"></script>',
+              '<script src="./auction-parser.js?v=1"></script>'
           ):
               s = s.replace(old, '')
-          tag = '<script src="./auto-underwrite.js?v=4"></script>'
-          if tag not in s:
-              s = s.replace('</body>', tag + '\n</body>')
+          tags = '<script src="./auto-underwrite.js?v=5"></script>\n<script src="./auction-parser.js?v=1"></script>'
+          s = s.replace('</body>', tags + '\n</body>')
           p.write_text(s)
           PY
       - name: Configure Pages
