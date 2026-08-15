@@ -1,34 +1,147 @@
 (()=>{
-const S="cuyahoga-auto-underwriting-v2";
+const AUTO_STORE="cuyahoga-auto-underwriting-v3";
 const FMR={
-"44105":[780,890,1070,1380,1470],"44112":[790,890,1080,1390,1490],"44120":[880,1000,1210,1560,1660],"44128":[910,1030,1250,1610,1720],"44106":[1060,1200,1450,1870,2000],"44114":[1300,1470,1780,2290,2450],"44118":[1090,1230,1490,1920,2050],"44121":[1040,1180,1420,1830,1950],"44124":[1080,1220,1480,1900,2040]};
+  "44105":[780,890,1070,1380,1470],"44112":[790,890,1080,1390,1490],"44120":[880,1000,1210,1560,1660],
+  "44128":[910,1030,1250,1610,1720],"44106":[1060,1200,1450,1870,2000],"44114":[1300,1470,1780,2290,2450],
+  "44118":[1090,1230,1490,1920,2050],"44121":[1040,1180,1420,1830,1950],"44124":[1080,1220,1480,1900,2040]
+};
 const COUNTY=[990,1120,1350,1740,1860];
-const style=document.createElement("style");style.textContent=`
-.uw-auto-status{border:1px solid #bfdbfe;background:#eff6ff;border-radius:12px;padding:11px;margin-bottom:12px;font-size:12px;line-height:1.45}.uw-auto-status.loading{background:#f9fafb;border-color:#d1d5db;color:#6b7280}.uw-bidbox{border:3px solid #0f766e;background:#f0fdfa;border-radius:18px;padding:16px;text-align:center;margin:12px 0}.uw-bidbox span{display:block;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#115e59}.uw-bidbox b{display:block;font-size:38px;line-height:1.05;margin:8px 0 5px;color:#134e4a}.uw-bidbox small{display:block;color:#475569;line-height:1.35}.uw-source{font-size:11px;color:#6b7280;margin-top:8px;line-height:1.4}.uw-adjust{margin-top:12px;border:1px solid #d1d5db;border-radius:12px;background:#fff}.uw-adjust summary{cursor:pointer;font-weight:800;padding:12px}.uw-adjust .uw-inputs{padding:0 12px 12px}.uw-adjust .uw-inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.uw-adjust label{font-size:12px;margin:0 0 5px}.uw-adjust input{width:100%;border:1px solid #d1d5db;border-radius:10px;padding:11px;font-size:16px}@media(max-width:410px){.uw-adjust .uw-inputs{grid-template-columns:1fr}}`;
+const modalEl=document.getElementById("modal");
+if(!modalEl || typeof rows==="undefined") return;
+
+const style=document.createElement("style");
+style.textContent=`
+.autoStatus{border:1px solid #bfdbfe;background:#eff6ff;border-radius:11px;padding:10px;margin:10px 0;font-size:12px;line-height:1.45}.autoStatus.loading{background:#f9fafb;border-color:#d1d5db;color:#6b7280}.sourceLine{font-size:11px;color:#6b7280;line-height:1.4;margin-top:9px}.adjust{margin-top:12px;border:1px solid #d1d5db;border-radius:11px;background:#fff}.adjust summary{cursor:pointer;font-weight:800;padding:11px}.adjust .inputs{padding:0 11px 11px}.amount.auto{font-size:38px}.researchGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.researchItem{border:1px solid #d1d5db;border-radius:9px;padding:8px;background:#f9fafb}.researchItem span{display:block;font-size:9px;color:#6b7280;text-transform:uppercase}.researchItem b{display:block;font-size:14px;margin-top:3px}@media(max-width:420px){.researchGrid{grid-template-columns:1fr 1fr}}
+`;
 document.head.appendChild(style);
-const modal=document.getElementById("uwModal");
-if(!modal)return;
-modal.innerHTML=`<section class="uw-panel" role="dialog" aria-modal="true" aria-labelledby="uwTitle"><div class="uw-head"><div><h2 id="uwTitle">Auto Underwrite & Max Bid</h2><p id="uwProperty">—</p></div><button id="uwClose" class="close" aria-label="Close">×</button></div><div class="uw-body"><div class="uw-rulebar"><b>Your buy-box rules:</b> ARV ≥ $80,000 • 1% rent rule • max $65,000 all-in • preferred $40,000 all-in • 70% ARV acquisition ceiling • vacant land = no bid.</div><div id="uwAutoStatus" class="uw-auto-status loading"><b>Analyzing this property…</b><br>Estimating rent, rehab allowance, ARV from county sales comps, and maximum bid.</div><div class="uw-bidbox"><span>Recommended Maximum Bid</span><b id="uwMaxBid">—</b><small id="uwBidReason">Running automatic underwriting…</small></div><div id="uwDecision" class="uw-decision watch">ANALYZING<span class="sub">The app is researching the deal automatically.</span></div><div class="uw-metrics"><div class="metric"><span>Auto Rent</span><b id="mRent">—</b></div><div class="metric"><span>Auto ARV</span><b id="mArv">—</b></div><div class="metric"><span>Rehab Allowance</span><b id="mRehab">—</b></div><div class="metric"><span>Other Costs</span><b id="mOther">—</b></div><div class="metric"><span>Preferred Bid</span><b id="mPreferred">—</b></div><div class="metric"><span>Opening Bid</span><b id="mOpening">—</b></div><div class="metric"><span>1% Max All-In</span><b id="mRentCap">—</b></div><div class="metric"><span>70% ARV All-In</span><b id="mArvCap">—</b></div><div class="metric"><span>Max All-In Used</span><b id="mAllInCap">—</b></div><div class="metric"><span>75% Refi Ceiling</span><b id="mRefi">—</b></div></div><div id="uwRefi" class="uw-refi"><b>Refi check:</b> Calculating from estimated ARV.</div><div id="uwSource" class="uw-source"></div><ul id="uwNotes" class="uw-notes"></ul><details class="uw-adjust"><summary>Adjust assumptions manually (optional)</summary><div class="uw-inputs"><div class="uw-input"><label for="uwRent2">Monthly Rent</label><input id="uwRent2" type="number" min="0" step="25" inputmode="decimal"></div><div class="uw-input"><label for="uwArv2">ARV</label><input id="uwArv2" type="number" min="0" step="1000" inputmode="decimal"></div><div class="uw-input"><label for="uwRehab2">Rehab Allowance</label><input id="uwRehab2" type="number" min="0" step="500" inputmode="decimal"></div><div class="uw-input"><label for="uwOther2">Other Costs</label><input id="uwOther2" type="number" min="0" step="100" inputmode="decimal"></div></div></details><div class="uw-save">Automatic estimates are screening assumptions, not an appraisal or contractor bid. Manual changes are saved on this device for this parcel.</div></div></section>`;
-const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];
-const cash=n=>Number.isFinite(n)?n.toLocaleString(undefined,{style:"currency",currency:"USD",maximumFractionDigits:0}):"—";
-const med=a=>{a=a.filter(Number.isFinite).sort((x,y)=>x-y);if(!a.length)return null;let m=Math.floor(a.length/2);return a.length%2?a[m]:(a[m-1]+a[m])/2};
-const store=()=>{try{return JSON.parse(localStorage.getItem(S)||"{}")||{}}catch{return{}}};
-const saved=p=>store()[digits(p)]||{};
-const save=(p,d)=>{try{let a=store();a[digits(p)]=d;localStorage.setItem(S,JSON.stringify(a))}catch{}};
-const val=id=>{let n=Number(q(id)?.value);return Number.isFinite(n)&&n>=0?n:0};
-function opening(raw){for(const re of[/(?:opening|starting|start|minimum)\s*(?:bid)?\s*[:\-]?\s*\$?\s*([\d,]+(?:\.\d{1,2})?)/i,/(?:bid\s*amount|opening\s*amount)\s*[:\-]?\s*\$?\s*([\d,]+(?:\.\d{1,2})?)/i]){let m=String(raw||"").match(re);if(m){let n=Number(m[1].replace(/,/g,""));if(n>0)return n}}return null}
-function beds(r){let a=r.record||{},u=Math.max(1,unitCount(a,r.c)||1),sf=Number(a.total_res_liv_area||0)/u;if(r.c.key==="multi")return sf>=1250?3:2;if(sf>1600)return 4;if(sf>=900)return 3;return 2}
-function rentEst(r){let z=zipOf(r.record),b=beds(r),t=FMR[z]||COUNTY,u=Math.max(1,unitCount(r.record,r.c)||1),per=t[Math.min(4,Math.max(0,b))]||t[2],rent=Math.round(per*u/25)*25;return{rent,b,u,per,source:FMR[z]?`FY2026 HUD Small Area FMR benchmark for ZIP ${z}`:"FY2026 Cuyahoga County FMR fallback"}}
-function rehabEst(r){let a=r.record||{},sf=Number(a.total_res_liv_area||0),u=Math.max(1,unitCount(a,r.c)||1),x;if(r.c.key==="condo")x=Math.max(10000,Math.min(25000,sf?sf*12:15000));else if(r.c.key==="multi")x=Math.max(25000,Math.min(45000,Math.max(u*14000,sf?sf*18:30000)));else x=Math.max(18000,Math.min(35000,sf?sf*18:25000));return Math.round(x/1000)*1000}
-const otherEst=r=>Math.max(1,unitCount(r.record,r.c)||1)>=3?6000:5000;
-async function compQ(layer,r,mode){let a=r.record||{},c=geometryCenter(a),luc=String(a.tax_luc||"").trim(),p={outFields:"parcelpin,parcel_id,par_addr_all,par_city,par_zip,tax_luc,total_res_liv_area,sales_amount,transfer_date",returnGeometry:"false",f:"json",resultRecordCount:"250"};if(mode==="near"&&c)Object.assign(p,{where:luc?`tax_luc='${luc}' AND sales_amount >= 30000`:"sales_amount >= 30000",geometry:`${c.lng},${c.lat}`,geometryType:"esriGeometryPoint",inSR:"4326",spatialRel:"esriSpatialRelIntersects",distance:"1.5",units:"esriSRUnit_StatuteMile"});else{let z=zipOf(a);p.where=[z?`par_zip=${Number(z)}`:"1=1",luc?`tax_luc='${luc}'`:null,"sales_amount >= 30000"].filter(Boolean).join(" AND ")}let res=await fetch(`${layer}?${new URLSearchParams(p)}`);if(!res.ok)throw Error(`County comps ${res.status}`);let j=await res.json();if(j.error)throw Error(j.error.message||"County comps query error");return(j.features||[]).map(f=>f.attributes||{})}
-async function arvEst(r){let now=Date.now(),cut=now-1000*60*60*24*365*3.5,sf=Number(r.record?.total_res_liv_area||0),sub=digits(r.parcel),rows=[];for(const mode of["near","zip"]){let s=await Promise.allSettled(LAYERS.map(l=>compQ(l,r,mode)));rows=s.flatMap(x=>x.status==="fulfilled"?x.value:[]).filter(x=>{let p=digits(x.parcelpin||x.parcel_id),sale=Number(x.sales_amount||0),dt=Number(x.transfer_date||0),ar=Number(x.total_res_liv_area||0);return p&&p!==sub&&sale>=30000&&sale<=500000&&(!dt||dt>=cut)&&(!sf||!ar||(ar>=sf*.55&&ar<=sf*1.8))});if(rows.length>=3)break}if(!rows.length){let last=Number(r.record?.sales_amount||0);return last>=50000?{arv:Math.round(last/5000)*5000,count:0,source:"Fallback to county last-sale amount; no suitable nearby comps returned"}:{arv:0,count:0,source:"No reliable county sales comps returned"}}let pp=sf?rows.map(x=>{let ar=Number(x.total_res_liv_area||0),s=Number(x.sales_amount||0);return ar>0?s/ar:null}).filter(x=>x>15&&x<300):[],arv=sf&&pp.length>=3?med(pp)*sf:med(rows.map(x=>Number(x.sales_amount||0)));arv=Math.max(40000,Math.min(300000,arv||0));return{arv:Math.round(arv/5000)*5000,count:rows.length,source:`Median of ${rows.length} recent comparable county sale${rows.length===1?"":"s"}${sf&&pp.length>=3?" adjusted by living area":""}`}}
-function calc(r,d){let op=opening(r.raw),rc=d.rent*100,ac=d.arv*.70,cap=Math.min(...[rc||Infinity,ac||Infinity,65000].filter(Number.isFinite)),pref=Math.min(...[rc||Infinity,ac||Infinity,40000].filter(Number.isFinite)),max=Math.max(0,cap-d.rehab-d.other),pb=Math.max(0,pref-d.rehab-d.other),ref=d.arv*.75,notes=[],key="buy",label="BID UP TO",sub=max>0?`Do not exceed ${cash(max)} using the automatic assumptions below.`:"No positive bid remains after rehab and costs.";if(r.c.key==="vacant"){key="skip";label="DO NOT BID";sub="Vacant land does not fit the rental strategy."}else if(d.arv>0&&d.arv<80000){key="skip";label="DO NOT BID";sub=`Estimated ARV ${cash(d.arv)} is below your $80,000 refinance threshold.`}else if(max<=0){key="skip";label="DO NOT BID";sub="Estimated rehab and other costs consume the allowable all-in budget."}else if(op&&op>max){key="skip";label="DO NOT BID";sub=`Opening bid ${cash(op)} is above the calculated maximum ${cash(max)}.`}else if(!d.arv){key="watch";label="REVIEW";sub="A reliable ARV estimate was not available."}if(op&&op<=max)notes.push(`Opening bid ${cash(op)} is ${cash(max-op)} below the calculated ceiling.`);notes.push(`1% rule allows ${cash(rc)} all-in from estimated rent ${cash(d.rent)}/month.`);notes.push(`70% of ARV allows ${cash(ac)} all-in from estimated ARV ${cash(d.arv)}.`);notes.push(`Strategy cap is $65,000 all-in; $40,000 is the preferred zone.`);notes.push(`Automatic rehab allowance ${cash(d.rehab)} plus other-cost allowance ${cash(d.other)}.`);if(r.c.key==="multi")notes.push("Multifamily rent uses total estimated rent across detected units.");if(r.c.key==="condo")notes.push("Verify HOA dues, special assessments, insurance, and rental restrictions before bidding.");return{op,rc,ac,cap,max,pb,ref,notes,key,label,sub}}
-function data(){return{rent:val("#uwRent2"),arv:val("#uwArv2"),rehab:val("#uwRehab2"),other:val("#uwOther2")}}
-function draw(){if(!uwCurrent)return;let d=data(),x=calc(uwCurrent,d);save(uwCurrent.parcel,{...d,t:Date.now()});q("#uwMaxBid").textContent=x.max?cash(x.max):"—";q("#uwBidReason").textContent=x.sub;let dc=q("#uwDecision");dc.className=`uw-decision ${x.key}`;dc.innerHTML=`${esc(x.label)}<span class="sub">${esc(x.sub)}</span>`;q("#mRent").textContent=d.rent?cash(d.rent)+"/mo":"—";q("#mArv").textContent=d.arv?cash(d.arv):"—";q("#mRehab").textContent=d.rehab?cash(d.rehab):"—";q("#mOther").textContent=d.other?cash(d.other):"—";q("#mPreferred").textContent=x.pb?cash(x.pb):"—";q("#mOpening").textContent=x.op?cash(x.op):"Not found";q("#mRentCap").textContent=x.rc?cash(x.rc):"—";q("#mArvCap").textContent=x.ac?cash(x.ac):"—";q("#mAllInCap").textContent=x.cap&&Number.isFinite(x.cap)?cash(x.cap):"—";q("#mRefi").textContent=x.ref?cash(x.ref):"—";q("#uwRefi").innerHTML=d.arv?`<b>Refi check:</b> Estimated ARV ${cash(d.arv)} • illustrative 75% LTV ceiling ${cash(x.ref)}. The max-bid formula uses 70% of ARV for extra cushion.`:"<b>Refi check:</b> No reliable ARV estimate was available.";q("#uwNotes").innerHTML=x.notes.map(n=>`<li>${esc(n)}</li>`).join("")}
-openUnderwrite=async function(parcel){let r=results.find(x=>digits(x.parcel)===digits(parcel));if(!r)return;uwCurrent=r;let a=r.record||{},loc=[a.par_addr_all,a.par_city,zipOf(a)].filter(Boolean).join(", ");q("#uwProperty").textContent=`${fmt(r.parcel)} • ${loc||"Address unavailable"} • ${r.c.label}`;modal.hidden=false;document.body.style.overflow="hidden";q("#uwAutoStatus").className="uw-auto-status loading";q("#uwAutoStatus").innerHTML="<b>Analyzing this property…</b><br>Estimating rent, rehab, ARV, and maximum bid.";q("#uwMaxBid").textContent="—";q("#uwBidReason").textContent="Running automatic underwriting…";let sv=saved(r.parcel),re=rentEst(r);q("#uwRent2").value=sv.rent||re.rent;q("#uwRehab2").value=sv.rehab||rehabEst(r);q("#uwOther2").value=sv.other||otherEst(r);q("#uwArv2").value=sv.arv||"";draw();let ai={arv:Number(sv.arv||0),source:sv.arv?"Saved ARV assumption":""};if(!sv.arv){try{ai=await arvEst(r);if(ai.arv)q("#uwArv2").value=ai.arv}catch(e){ai={arv:0,source:`ARV comp lookup failed: ${e?.message||e}`}}}draw();q("#uwAutoStatus").className="uw-auto-status";q("#uwAutoStatus").innerHTML="<b>Automatic underwriting complete.</b><br>The app estimated rent, rehab, ARV, and your maximum bid. Manual adjustment is optional.";q("#uwSource").innerHTML=`<b>Auto research:</b> Rent ${cash(Number(q("#uwRent2").value))}/mo from ${esc(re.source)} (${re.b}-BR estimate × ${re.u} unit${re.u===1?"":"s"}). ARV ${Number(q("#uwArv2").value)?cash(Number(q("#uwArv2").value)):"unavailable"} — ${esc(ai.source||"saved assumption")}.`};
-closeUnderwrite=function(){modal.hidden=true;document.body.style.overflow="";uwCurrent=null};
-bindUnderwriteButtons=function(){qa(".open-underwrite").forEach(btn=>{btn.onclick=()=>openUnderwrite(btn.dataset.parcel);btn.textContent=btn.classList.contains("underwrite")?"🤖 Auto Underwrite & Max Bid":"Auto Underwrite"})};
-q("#uwClose").onclick=closeUnderwrite;["#uwRent2","#uwArv2","#uwRehab2","#uwOther2"].forEach(id=>q(id).addEventListener("input",draw));
-bindUnderwriteButtons();
+
+modalEl.innerHTML=`<section class="sheet"><div class="mhead"><div><h2>Auto Underwrite & Max Bid</h2><div id="autoProp" class="small"></div></div><button id="autoClose" class="close">×</button></div><div class="mbody"><div class="rule"><b>Automatic buy-box:</b> ARV must be at least $80,000 • 1% rent rule • max $65,000 all-in • preferred $40,000 all-in • 70% ARV acquisition ceiling • vacant land = no bid.</div><div id="autoStatus" class="autoStatus loading"><b>Analyzing this property…</b><br>Estimating rent, rehab, other costs, ARV from county sales comps, and your maximum bid.</div><div id="autoMaxBox" class="maxbox need"><div class="eyebrow">Recommended Maximum Bid</div><div id="autoMaxBid" class="amount auto">—</div><div id="autoReason" class="caption">Running automatic underwriting…</div></div><div id="autoDecision" class="decision watch">ANALYZING<span class="dsub">The app is researching this deal automatically.</span></div><div class="researchGrid"><div class="researchItem"><span>Estimated Rent</span><b id="autoRent">—</b></div><div class="researchItem"><span>Estimated ARV</span><b id="autoArv">—</b></div><div class="researchItem"><span>Rehab Allowance</span><b id="autoRehab">—</b></div><div class="researchItem"><span>Other Costs</span><b id="autoOther">—</b></div></div><div class="metrics"><div class="metric"><span>Opening Bid</span><b id="autoOpen">—</b></div><div class="metric"><span>Preferred Bid</span><b id="autoPref">—</b></div><div class="metric"><span>1% Max All-In</span><b id="autoRentCap">—</b></div><div class="metric"><span>70% ARV All-In</span><b id="autoArvCap">—</b></div><div class="metric"><span>Max All-In Used</span><b id="autoAllIn">—</b></div><div class="metric"><span>75% Refi Ceiling</span><b id="autoRefi75">—</b></div></div><div id="autoRefi" class="refi"><b>Refi check:</b> Calculating from the estimated ARV.</div><div id="autoSource" class="sourceLine"></div><ul id="autoNotes" class="notes"></ul><details class="adjust"><summary>Adjust assumptions manually (optional)</summary><div class="inputs"><div><label>Monthly Rent</label><input id="autoRentInput" type="number" min="0" step="25"></div><div><label>ARV</label><input id="autoArvInput" type="number" min="0" step="1000"></div><div><label>Rehab Allowance</label><input id="autoRehabInput" type="number" min="0" step="500"></div><div><label>Other Costs</label><input id="autoOtherInput" type="number" min="0" step="100"></div></div></details><div class="save">Automatic estimates are screening assumptions, not an appraisal or contractor bid. Any manual changes are saved on this device for this parcel.</div></div></section>`;
+
+const q=s=>document.querySelector(s);
+const moneyAuto=n=>Number.isFinite(n)?n.toLocaleString(undefined,{style:"currency",currency:"USD",maximumFractionDigits:0}):"—";
+const median=a=>{a=a.filter(Number.isFinite).sort((x,y)=>x-y);if(!a.length)return null;const m=Math.floor(a.length/2);return a.length%2?a[m]:(a[m-1]+a[m])/2};
+const loadStore=()=>{try{return JSON.parse(localStorage.getItem(AUTO_STORE)||"{}")||{}}catch{return{}}};
+const loadSaved=p=>loadStore()[digits(p)]||{};
+const saveAuto=(p,d)=>{try{const s=loadStore();s[digits(p)]={...d,t:Date.now()};localStorage.setItem(AUTO_STORE,JSON.stringify(s))}catch{}};
+const inputNum=id=>{const n=Number(q(id)?.value);return Number.isFinite(n)&&n>=0?n:0};
+
+function openingBid(raw){
+  for(const re of [
+    /(?:opening|starting|start|minimum)\s*(?:bid)?\s*[:\-]?\s*\$?\s*([\d,]+(?:\.\d{1,2})?)/i,
+    /(?:bid\s*amount|opening\s*amount)\s*[:\-]?\s*\$?\s*([\d,]+(?:\.\d{1,2})?)/i
+  ]){
+    const m=String(raw||"").match(re); if(m){const n=Number(m[1].replace(/,/g,"")); if(n>0)return n}
+  }
+  return null;
+}
+
+function bedroomEstimate(r){
+  const a=r.record||{}, u=Math.max(1,unit(a,r.c)||1), sf=Number(a.total_res_liv_area||0)/u;
+  if(r.c.key==="multi") return sf>=1250?3:2;
+  if(sf>1600)return 4; if(sf>=900)return 3; return 2;
+}
+function rentEstimate(r){
+  const z=zip(r.record), b=bedroomEstimate(r), table=FMR[z]||COUNTY, u=Math.max(1,unit(r.record,r.c)||1);
+  const perUnit=table[Math.min(4,Math.max(0,b))]||table[2];
+  const rent=Math.round((perUnit*u)/25)*25;
+  return {rent,b,u,perUnit,source:FMR[z]?`HUD-style ZIP benchmark for ${z}`:"Cuyahoga County rent benchmark fallback"};
+}
+function rehabEstimate(r){
+  const a=r.record||{}, sf=Number(a.total_res_liv_area||0), u=Math.max(1,unit(a,r.c)||1); let x;
+  if(r.c.key==="condo") x=Math.max(10000,Math.min(25000,sf?sf*12:15000));
+  else if(r.c.key==="multi") x=Math.max(25000,Math.min(45000,Math.max(u*14000,sf?sf*18:30000)));
+  else x=Math.max(18000,Math.min(35000,sf?sf*18:25000));
+  return Math.round(x/1000)*1000;
+}
+function otherEstimate(r){return Math.max(1,unit(r.record,r.c)||1)>=3?6000:5000}
+
+async function compQuery(layer,r,mode){
+  const a=r.record||{}, c=center(a), luc=String(a.tax_luc||"").trim();
+  const params={outFields:"parcelpin,parcel_id,par_addr_all,par_city,par_zip,tax_luc,total_res_liv_area,sales_amount,transfer_date",returnGeometry:"false",f:"json",resultRecordCount:"250"};
+  if(mode==="near"&&c){
+    Object.assign(params,{where:luc?`tax_luc='${luc}' AND sales_amount >= 30000`:"sales_amount >= 30000",geometry:`${c.lng},${c.lat}`,geometryType:"esriGeometryPoint",inSR:"4326",spatialRel:"esriSpatialRelIntersects",distance:"1.5",units:"esriSRUnit_StatuteMile"});
+  }else{
+    const z=zip(a); params.where=[z?`par_zip=${Number(z)}`:"1=1",luc?`tax_luc='${luc}'`:null,"sales_amount >= 30000"].filter(Boolean).join(" AND ");
+  }
+  const res=await fetch(`${layer}?${new URLSearchParams(params)}`); if(!res.ok)throw Error(`County comps ${res.status}`);
+  const j=await res.json(); if(j.error)throw Error(j.error.message||"County comps query error");
+  return (j.features||[]).map(f=>f.attributes||{});
+}
+
+async function estimateArv(r){
+  const cutoff=Date.now()-1000*60*60*24*365*3.5, sf=Number(r.record?.total_res_liv_area||0), subject=digits(r.parcel); let comps=[];
+  for(const mode of ["near","zip"]){
+    const settled=await Promise.allSettled(LAYERS.map(l=>compQuery(l,r,mode)));
+    comps=settled.flatMap(x=>x.status==="fulfilled"?x.value:[]).filter(x=>{
+      const p=digits(x.parcelpin||x.parcel_id), sale=Number(x.sales_amount||0), dt=Number(x.transfer_date||0), ar=Number(x.total_res_liv_area||0);
+      return p&&p!==subject&&sale>=30000&&sale<=500000&&(!dt||dt>=cutoff)&&(!sf||!ar||(ar>=sf*.55&&ar<=sf*1.8));
+    });
+    if(comps.length>=3)break;
+  }
+  if(!comps.length){
+    const last=Number(r.record?.sales_amount||0);
+    if(last>=50000)return{arv:Math.round(last/5000)*5000,count:0,source:"Fallback to county last-sale amount because nearby comparable sales were unavailable"};
+    return{arv:0,count:0,source:"No reliable comparable county sales returned"};
+  }
+  const ppsf=sf?comps.map(x=>{const ar=Number(x.total_res_liv_area||0),s=Number(x.sales_amount||0);return ar>0?s/ar:null}).filter(x=>x>15&&x<300):[];
+  let arv=sf&&ppsf.length>=3?median(ppsf)*sf:median(comps.map(x=>Number(x.sales_amount||0)));
+  arv=Math.max(40000,Math.min(300000,arv||0));
+  return{arv:Math.round(arv/5000)*5000,count:comps.length,source:`Median of ${comps.length} recent county comparable sale${comps.length===1?"":"s"}${sf&&ppsf.length>=3?" adjusted for living area":""}`};
+}
+
+function autoCalc(r,d){
+  const opening=openingBid(r.raw), rentCap=d.rent*100, arvCap=d.arv*.70;
+  const maxAll=Math.min(rentCap||Infinity,arvCap||Infinity,65000), prefAll=Math.min(rentCap||Infinity,arvCap||Infinity,40000);
+  const maxBid=Math.max(0,maxAll-d.rehab-d.other), prefBid=Math.max(0,prefAll-d.rehab-d.other), refi75=d.arv*.75;
+  const notes=[]; let key="buy", label="BID UP TO", reason=maxBid>0?`Do not exceed ${moneyAuto(maxBid)} using the automatic assumptions below.`:"No positive bid remains after rehab and other costs.";
+  if(r.c.key==="vacant"){key="skip";label="DO NOT BID";reason="Vacant land does not fit this rental strategy."}
+  else if(!d.arv){key="watch";label="REVIEW";reason="A reliable ARV estimate was not available automatically."}
+  else if(d.arv<80000){key="skip";label="DO NOT BID";reason=`Estimated ARV ${moneyAuto(d.arv)} is below the $80,000 refinance threshold.`}
+  else if(maxBid<=0){key="skip";label="DO NOT BID";reason="Estimated rehab and other costs consume the allowable all-in budget."}
+  else if(opening&&opening>maxBid){key="skip";label="DO NOT BID";reason=`Opening bid ${moneyAuto(opening)} is above the calculated maximum ${moneyAuto(maxBid)}.`}
+  if(opening&&opening<=maxBid)notes.push(`Opening bid ${moneyAuto(opening)} is ${moneyAuto(maxBid-opening)} below the calculated ceiling.`);
+  notes.push(`1% rule allows ${moneyAuto(rentCap)} all-in from estimated rent ${moneyAuto(d.rent)}/month.`);
+  if(d.arv)notes.push(`70% of ARV allows ${moneyAuto(arvCap)} all-in from estimated ARV ${moneyAuto(d.arv)}.`);
+  notes.push("Strategy cap is $65,000 all-in; $40,000 is the preferred zone.");
+  notes.push(`Automatic rehab allowance ${moneyAuto(d.rehab)} plus other-cost allowance ${moneyAuto(d.other)}.`);
+  if(r.c.key==="multi")notes.push("Multifamily rent uses total estimated rent across detected units.");
+  if(r.c.key==="condo")notes.push("Verify HOA dues, special assessments, insurance, and rental restrictions before bidding.");
+  return{opening,rentCap,arvCap,maxAll,maxBid,prefBid,refi75,notes,key,label,reason};
+}
+
+function readInputs(){return{rent:inputNum("#autoRentInput"),arv:inputNum("#autoArvInput"),rehab:inputNum("#autoRehabInput"),other:inputNum("#autoOtherInput")}}
+function drawAuto(){
+  if(!current)return; const d=readInputs(), x=autoCalc(current,d); saveAuto(current.parcel,d);
+  const box=q("#autoMaxBox"),dec=q("#autoDecision");
+  box.className=`maxbox ${x.key==="skip"?"stop":x.key==="watch"?"need":""}`.trim();
+  q("#autoMaxBid").textContent=x.key==="skip"?"DO NOT BID":x.maxBid?moneyAuto(x.maxBid):"—"; q("#autoReason").textContent=x.reason;
+  dec.className=`decision ${x.key==="buy"?"buy":x.key==="skip"?"skip":"watch"}`; dec.innerHTML=`${esc(x.label)}<span class="dsub">${esc(x.reason)}</span>`;
+  q("#autoRent").textContent=d.rent?moneyAuto(d.rent)+"/mo":"—"; q("#autoArv").textContent=d.arv?moneyAuto(d.arv):"—"; q("#autoRehab").textContent=d.rehab?moneyAuto(d.rehab):"—"; q("#autoOther").textContent=d.other?moneyAuto(d.other):"—";
+  q("#autoOpen").textContent=x.opening?moneyAuto(x.opening):"Not found"; q("#autoPref").textContent=x.prefBid?moneyAuto(x.prefBid):"—"; q("#autoRentCap").textContent=x.rentCap?moneyAuto(x.rentCap):"—"; q("#autoArvCap").textContent=x.arvCap?moneyAuto(x.arvCap):"—"; q("#autoAllIn").textContent=Number.isFinite(x.maxAll)?moneyAuto(x.maxAll):"—"; q("#autoRefi75").textContent=x.refi75?moneyAuto(x.refi75):"—";
+  q("#autoRefi").innerHTML=d.arv?`<b>Refi check:</b> Estimated ARV ${moneyAuto(d.arv)} • 70% safety ceiling ${moneyAuto(x.arvCap)} • illustrative 75% ceiling ${moneyAuto(x.refi75)}. The bid formula uses 70% for cushion.`:"<b>Refi check:</b> A reliable ARV estimate was not available.";
+  q("#autoNotes").innerHTML=x.notes.map(n=>`<li>${esc(n)}</li>`).join("");
+}
+
+openUW=async function(p){
+  current=rows.find(r=>digits(r.parcel)===digits(p)); if(!current)return;
+  const a=current.record||{}, saved=loadSaved(current.parcel), re=rentEstimate(current);
+  q("#autoProp").textContent=`${fmt(current.parcel)} • ${[a.par_addr_all,a.par_city,zip(a)].filter(Boolean).join(", ")} • ${current.c.label}`;
+  q("#autoRentInput").value=saved.rent||re.rent; q("#autoRehabInput").value=saved.rehab||rehabEstimate(current); q("#autoOtherInput").value=saved.other||otherEstimate(current); q("#autoArvInput").value=saved.arv||"";
+  modalEl.hidden=false; document.body.style.overflow="hidden";
+  q("#autoStatus").className="autoStatus loading"; q("#autoStatus").innerHTML="<b>Analyzing this property…</b><br>Estimating rent, rehab, ARV, and your maximum bid.";
+  drawAuto();
+  let ai={arv:Number(saved.arv||0),source:saved.arv?"Saved ARV assumption":""};
+  if(!saved.arv){try{ai=await estimateArv(current); if(ai.arv)q("#autoArvInput").value=ai.arv}catch(e){ai={arv:0,source:`ARV comp lookup failed: ${e?.message||e}`}}}
+  drawAuto();
+  q("#autoStatus").className="autoStatus"; q("#autoStatus").innerHTML="<b>Automatic underwriting complete.</b><br>Rent, rehab, ARV, and maximum bid were estimated automatically. Manual adjustment is optional.";
+  q("#autoSource").innerHTML=`<b>Auto research:</b> Rent ${moneyAuto(Number(q("#autoRentInput").value))}/mo from ${esc(re.source)} (${re.b}-BR estimate × ${re.u} unit${re.u===1?"":"s"}). ARV ${Number(q("#autoArvInput").value)?moneyAuto(Number(q("#autoArvInput").value)):"unavailable"} — ${esc(ai.source||"saved assumption")}.`;
+};
+closeUW=function(){modalEl.hidden=true;document.body.style.overflow="";current=null};
+function rebind(){document.querySelectorAll(".openUW").forEach(btn=>{btn.onclick=()=>openUW(btn.dataset.p);btn.textContent=btn.classList.contains("underwrite")?"🤖 Auto Underwrite & Max Bid":"Auto Underwrite"})}
+q("#autoClose").onclick=closeUW;
+modalEl.onclick=e=>{if(e.target===modalEl)closeUW()};
+["#autoRentInput","#autoArvInput","#autoRehabInput","#autoOtherInput"].forEach(id=>q(id).addEventListener("input",drawAuto));
+const originalRender=render;
+render=function(){originalRender();rebind()};
+rebind();
 })();
