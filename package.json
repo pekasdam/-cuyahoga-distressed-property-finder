@@ -1,0 +1,8 @@
+{
+  "name": "cuyahoga-ai-underwriter",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}
