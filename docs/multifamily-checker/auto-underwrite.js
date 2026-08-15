@@ -1,21 +1,23 @@
 (()=>{
-const AUTO_STORE="cuyahoga-auto-underwriting-v3";
+const AUTO_STORE="cuyahoga-auto-underwriting-v4";
 const FMR={
   "44105":[780,890,1070,1380,1470],"44112":[790,890,1080,1390,1490],"44120":[880,1000,1210,1560,1660],
   "44128":[910,1030,1250,1610,1720],"44106":[1060,1200,1450,1870,2000],"44114":[1300,1470,1780,2290,2450],
   "44118":[1090,1230,1490,1920,2050],"44121":[1040,1180,1420,1830,1950],"44124":[1080,1220,1480,1900,2040]
 };
 const COUNTY=[990,1120,1350,1740,1860];
+const ABSOLUTE_ALL_IN=45000;
+const PREFERRED_ALL_IN=40000;
 const modalEl=document.getElementById("modal");
 if(!modalEl || typeof rows==="undefined") return;
 
 const style=document.createElement("style");
 style.textContent=`
-.autoStatus{border:1px solid #bfdbfe;background:#eff6ff;border-radius:11px;padding:10px;margin:10px 0;font-size:12px;line-height:1.45}.autoStatus.loading{background:#f9fafb;border-color:#d1d5db;color:#6b7280}.sourceLine{font-size:11px;color:#6b7280;line-height:1.4;margin-top:9px}.adjust{margin-top:12px;border:1px solid #d1d5db;border-radius:11px;background:#fff}.adjust summary{cursor:pointer;font-weight:800;padding:11px}.adjust .inputs{padding:0 11px 11px}.amount.auto{font-size:38px}.researchGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.researchItem{border:1px solid #d1d5db;border-radius:9px;padding:8px;background:#f9fafb}.researchItem span{display:block;font-size:9px;color:#6b7280;text-transform:uppercase}.researchItem b{display:block;font-size:14px;margin-top:3px}@media(max-width:420px){.researchGrid{grid-template-columns:1fr 1fr}}
+.autoStatus{border:1px solid #bfdbfe;background:#eff6ff;border-radius:11px;padding:10px;margin:10px 0;font-size:12px;line-height:1.45}.autoStatus.loading{background:#f9fafb;border-color:#d1d5db;color:#6b7280}.sourceLine{font-size:11px;color:#6b7280;line-height:1.4;margin-top:9px}.adjust{margin-top:12px;border:1px solid #d1d5db;border-radius:11px;background:#fff}.adjust summary{cursor:pointer;font-weight:800;padding:11px}.adjust .inputs{padding:0 11px 11px}.amount.auto{font-size:38px}.researchGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.researchItem{border:1px solid #d1d5db;border-radius:9px;padding:8px;background:#f9fafb}.researchItem span{display:block;font-size:9px;color:#6b7280;text-transform:uppercase}.researchItem b{display:block;font-size:14px;margin-top:3px}.backProps{margin:0 0 8px 0;padding:8px 10px;background:#e5e7eb;color:#111827;border-radius:9px;font-size:12px;font-weight:850}.mheadTitle{min-width:0}@media(max-width:420px){.researchGrid{grid-template-columns:1fr 1fr}}
 `;
 document.head.appendChild(style);
 
-modalEl.innerHTML=`<section class="sheet"><div class="mhead"><div><h2>Auto Underwrite & Max Bid</h2><div id="autoProp" class="small"></div></div><button id="autoClose" class="close">×</button></div><div class="mbody"><div class="rule"><b>Automatic buy-box:</b> ARV must be at least $80,000 • 1% rent rule • max $65,000 all-in • preferred $40,000 all-in • 70% ARV acquisition ceiling • vacant land = no bid.</div><div id="autoStatus" class="autoStatus loading"><b>Analyzing this property…</b><br>Estimating rent, rehab, other costs, ARV from county sales comps, and your maximum bid.</div><div id="autoMaxBox" class="maxbox need"><div class="eyebrow">Recommended Maximum Bid</div><div id="autoMaxBid" class="amount auto">—</div><div id="autoReason" class="caption">Running automatic underwriting…</div></div><div id="autoDecision" class="decision watch">ANALYZING<span class="dsub">The app is researching this deal automatically.</span></div><div class="researchGrid"><div class="researchItem"><span>Estimated Rent</span><b id="autoRent">—</b></div><div class="researchItem"><span>Estimated ARV</span><b id="autoArv">—</b></div><div class="researchItem"><span>Rehab Allowance</span><b id="autoRehab">—</b></div><div class="researchItem"><span>Other Costs</span><b id="autoOther">—</b></div></div><div class="metrics"><div class="metric"><span>Opening Bid</span><b id="autoOpen">—</b></div><div class="metric"><span>Preferred Bid</span><b id="autoPref">—</b></div><div class="metric"><span>1% Max All-In</span><b id="autoRentCap">—</b></div><div class="metric"><span>70% ARV All-In</span><b id="autoArvCap">—</b></div><div class="metric"><span>Max All-In Used</span><b id="autoAllIn">—</b></div><div class="metric"><span>75% Refi Ceiling</span><b id="autoRefi75">—</b></div></div><div id="autoRefi" class="refi"><b>Refi check:</b> Calculating from the estimated ARV.</div><div id="autoSource" class="sourceLine"></div><ul id="autoNotes" class="notes"></ul><details class="adjust"><summary>Adjust assumptions manually (optional)</summary><div class="inputs"><div><label>Monthly Rent</label><input id="autoRentInput" type="number" min="0" step="25"></div><div><label>ARV</label><input id="autoArvInput" type="number" min="0" step="1000"></div><div><label>Rehab Allowance</label><input id="autoRehabInput" type="number" min="0" step="500"></div><div><label>Other Costs</label><input id="autoOtherInput" type="number" min="0" step="100"></div></div></details><div class="save">Automatic estimates are screening assumptions, not an appraisal or contractor bid. Any manual changes are saved on this device for this parcel.</div></div></section>`;
+modalEl.innerHTML=`<section class="sheet"><div class="mhead"><div class="mheadTitle"><button id="autoBack" class="backProps">← Back to Properties</button><h2>Auto Underwrite & Max Bid</h2><div id="autoProp" class="small"></div></div><button id="autoClose" class="close">×</button></div><div class="mbody"><div class="rule"><b>Automatic buy-box:</b> ARV must be at least $80,000 • 1% rent rule • <b>$45,000 absolute max all-in</b> • preferred $40,000 all-in • 70% ARV acquisition ceiling • vacant land = no bid.</div><div id="autoStatus" class="autoStatus loading"><b>Analyzing this property…</b><br>Estimating rent, rehab, other costs, ARV from county sales comps, and your maximum bid.</div><div id="autoMaxBox" class="maxbox need"><div class="eyebrow">Recommended Maximum Bid</div><div id="autoMaxBid" class="amount auto">—</div><div id="autoReason" class="caption">Running automatic underwriting…</div></div><div id="autoDecision" class="decision watch">ANALYZING<span class="dsub">The app is researching this deal automatically.</span></div><div class="researchGrid"><div class="researchItem"><span>Estimated Rent</span><b id="autoRent">—</b></div><div class="researchItem"><span>Estimated ARV</span><b id="autoArv">—</b></div><div class="researchItem"><span>Rehab Allowance</span><b id="autoRehab">—</b></div><div class="researchItem"><span>Other Costs</span><b id="autoOther">—</b></div></div><div class="metrics"><div class="metric"><span>Opening Bid</span><b id="autoOpen">—</b></div><div class="metric"><span>Preferred Bid</span><b id="autoPref">—</b></div><div class="metric"><span>1% Max All-In</span><b id="autoRentCap">—</b></div><div class="metric"><span>70% ARV All-In</span><b id="autoArvCap">—</b></div><div class="metric"><span>Max All-In Used</span><b id="autoAllIn">—</b></div><div class="metric"><span>75% Refi Ceiling</span><b id="autoRefi75">—</b></div></div><div id="autoRefi" class="refi"><b>Refi check:</b> Calculating from the estimated ARV.</div><div id="autoSource" class="sourceLine"></div><ul id="autoNotes" class="notes"></ul><details class="adjust"><summary>Adjust assumptions manually (optional)</summary><div class="inputs"><div><label>Monthly Rent</label><input id="autoRentInput" type="number" min="0" step="25"></div><div><label>ARV</label><input id="autoArvInput" type="number" min="0" step="1000"></div><div><label>Rehab Allowance</label><input id="autoRehabInput" type="number" min="0" step="500"></div><div><label>Other Costs</label><input id="autoOtherInput" type="number" min="0" step="100"></div></div></details><div class="save">Automatic estimates are screening assumptions, not an appraisal or contractor bid. Any manual changes are saved on this device for this parcel.</div></div></section>`;
 
 const q=s=>document.querySelector(s);
 const moneyAuto=n=>Number.isFinite(n)?n.toLocaleString(undefined,{style:"currency",currency:"USD",maximumFractionDigits:0}):"—";
@@ -24,6 +26,7 @@ const loadStore=()=>{try{return JSON.parse(localStorage.getItem(AUTO_STORE)||"{}
 const loadSaved=p=>loadStore()[digits(p)]||{};
 const saveAuto=(p,d)=>{try{const s=loadStore();s[digits(p)]={...d,t:Date.now()};localStorage.setItem(AUTO_STORE,JSON.stringify(s))}catch{}};
 const inputNum=id=>{const n=Number(q(id)?.value);return Number.isFinite(n)&&n>=0?n:0};
+let modalHistoryPushed=false;
 
 function openingBid(raw){
   for(const re of [
@@ -91,18 +94,18 @@ async function estimateArv(r){
 
 function autoCalc(r,d){
   const opening=openingBid(r.raw), rentCap=d.rent*100, arvCap=d.arv*.70;
-  const maxAll=Math.min(rentCap||Infinity,arvCap||Infinity,65000), prefAll=Math.min(rentCap||Infinity,arvCap||Infinity,40000);
+  const maxAll=Math.min(rentCap||Infinity,arvCap||Infinity,ABSOLUTE_ALL_IN), prefAll=Math.min(rentCap||Infinity,arvCap||Infinity,PREFERRED_ALL_IN);
   const maxBid=Math.max(0,maxAll-d.rehab-d.other), prefBid=Math.max(0,prefAll-d.rehab-d.other), refi75=d.arv*.75;
   const notes=[]; let key="buy", label="BID UP TO", reason=maxBid>0?`Do not exceed ${moneyAuto(maxBid)} using the automatic assumptions below.`:"No positive bid remains after rehab and other costs.";
   if(r.c.key==="vacant"){key="skip";label="DO NOT BID";reason="Vacant land does not fit this rental strategy."}
   else if(!d.arv){key="watch";label="REVIEW";reason="A reliable ARV estimate was not available automatically."}
   else if(d.arv<80000){key="skip";label="DO NOT BID";reason=`Estimated ARV ${moneyAuto(d.arv)} is below the $80,000 refinance threshold.`}
-  else if(maxBid<=0){key="skip";label="DO NOT BID";reason="Estimated rehab and other costs consume the allowable all-in budget."}
+  else if(maxBid<=0){key="skip";label="DO NOT BID";reason="Estimated rehab and other costs consume the $45,000 absolute all-in budget."}
   else if(opening&&opening>maxBid){key="skip";label="DO NOT BID";reason=`Opening bid ${moneyAuto(opening)} is above the calculated maximum ${moneyAuto(maxBid)}.`}
   if(opening&&opening<=maxBid)notes.push(`Opening bid ${moneyAuto(opening)} is ${moneyAuto(maxBid-opening)} below the calculated ceiling.`);
   notes.push(`1% rule allows ${moneyAuto(rentCap)} all-in from estimated rent ${moneyAuto(d.rent)}/month.`);
   if(d.arv)notes.push(`70% of ARV allows ${moneyAuto(arvCap)} all-in from estimated ARV ${moneyAuto(d.arv)}.`);
-  notes.push("Strategy cap is $65,000 all-in; $40,000 is the preferred zone.");
+  notes.push("Absolute strategy cap is $45,000 all-in; $40,000 is the preferred zone.");
   notes.push(`Automatic rehab allowance ${moneyAuto(d.rehab)} plus other-cost allowance ${moneyAuto(d.other)}.`);
   if(r.c.key==="multi")notes.push("Multifamily rent uses total estimated rent across detected units.");
   if(r.c.key==="condo")notes.push("Verify HOA dues, special assessments, insurance, and rental restrictions before bidding.");
@@ -122,11 +125,18 @@ function drawAuto(){
   q("#autoNotes").innerHTML=x.notes.map(n=>`<li>${esc(n)}</li>`).join("");
 }
 
+function hideAutoModal(){modalEl.hidden=true;document.body.style.overflow="";current=null}
+function requestAutoClose(){
+  if(modalHistoryPushed){modalHistoryPushed=false;history.back();}
+  else hideAutoModal();
+}
+
 openUW=async function(p){
   current=rows.find(r=>digits(r.parcel)===digits(p)); if(!current)return;
   const a=current.record||{}, saved=loadSaved(current.parcel), re=rentEstimate(current);
   q("#autoProp").textContent=`${fmt(current.parcel)} • ${[a.par_addr_all,a.par_city,zip(a)].filter(Boolean).join(", ")} • ${current.c.label}`;
   q("#autoRentInput").value=saved.rent||re.rent; q("#autoRehabInput").value=saved.rehab||rehabEstimate(current); q("#autoOtherInput").value=saved.other||otherEstimate(current); q("#autoArvInput").value=saved.arv||"";
+  if(!modalHistoryPushed){history.pushState({autoUnderwrite:true,parcel:fmt(current.parcel)},"",location.href);modalHistoryPushed=true;}
   modalEl.hidden=false; document.body.style.overflow="hidden";
   q("#autoStatus").className="autoStatus loading"; q("#autoStatus").innerHTML="<b>Analyzing this property…</b><br>Estimating rent, rehab, ARV, and your maximum bid.";
   drawAuto();
@@ -136,10 +146,12 @@ openUW=async function(p){
   q("#autoStatus").className="autoStatus"; q("#autoStatus").innerHTML="<b>Automatic underwriting complete.</b><br>Rent, rehab, ARV, and maximum bid were estimated automatically. Manual adjustment is optional.";
   q("#autoSource").innerHTML=`<b>Auto research:</b> Rent ${moneyAuto(Number(q("#autoRentInput").value))}/mo from ${esc(re.source)} (${re.b}-BR estimate × ${re.u} unit${re.u===1?"":"s"}). ARV ${Number(q("#autoArvInput").value)?moneyAuto(Number(q("#autoArvInput").value)):"unavailable"} — ${esc(ai.source||"saved assumption")}.`;
 };
-closeUW=function(){modalEl.hidden=true;document.body.style.overflow="";current=null};
+closeUW=requestAutoClose;
 function rebind(){document.querySelectorAll(".openUW").forEach(btn=>{btn.onclick=()=>openUW(btn.dataset.p);btn.textContent=btn.classList.contains("underwrite")?"🤖 Auto Underwrite & Max Bid":"Auto Underwrite"})}
-q("#autoClose").onclick=closeUW;
-modalEl.onclick=e=>{if(e.target===modalEl)closeUW()};
+q("#autoClose").onclick=requestAutoClose;
+q("#autoBack").onclick=requestAutoClose;
+modalEl.onclick=e=>{if(e.target===modalEl)requestAutoClose()};
+window.addEventListener("popstate",()=>{if(!modalEl.hidden){modalHistoryPushed=false;hideAutoModal()}});
 ["#autoRentInput","#autoArvInput","#autoRehabInput","#autoOtherInput"].forEach(id=>q(id).addEventListener("input",drawAuto));
 const originalRender=render;
 render=function(){originalRender();rebind()};
