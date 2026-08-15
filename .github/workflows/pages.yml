@@ -35,7 +35,9 @@ jobs:
           from pathlib import Path
           p = Path('docs/multifamily-checker/index.html')
           s = p.read_text()
-          tag = '<script src="./auto-underwrite.js?v=2"></script>'
+          old = '<script src="./auto-underwrite.js?v=2"></script>'
+          tag = '<script src="./auto-underwrite.js?v=3"></script>'
+          s = s.replace(old, '')
           if tag not in s:
               s = s.replace('</body>', tag + '\n</body>')
               p.write_text(s)
