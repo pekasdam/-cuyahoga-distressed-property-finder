@@ -29,15 +29,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Add photo upload
+      - name: Add photo upload and property cards
         run: |
           python - <<'PY'
           from pathlib import Path
           p = Path('docs/multifamily-checker/index.html')
           s = p.read_text()
-          tag = '<script src="./photo-upload.js?v=1"></script>'
-          if tag not in s:
-              s = s.replace('</body>', tag + '\n</body>')
+          tags = [
+              '<script src="./photo-upload.js?v=1"></script>',
+              '<script src="./property-cards.js?v=1"></script>'
+          ]
+          for tag in tags:
+              if tag not in s:
+                  s = s.replace('</body>', tag + '\n</body>')
           p.write_text(s)
           PY
       - name: Configure Pages
