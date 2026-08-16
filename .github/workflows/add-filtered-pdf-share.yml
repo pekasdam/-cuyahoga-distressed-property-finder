@@ -1,4 +1,4 @@
-name: Add Filtered PDF Sharing
+name: Deploy Filtered PDF Feature
 
 on:
   push:
@@ -7,39 +7,32 @@ on:
       - '.github/workflows/add-filtered-pdf-share.yml'
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  patch:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Patch filtered PDF sharing
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import base64
-          p=Path('docs/pdf-share.js')
-          s=p.read_text()
-          if 'function shareFilteredPdf()' not in s:
-              s=s.replace('function buildScanPdf(data){','function buildScanPdf(data,options={}){',1)
-              s=s.replace("wrapped('Complete Scan Results',14,true);wrapped(`Generated ${new Date().toLocaleString()}`,9,false);y+=4;", "wrapped(options.title||'Complete Scan Results',14,true);wrapped(`Generated ${new Date().toLocaleString()}`,9,false);if(options.filterSummary)wrapped('Filters: '+options.filterSummary,9,true);y+=4;",1)
-              s=s.replace("return {doc,filename:`Cuyahoga-Scan-Results-${stamp}.pdf`,count:leads.length};", "return {doc,filename:`${options.filenamePrefix||'Cuyahoga-Scan-Results'}-${stamp}.pdf`,count:leads.length};",1)
-              appendix=base64.b64decode('ZnVuY3Rpb24gZmlsdGVyZWRMZWFkc0ZvclBkZigpewogIGlmKHR5cGVvZiBwYXlsb2FkPT09J3VuZGVmaW5lZCd8fCFwYXlsb2FkKXJldHVybiBbXTsKICBjb25zdCBxPShkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncScpPy52YWx1ZXx8JycpLnRvTG93ZXJDYXNlKCksdHlwZT1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndHlwZScpPy52YWx1ZXx8JycsbWluPSsoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Njb3JlJyk/LnZhbHVlfHwwKSxzcGVjaWFsPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzcGVjaWFsJyk/LnZhbHVlfHwnJzsKICByZXR1cm4gKHBheWxvYWQubGVhZHN8fFtdKS5maWx0ZXIobD0+e2NvbnN0IHA9bC5wYXJjZWx8fHt9LGhheT1bcC5wcm9wZXJ0eV9hZGRyZXNzLHAub3duZXIscC5wYXJjZWxfcGluLGwub3duZXJfb3JfZGVmZW5kYW50LGwudGl0bGVdLmpvaW4oJyAnKS50b0xvd2VyQ2FzZSgpO2lmKHEmJiFoYXkuaW5jbHVkZXMocSkpcmV0dXJuIGZhbHNlO2lmKHR5cGUmJmwubGVhZF90eXBlIT09dHlwZSlyZXR1cm4gZmFsc2U7aWYoKGwuc2NvcmV8fDApPG1pbilyZXR1cm4gZmFsc2U7aWYoc3BlY2lhbD09PSdtdWx0aScmJiFwLmlzX211bHRpZmFtaWx5KXJldHVybiBmYWxzZTtpZihzcGVjaWFsPT09J2Fic2VudGVlJyYmIXAuYWJzZW50ZWUpcmV0dXJuIGZhbHNlO2lmKHNwZWNpYWw9PT0ndGF4JyYmIWwudGF4X2ZvcmVjbG9zdXJlKXJldHVybiBmYWxzZTtpZihzcGVjaWFsPT09J2Jlc3QnJiYhKHR5cGVvZiBiZXN0RGVhbD09PSdmdW5jdGlvbicmJmJlc3REZWFsKGwpKSlyZXR1cm4gZmFsc2U7aWYoc3BlY2lhbD09PSduZXcnJiZsLnNjYW5fc3RhdHVzIT09J25ldycpcmV0dXJuIGZhbHNlO2lmKHNwZWNpYWw9PT0ndXBkYXRlZCcmJmwuc2Nhbl9zdGF0dXMhPT0ndXBkYXRlZCcpcmV0dXJuIGZhbHNlO3JldHVybiB0cnVlfSkuc29ydCgoYSxiKT0+KGIuc2NvcmV8fDApLShhLnNjb3JlfHwwKSk7Cn0KZnVuY3Rpb24gZmlsdGVyZWRQZGZTdW1tYXJ5KCl7CiAgY29uc3QgcT1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncScpLHR5cGU9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3R5cGUnKSxzY29yZT1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2NvcmUnKSxzcGVjaWFsPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzcGVjaWFsJykscGFydHM9W107CiAgaWYocSYmcS52YWx1ZS50cmltKCkpcGFydHMucHVzaChgU2VhcmNoOiAke3EudmFsdWUudHJpbSgpfWApOwogIGlmKHR5cGUmJnR5cGUudmFsdWUpcGFydHMucHVzaChgVHlwZTogJHt0eXBlLm9wdGlvbnNbdHlwZS5zZWxlY3RlZEluZGV4XT8udGV4dHx8dHlwZS52YWx1ZX1gKTsKICBpZihzY29yZSlwYXJ0cy5wdXNoKGBTY29yZTogJHtzY29yZS5vcHRpb25zW3Njb3JlLnNlbGVjdGVkSW5kZXhdPy50ZXh0fHxzY29yZS52YWx1ZX1gKTsKICBpZihzcGVjaWFsJiZzcGVjaWFsLnZhbHVlKXBhcnRzLnB1c2goYFByb3BlcnR5IGZpbHRlcjogJHtzcGVjaWFsLm9wdGlvbnNbc3BlY2lhbC5zZWxlY3RlZEluZGV4XT8udGV4dHx8c3BlY2lhbC52YWx1ZX1gKTsKICByZXR1cm4gcGFydHMuam9pbignIHwgJyl8fCdObyBhY3RpdmUgZmlsdGVycyc7Cn0KYXN5bmMgZnVuY3Rpb24gc2hhcmVGaWx0ZXJlZFBkZigpewogIHRyeXsKICAgIGlmKHR5cGVvZiBwYXlsb2FkPT09J3VuZGVmaW5lZCd8fCFwYXlsb2FkKXRocm93IG5ldyBFcnJvcignTm8gc2NhbiByZXN1bHRzIGFyZSBsb2FkZWQgeWV0LicpOwogICAgY29uc3QgbGVhZHM9ZmlsdGVyZWRMZWFkc0ZvclBkZigpOwogICAgaWYoIWxlYWRzLmxlbmd0aCl0aHJvdyBuZXcgRXJyb3IoJ05vIGxlYWRzIG1hdGNoIHRoZSBjdXJyZW50IGZpbHRlcnMuJyk7CiAgICBjb25zdCBzcmM9KHBheWxvYWQuc3RhdHN8fHt9KS5zb3VyY2VfaGVhbHRofHx7fSxzdGF0cz17dG90YWxfbGVhZHM6bGVhZHMubGVuZ3RoLGJlc3RfZGVhbF9sZWFkczpsZWFkcy5maWx0ZXIoeD0+dHlwZW9mIGJlc3REZWFsPT09J2Z1bmN0aW9uJyYmYmVzdERlYWwoeCkpLmxlbmd0aCxuZXdfbGVhZHM6bGVhZHMuZmlsdGVyKHg9Pnguc2Nhbl9zdGF0dXM9PT0nbmV3JykubGVuZ3RoLHVwZGF0ZWRfbGVhZHM6bGVhZHMuZmlsdGVyKHg9Pnguc2Nhbl9zdGF0dXM9PT0ndXBkYXRlZCcpLmxlbmd0aCxob3RfbGVhZHM6bGVhZHMuZmlsdGVyKHg9Pih4LnNjb3JlfHwwKT49NzApLmxlbmd0aCxmb3JlY2xvc3VyZV9sZWFkczpsZWFkcy5maWx0ZXIoeD0+eC5sZWFkX3R5cGU9PT0nZm9yZWNsb3N1cmUnKS5sZW5ndGgsdGlyZWRfbGFuZGxvcmRfcGFyY2VsX2xlYWRzOmxlYWRzLmZpbHRlcih4PT54LmxlYWRfdHlwZT09PSd0aXJlZF9sYW5kbG9yZCcpLmxlbmd0aCxzb3VyY2VfaGVhbHRoOnNyY307CiAgICBjb25zdCBzdW1tYXJ5PWZpbHRlcmVkUGRmU3VtbWFyeSgpLGRhdGE9e2dlbmVyYXRlZF9hdDpwYXlsb2FkLmdlbmVyYXRlZF9hdCxzdGF0cyxsZWFkc307CiAgICBjb25zdCB7ZG9jLGZpbGVuYW1lLGNvdW50fT1idWlsZFNjYW5QZGYoZGF0YSx7dGl0bGU6J0ZpbHRlcmVkIFNjYW4gUmVzdWx0cycsZmlsdGVyU3VtbWFyeTpzdW1tYXJ5LGZpbGVuYW1lUHJlZml4OidDdXlhaG9nYS1GaWx0ZXJlZC1SZXN1bHRzJ30pOwogICAgYXdhaXQgc2hhcmVQZGZGaWxlKGRvYyxmaWxlbmFtZSwnQ3V5YWhvZ2EgRmlsdGVyZWQgUmVzdWx0cycsYEZpbHRlcmVkIEN1eWFob2dhIHNjYW4gcmVzdWx0cyAtICR7Y291bnR9IGxlYWRzYCk7CiAgfWNhdGNoKGUpe2lmKGUmJmUubmFtZT09PSdBYm9ydEVycm9yJylyZXR1cm47YWxlcnQoJ0NvdWxkIG5vdCBjcmVhdGUvc2hhcmUgdGhlIGZpbHRlcmVkIFBERjogJysoZS5tZXNzYWdlfHxlKSl9Cn0KZnVuY3Rpb24gaW5zdGFsbEZpbHRlcmVkUGRmQnV0dG9uKCl7CiAgY29uc3QgZmlsdGVycz1kb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcuZmlsdGVycycpO2lmKCFmaWx0ZXJzfHxkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2hhcmVGaWx0ZXJlZFBkZicpKXJldHVybjsKICBjb25zdCByb3c9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7cm93LnN0eWxlLmNzc1RleHQ9J2Rpc3BsYXk6ZmxleDtqdXN0aWZ5LWNvbnRlbnQ6ZmxleC1lbmQ7bWFyZ2luOi0ycHggMCAxMnB4JzsKICBjb25zdCBiPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicpO2IuaWQ9J3NoYXJlRmlsdGVyZWRQZGYnO2IudHlwZT0nYnV0dG9uJztiLmNsYXNzTmFtZT0ncnVuYnRuJztiLnN0eWxlLmJhY2tncm91bmQ9JyM3YzNhZWQnO2IudGV4dENvbnRlbnQ9J/Cfk4QgU2hhcmUgRmlsdGVyZWQgUERGJztiLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJyxzaGFyZUZpbHRlcmVkUGRmKTtyb3cuYXBwZW5kQ2hpbGQoYik7ZmlsdGVycy5pbnNlcnRBZGphY2VudEVsZW1lbnQoJ2FmdGVyZW5kJyxyb3cpOwp9CmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLGluc3RhbGxGaWx0ZXJlZFBkZkJ1dHRvbik7Cg==').decode()
-              s += '\n'+appendix
-          p.write_text(s)
-          PY
-      - name: Validate PDF code
+        with:
+          ref: main
+      - name: Validate filtered PDF feature
         run: |
           node --check docs/pdf-share.js
           grep -q 'function shareFilteredPdf' docs/pdf-share.js
-          grep -q 'Filtered Scan Results' docs/pdf-share.js
           grep -q 'Share Filtered PDF' docs/pdf-share.js
-          grep -q 'function buildScanPdf(data,options={})' docs/pdf-share.js
-      - name: Commit feature
-        run: |
-          git config user.name "cuyahoga-deal-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add docs/pdf-share.js
-          git commit -m "Add filtered list PDF sharing"
-          git push
+          grep -q 'Filtered Scan Results' docs/pdf-share.js
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
