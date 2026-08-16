@@ -22,25 +22,18 @@ jobs:
       name: github-pages
     steps:
       - uses: actions/checkout@v4
-      - name: Add PDF sharing
+      - name: Wire PDF sharing into app
         run: |
           python - <<'PY'
           from pathlib import Path
-          import base64
           p=Path('docs/index.html')
           s=p.read_text()
           marker="<script>\nconst GH_OWNER='pekasdam'"
-          pdf_script='<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>\n'
-          if pdf_script not in s:
+          scripts='<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>\n<script src="pdf-share.js"></script>\n'
+          if 'src="pdf-share.js"' not in s:
               if marker not in s:
                   raise SystemExit('inline script anchor not found')
-              s=s.replace(marker,pdf_script+marker,1)
-          anchor="function typeName(x){return x==='foreclosure'?'Foreclosure':'Tired landlord'}\n"
-          addition=base64.b64decode("ZnVuY3Rpb24gcGRmQ2xlYW4odj0nJyl7cmV0dXJuIFN0cmluZyh2Pz8nJykucmVwbGFjZSgvW+KAk+KAlF0vZywnLScpLnJlcGxhY2UoL1vigJh84oCZXS9nLCJcJyIpLnJlcGxhY2UoL1vigJzigJ1dL2csJyInKS5yZXBsYWNlKC9bXlx4MjAtXHg3RV0vZywnICcpLnJlcGxhY2UoL1xzKy9nLCcgJykudHJpbSgpfQpmdW5jdGlvbiBwZGZNb25leSh2KXtyZXR1cm4gdj09bnVsbHx8dj09PScnPyc tJzonJCcrTnVtYmVyKHYpLnRvTG9jYWxlU3RyaW5nKHVuZGVmaW5lZCx7bWF4aW11bUZyYWN0aW9uRGlnaXRzOjB9KX0KZnVuY3Rpb24gYnVpbGRMZWFkUGRmKGwpewogIGlmKCF3aW5kb3cuanNwZGZ8fCF3aW5kb3cuanNwZGYuanNQREYpdGhyb3cgbmV3IEVycm9yKCdQREYgZ2VuZXJhdG9yIGlzIHN0aWxsIGxvYWRpbmcuIFRyeSBhZ2FpbiBpbiBhIHNlY29uZC4nKTsKICBjb25zdCB7anNQREZ9PXdpbmRvdy5qc3BkZixkb2M9bmV3IGpzUERGKHt1bml0OidwdCcsZm9ybWF0OidsZXR0ZXInfSkscD1sLnBhcmNlbHx8e307CiAgY29uc3QgbWFyZ2luPTQ4LHJpZ2h0PTU2NCx3aWR0aD1yaWdodC1tYXJnaW47bGV0IHk9NDg7CiAgY29uc3QgZW5zdXJlPShoPTE4KT0+e2lmKHkraD43NDQpe2RvYy5hZGRQYWdlKCk7eT00OH19OwogIGNvbnN0IHdyYXBwZWQ9KHRleHQsc2l6ZT0xMCxib2xkPWZhbHNlLGluZGVudD0wKT0+e2NvbnN0IGNsZWFuPXBkZkNsZWFuKHRleHQpfHwnLSc7ZG9jLnNldEZvbnQoJ2hlbHZldGljYScsYm9sZD8nYm9sZCc6J25vcm1hbCcpO2RvYy5zZXRGb250U2l6ZShzaXplKTtjb25zdCBsaW5lcz1kb2Muc3BsaXRUZXh0VG9TaXplKGNsZWFuLHdpZHRoLWluZGVudCk7Zm9yKGNvbnN0IGxpbmUgb2YgbGluZXMpe2Vuc3VyZShzaXplKzYpO2RvYy50ZXh0KGxpbmUsbWFyZ2luK2luZGVudCx5KTt5Kz1zaXplKzV9eSs9Mn07CiAgY29uc3QgZmllbGQ9KGxhYmVsLHZhbHVlKT0+e2NvbnN0IGNsZWFuPXBkZkNsZWFuKHZhbHVlKXx8Jy0nO2RvYy5zZXRGb250U2l6ZSgxMCk7ZG9jLnNldEZvbnQoJ2hlbHZldGljYScsJ2JvbGQnKTtlbnN1cmUoMTgpO2RvYy50ZXh0KHBkZkNsZWFuKGxhYmVsKSsnOicsbWFyZ2luLHkpO2RvYy5zZXRGb250KCdoZWx2ZXRpY2EnLCdub3JtYWwnKTtjb25zdCBsaW5lcz1kb2Muc3BsaXRUZXh0VG9TaXplKGNsZWFuLHdpZHRoLTE0NSk7Zm9yKGxldCBpPTA7aTxsaW5lcy5sZW5ndGg7aSsrKXtpZihpPjApe3krPTE0O2Vuc3VyZSgxOCl9ZG9jLnRleHQobGluZXNbaV0sbWFyZ2luKzE0NSx5KX15Kz0xOH07CiAgY29uc3Qgc2VjdGlvbj10aXRsZT0+e3krPTU7ZW5zdXJlKDI4KTtkb2Muc2V0Rm9udCgnaGVsdmV0aWNhJywnYm9sZCcpO2RvYy5zZXRGb250U2l6ZSgxMyk7ZG9jLnRleHQocGRmQ2xlYW4odGl0bGUpLG1hcmdpbix5KTt5Kz0xNjtkb2Muc2V0RHJhd0NvbG9yKDIxMCk7ZG9jLmxpbmUobWFyZ2luLHkscmlnaHQseSk7eSs9MTJ9OwogIGNvbnN0IGFkZHI9cC5wcm9wZXJ0eV9hZGRyZXNzfHwnUHJvcGVydHkgTGVhZCc7CiAgZG9jLnNldEZvbnQoJ2hlbHZldGljYScsJ2JvbGQnKTtkb2Muc2V0Rm9udFNpemUoMTgpO2RvYy50ZXh0KCdDdXlhaG9nYSBEaXN0cmVzc2VkIFByb3BlcnR5IEZpbmRlcicsbWFyZ2luLHkpO3krPTIyOwogIHdyYXBwZWQoYWRkciwxNCx0cnVlKTt3cmFwcGVkKCdQcm9wZXJ0eSBSZXNlYXJjaCBSZXBvcnQnLDEwLGZhbHNlKTt5Kz00OwogIGZpZWxkKCdHZW5lcmF0ZWQnLG5ldyBEYXRlKCkudG9Mb2NhbGVTdHJpbmcoKSk7CiAgc2VjdGlvbignTGVhZCBTdW1tYXJ5Jyk7CiAgZmllbGQoJ1Byb3BlcnR5IGFkZHJlc3MnLGFkZHIpOwogIGZpZWxkKCdPd25lcicscC5vd25lcnx8bC5vd25lcl9vcl9kZWZlbmRhbnR8fCdVbmtub3duJyk7CiAgZmllbGQoJ1BhcmNlbCcs cC5wYXJjZWxfcGlufHwnVW5rbm93bicpOwogIGZpZWxkKCdMZWFkIHR5cGUnLHR5cGVOYW1lKGwubGVhZF90eXBlKSk7CiAgZmllbGQoJ0RlYWwgc2NvcmUnLFN0cmluZyhsLnNjb3JlfHwwKSsnLzEwMCcpOwogIGZpZWxkKCdMZWFkIHN0YXR1cycsbC5zdGF0dXN8fCctJyk7CiAgZmllbGQoJ1NjYW4gc3RhdHVzJyx sLnNjYW5fc3RhdHVzPT09J25ldy c/J05FVy c6bC5zY2FuX3N0YXR1cz09PSd1cGRhdGVkJz8nVVBEQVRFRCc6J1ByZXZpb3VzbHkgc2VlbicpOwogIGZpZWxkKCdCZXN0IERlYWxzIGZpbHRlcicsYmVzdERlYWwobCk/J0luY2x1ZGVkJzonTm90IGluY2x1ZGVkJyk7CiAgZmllbGQoJ1RheCBmb3JlY2xvc3VyZScsbC50YXhfZm9yZWNsb3N1cmU/J1llcyc6J05vJyk7CiAgZmllbGQoJ0ZpbGVkIC8gaGVhcmluZycsbC5maWxlZF9vcl9oZWFyaW5nX2RhdGV8fCctJyk7CiAgaWYobC5jYXNlX251bWJlcilmaWVsZCgnQ291cnQgY2FzZScsbC5jYXNlX251bWJlcik7CiAgaWYobC5zdWJtaXNzaW9uX2lkKWZpZWxkKCdTdWJtaXNzaW9uIElEJyxsLnN1Ym1pc3Npb25faWQpOwogIHNlY3Rpb24oJ1Byb3BlcnR5IERldGFpbHMnKTsKICBmaWVsZCgnTGFuZCB1c2UnLHAubGFuZF91c2V8fCctJyk7CiAgZmllbGQoJ0NlcnRpZmllZCB0YXggdmFsdWUnLHBkZk1vbmV5KHAuY2VydGlmaWVkX3RheF90b3RhbCkpOwogIGZpZWxkKCdMaXZpbmcgYXJlYScscC5saXZpbmdfYXJlYV9zcWZ0P051bWJlcihwLmxpdmluZ19hcmVhX3NxZnQpLnRvTG9jYWxlU3RyaW5nKCkrJyBzcSBmdCc6Jy0nKTsKICBmaWVsZCgnUmVzaWRlbnRpYWwgYnVpbGRpbmdzJyxwLnJlc2lkZW50aWFsX2J1aWxkaW5ncz8/Jy0nKTsKICBmaWVsZCgnTXVsdGktZmFtaWx5JyxwLmlzX211bHRpZmFtaWx5PydZZXMnOidObycpOwogIGZpZWxkKCdBYnNlbnRlZSBvd25lcicscC5hYnNlbnRlZT8nWWVzJzonTm8nKTsKICBmaWVsZCgnT3duZXIgbWFpbGluZyBhZGRyZXNzJyxb cC5tYWlsaW5nX2FkZHJlc3MscC5tYWlsaW5nX2NpdHkscC5tYWlsaW5nX3N0YXRlLHAubWFpbGluZ196aXBdLmZpbHRlcihCb29sZWFuKS5qb2luKCcsICcpfHwnLScpOwogIGZpZWxkKCdMYXN0IHJlY29yZGVkIHNhbGUnLHBkZk1vbmV5KHAubGFzdF9zYWxlX2Ftb3VudCkpOwogIGZpZWxkKCdMYXN0IHRyYW5zZmVyJyxwLnRyYW5zZmVyX2RhdGV8fCctJyk7CiAgaWYobC5wb3J0Zm9saW9fY291bnQpZmllbGQoJ093bmVyIHBvcnRmb2xpbyBtYXRjaCcsbC5wb3J0Zm9saW9fY291bnQpOwogIGlmKGwucmVwZWF0X2V2aWN0aW9uX2NvdW50KWZpZWxkKCdFdmljdGlvbiAvIGRlZmF1bHQgaGl0cycsbC5yZXBlYXRfZXZpY3Rpb25fY291bnQpOwogIHNlY3Rpb24oJ1doeSBUaGlzIExlYWQgU2NvcmVkIFRoaXMgV2F5Jyk7CiAgY29uc3Qgbm90ZXM9bC5ub3Rlc3x8W107CiAgaWYobm90ZXMubGVuZ3RoKXtmb3IoY29uc3QgbiBvZiBub3Rlcyl3cmFwcGVkKCctICcrbiwxMCxmYWxzZSw4KX1lbHNlIHdyYXBwZWQoJ05vIHNjb3JlIG5vdGVzIHdlcmUgc3VwcGxpZWQuJywxMCxmYWxzZSk7CiAgc2VjdGlvbignUmVzZWFyY2ggTGlua3MnKTsKICBpZihwLm15cGxhY2VfdXJsKXdyYXBwZWQoJ015UGxhY2U6ICcrcC5teXBsYWNlX3VybCw4LGZhbHNlKTsKICBpZihsLnNvdXJjZV91cmwpd3JhcHBlZCgnQ291cnQvc291cmNlOiAnK2wuc291cmNlX3VybCw4LGZhbHNlKTsKICB3cmFwcGVkKCdHb29nbGUgTWFwcyBzZWFyY2g6ICcrYWRkciw4LGZhbHNlKTsKICB3cmFwcGVkKCdaaWxsb3cgLyBSZWRmaW4gLyBSZWFsdG9yLmNvbTogc2VhcmNoIHRoZSBwcm9wZXJ0eSBhZGRyZXNzIHNob3duIGFib3ZlLicsOCxmYWxzZSk7CiAgeSs9ODtlbnN1cmUoNDYpO2RvYy5zZXRGb250KCdoZWx2ZXRpY2EnLCdpdGFsaWMnKTtkb2Muc2V0Rm9udFNpemUoOCk7d3JhcHBlZCgnUmVzZWFyY2ggYWlkIG9ubHkuIFZlcmlmeSBvd25lcnNoaXAsIHRheGVzLCB0aXRsZSwgbGllbnMsIG9jY3VwYW5jeSwgY29uZGl0aW9uLCByZW50LCB2YWx1ZSwgYW5kIGxlZ2FsIHN0YXR1cyBpbmRlcGVuZGVudGx5IGJlZm9yZSBtYWtpbmcgYW4gb2ZmZXIgb3IgcHVyY2hhc2luZy4nLDgsZmFsc2UpOwogIGNvbnN0IHNhZmU9KGFkZHJ8fHAucGFyY2VsX3Bpbnx8J3Byb3BlcnR5JykucmVwbGFjZSgvW15hLXowLTldKy9naSwnLScpLnJlcGxhY2UoL14tK3wtKyQvZywnJykuc2xpY2UoMCw3MCl8fCdwcm9wZXJ0eSc7CiAgcmV0dXJuIHtkb2MsZmlsZW5hbWU6YEN1eWFob2dhLVByb3BlcnR5LVJlcG9ydC0ke3NhZmV9LnBkZmAsYWRkcn07Cn0KYXN5bmMgZnVuY3Rpb24gc2hhcmVMZWFkUGRmKCl7CiAgY29uc3QgbD13aW5kb3cuY3VycmVudFBkZkxlYWQ7aWYoIWwpcmV0dXJuOwogIHRyeXsKICAgIGNvbnN0IHtkb2MsZmlsZW5hbWUsYWRkcn09YnVpbGRMZWFkUGRmKGwpLGJsb2I9ZG9jLm91dHB1dCgnYmxvYicpLGZpbGU9bmV3IEZpbGUoW2Jsb2JdLGZpbGVuYW1lLHt0eXBlOidhcHBsaWNhdGlvbi9wZGYnfSk7CiAgICBpZihuYXZpZ2F0b3Iuc2hhcmUmJighbmF2aWdhdG9yLmNhblNoYXJlfHxuYXZpZ2F0b3IuY2FuU2hhcmUoe2ZpbGVzOltmaWxlXX0pKSl7YXdhaXQgbmF2aWdhdG9yLnNoYXJlKHtmaWxlczpbZmlsZV0sdGl0bGU6YFByb3BlcnR5IFJlcG9ydCAtICR7YWRkcn1gLHRleHQ6YEN1eWFob2dhIHByb3BlcnR5IHJlc2VhcmNoIHJlcG9ydCBmb3IgJHthZGRyfWB9KTtyZXR1cm59CiAgICBjb25zdCB1cmw9VVJMLmNyZWF0ZU9iamVjdFVSTChibG9iKSxhPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2EnKTthLmhyZWY9dXJsO2EuZG93bmxvYWQ9ZmlsZW5hbWU7ZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChhKTthLmNsaWNrKCk7YS5yZW1vdmUoKTtzZXRUaW1lb3V0KCgpPT5VUkuucmV2b2tlT2JqZWN0VVJMKHVybCksMzAwMDApO2FsZXJ0KCdQREYgY3JlYXRlZC4gT3BlbiB0aGUgZG93bmxvYWRlZCBQREYgYW5kIHVzZSBTaGFyZSB0byBzZW5kIGl0IGJ5IE1lc3NhZ2VzIG9yIE1haWwuJyk7CiAgfWNhdGNoKGUpe2lmKGUmJmUubmFtZT09PSdBYm9ydEVycm9yJylyZXR1cm47YWxlcnQoJ0NvdWxkIG5vdCBjcmVhdGUvc2hhcmUgdGhlIFBERjogJysoZS5tZXNzYWdlfHxlKSl9Cn0K").decode()
-          if 'function shareLeadPdf()' not in s:
-              if anchor not in s:
-                  raise SystemExit('typeName anchor not found')
-              s=s.replace(anchor,anchor+addition,1)
+              s=s.replace(marker,scripts+marker,1)
           old="window.currentOwnerSearch=owner;$('detailBody').innerHTML=`"
           new="window.currentOwnerSearch=owner;window.currentPdfLead=l;$('detailBody').innerHTML=`"
           if old in s:
@@ -57,6 +50,7 @@ jobs:
           PY
       - name: Validate app
         run: |
+          node --check docs/pdf-share.js
           python - <<'PY'
           from pathlib import Path
           import re
@@ -69,7 +63,7 @@ jobs:
           PY
           node --check /tmp/app.js
           grep -q 'jspdf/2.5.1/jspdf.umd.min.js' docs/index.html
-          grep -q 'function shareLeadPdf' docs/index.html
+          grep -q 'src="pdf-share.js"' docs/index.html
           grep -q '📄 Share PDF' docs/index.html
           grep -q 'window.currentPdfLead=l' docs/index.html
           grep -q 'Find Owner Online' docs/index.html
@@ -78,8 +72,9 @@ jobs:
         run: |
           git config user.name "cuyahoga-deal-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/index.html
+          git add docs/index.html docs/pdf-share.js
           git commit -m "Add PDF report sharing"
+          git pull --rebase origin main
           git push
       - name: Configure Pages
         uses: actions/configure-pages@v6
