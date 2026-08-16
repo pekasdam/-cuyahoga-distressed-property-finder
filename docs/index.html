@@ -29,7 +29,7 @@
   </style>
 </head>
 <body>
-<header><div class="head"><div><h1>🏚️ Cuyahoga Distressed Property Finder</h1><p>Foreclosures + tired landlords + official parcel data</p></div><button id="runScan" class="runbtn" onclick="startScan()">▶ Run Scan Now</button></div></header>
+<header><div class="head"><div><h1>🏚️ Cuyahoga Distressed Property Finder</h1><p>Foreclosures + tired landlords + official parcel data</p></div><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end"><button type="button" class="runbtn" style="background:#2563eb" onclick="shareScanPdf()">📄 Share Scan PDF</button><button id="runScan" class="runbtn" onclick="startScan()">▶ Run Scan Now</button></div></div></header>
 <main class="wrap">
   <div class="howto"><b>Manual mode:</b> Tap <b>Run Scan Now</b> and the app starts GitHub automatically. The first time only, it will ask you to connect a repo-scoped GitHub token. <button onclick="openGitHubSetup()">GitHub access settings</button></div>
   <div id="scanStatus" class="notice" style="display:none"></div>
