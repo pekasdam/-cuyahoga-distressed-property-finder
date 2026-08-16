@@ -61,7 +61,7 @@ async function shareLeadPdf(){
     await sharePdfFile(doc,filename,`Property Report - ${addr}`,`Cuyahoga property research report for ${addr}`)
   }catch(e){if(e&&e.name==='AbortError')return;alert('Could not create/share the PDF: '+(e.message||e))}
 }
-function buildScanPdf(data){
+function buildScanPdf(data,options={}){
   if(!window.jspdf||!window.jspdf.jsPDF)throw new Error('PDF generator is still loading. Try again in a second.');
   const {jsPDF}=window.jspdf,doc=new jsPDF({unit:'pt',format:'letter'}),stats=data.stats||{},leads=[...(data.leads||[])].sort((a,b)=>(b.score||0)-(a.score||0));
   const margin=38,right=574,width=right-margin;let y=42,pageNo=1;
@@ -72,7 +72,7 @@ function buildScanPdf(data){
   const field=(label,value)=>{ensure(16);doc.setFontSize(9);doc.setFont('helvetica','bold');doc.text(pdfClean(label)+':',margin,y);doc.setFont('helvetica','normal');doc.text(pdfClean(value)||'-',margin+128,y);y+=15};
   const section=title=>{y+=5;ensure(25);doc.setFont('helvetica','bold');doc.setFontSize(12);doc.text(pdfClean(title),margin,y);y+=12;doc.setDrawColor(210);doc.line(margin,y,right,y);y+=10};
   doc.setFont('helvetica','bold');doc.setFontSize(18);doc.text('Cuyahoga Distressed Property Finder',margin,y);y+=22;
-  wrapped('Complete Scan Results',14,true);wrapped(`Generated ${new Date().toLocaleString()}`,9,false);y+=4;
+  wrapped(options.title||'Complete Scan Results',14,true);wrapped(`Generated ${new Date().toLocaleString()}`,9,false);if(options.filterSummary)wrapped('Filters: '+options.filterSummary,9,true);y+=4;
   section('Scan Summary');
   field('Scan timestamp',data.generated_at?new Date(data.generated_at).toLocaleString():'Unknown');
   field('All leads',stats.total_leads??leads.length);
@@ -101,7 +101,7 @@ function buildScanPdf(data){
   y+=4;wrapped('Research aid only. Verify ownership, taxes, title, liens, occupancy, condition, rent, value, and legal status independently before making an offer or purchasing.',7,false);
   footer();
   const stamp=(data.generated_at||new Date().toISOString()).slice(0,10);
-  return {doc,filename:`Cuyahoga-Scan-Results-${stamp}.pdf`,count:leads.length};
+  return {doc,filename:`${options.filenamePrefix||'Cuyahoga-Scan-Results'}-${stamp}.pdf`,count:leads.length};
 }
 async function shareScanPdf(){
   try{
@@ -110,3 +110,34 @@ async function shareScanPdf(){
     await sharePdfFile(doc,filename,'Cuyahoga Scan Results',`Complete Cuyahoga scan results - ${count} leads`)
   }catch(e){if(e&&e.name==='AbortError')return;alert('Could not create/share the scan PDF: '+(e.message||e))}
 }
+
+function filteredLeadsForPdf(){
+  if(typeof payload==='undefined'||!payload)return [];
+  const q=(document.getElementById('q')?.value||'').toLowerCase(),type=document.getElementById('type')?.value||'',min=+(document.getElementById('score')?.value||0),special=document.getElementById('special')?.value||'';
+  return (payload.leads||[]).filter(l=>{const p=l.parcel||{},hay=[p.property_address,p.owner,p.parcel_pin,l.owner_or_defendant,l.title].join(' ').toLowerCase();if(q&&!hay.includes(q))return false;if(type&&l.lead_type!==type)return false;if((l.score||0)<min)return false;if(special==='multi'&&!p.is_multifamily)return false;if(special==='absentee'&&!p.absentee)return false;if(special==='tax'&&!l.tax_foreclosure)return false;if(special==='best'&&!(typeof bestDeal==='function'&&bestDeal(l)))return false;if(special==='new'&&l.scan_status!=='new')return false;if(special==='updated'&&l.scan_status!=='updated')return false;return true}).sort((a,b)=>(b.score||0)-(a.score||0));
+}
+function filteredPdfSummary(){
+  const q=document.getElementById('q'),type=document.getElementById('type'),score=document.getElementById('score'),special=document.getElementById('special'),parts=[];
+  if(q&&q.value.trim())parts.push(`Search: ${q.value.trim()}`);
+  if(type&&type.value)parts.push(`Type: ${type.options[type.selectedIndex]?.text||type.value}`);
+  if(score)parts.push(`Score: ${score.options[score.selectedIndex]?.text||score.value}`);
+  if(special&&special.value)parts.push(`Property filter: ${special.options[special.selectedIndex]?.text||special.value}`);
+  return parts.join(' | ')||'No active filters';
+}
+async function shareFilteredPdf(){
+  try{
+    if(typeof payload==='undefined'||!payload)throw new Error('No scan results are loaded yet.');
+    const leads=filteredLeadsForPdf();
+    if(!leads.length)throw new Error('No leads match the current filters.');
+    const src=(payload.stats||{}).source_health||{},stats={total_leads:leads.length,best_deal_leads:leads.filter(x=>typeof bestDeal==='function'&&bestDeal(x)).length,new_leads:leads.filter(x=>x.scan_status==='new').length,updated_leads:leads.filter(x=>x.scan_status==='updated').length,hot_leads:leads.filter(x=>(x.score||0)>=70).length,foreclosure_leads:leads.filter(x=>x.lead_type==='foreclosure').length,tired_landlord_parcel_leads:leads.filter(x=>x.lead_type==='tired_landlord').length,source_health:src};
+    const summary=filteredPdfSummary(),data={generated_at:payload.generated_at,stats,leads};
+    const {doc,filename,count}=buildScanPdf(data,{title:'Filtered Scan Results',filterSummary:summary,filenamePrefix:'Cuyahoga-Filtered-Results'});
+    await sharePdfFile(doc,filename,'Cuyahoga Filtered Results',`Filtered Cuyahoga scan results - ${count} leads`);
+  }catch(e){if(e&&e.name==='AbortError')return;alert('Could not create/share the filtered PDF: '+(e.message||e))}
+}
+function installFilteredPdfButton(){
+  const filters=document.querySelector('.filters');if(!filters||document.getElementById('shareFilteredPdf'))return;
+  const row=document.createElement('div');row.style.cssText='display:flex;justify-content:flex-end;margin:-2px 0 12px';
+  const b=document.createElement('button');b.id='shareFilteredPdf';b.type='button';b.className='runbtn';b.style.background='#7c3aed';b.textContent='📄 Share Filtered PDF';b.addEventListener('click',shareFilteredPdf);row.appendChild(b);filters.insertAdjacentElement('afterend',row);
+}
+document.addEventListener('DOMContentLoaded',installFilteredPdfButton);
