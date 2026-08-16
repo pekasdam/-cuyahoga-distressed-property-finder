@@ -1,0 +1,63 @@
+name: Add Scan PDF Share Button
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-scan-pdf-button.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: add-scan-pdf-button
+  cancel-in-progress: true
+
+jobs:
+  patch-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add scan PDF button
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('docs/index.html')
+          s=p.read_text()
+          old='<header><div class="head"><div><h1>🏚️ Cuyahoga Distressed Property Finder</h1><p>Foreclosures + tired landlords + official parcel data</p></div><button id="runScan" class="runbtn" onclick="startScan()">▶ Run Scan Now</button></div></header>'
+          new='<header><div class="head"><div><h1>🏚️ Cuyahoga Distressed Property Finder</h1><p>Foreclosures + tired landlords + official parcel data</p></div><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end"><button type="button" class="runbtn" style="background:#2563eb" onclick="shareScanPdf()">📄 Share Scan PDF</button><button id="runScan" class="runbtn" onclick="startScan()">▶ Run Scan Now</button></div></div></header>'
+          if '📄 Share Scan PDF' not in s:
+              if old not in s:
+                  raise SystemExit('header anchor not found')
+              s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+      - name: Validate app
+        run: |
+          node --check docs/pdf-share.js
+          grep -q 'function shareScanPdf' docs/pdf-share.js
+          grep -q 'Complete Scan Results' docs/pdf-share.js
+          grep -q '📄 Share Scan PDF' docs/index.html
+          grep -q '📄 Share PDF' docs/index.html
+          grep -q 'Run Scan Now' docs/index.html
+      - name: Commit scan PDF button
+        run: |
+          git config user.name "cuyahoga-deal-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html docs/pdf-share.js
+          git commit -m "Add complete scan PDF sharing"
+          git push
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
