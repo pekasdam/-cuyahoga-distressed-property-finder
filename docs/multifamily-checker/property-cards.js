@@ -1,5 +1,21 @@
 (()=>{
 if(typeof render!=='function')return;
+
+// Keep condo detection and the condo button inside the same mobile-card layer.
+if(typeof classify==='function'){
+  const oldClassify=classify;
+  classify=function(a){
+    if(a){
+      const luc=String(a.tax_luc||'').trim();
+      const desc=(String(a.tax_luc_description||'')+' '+String(a.ext_luc_description||'')).toUpperCase();
+      if(luc==='5500'||/\bCONDO(MINIUM)?\b/.test(desc)){
+        return{key:'condo',label:'CONDO',reason:luc==='5500'?'County land-use code 5500':'County land-use description'};
+      }
+    }
+    return oldClassify(a);
+  };
+}
+
 const style=document.createElement('style');
 style.id='propertyCardViewStyle';
 style.textContent=`
@@ -16,9 +32,27 @@ style.textContent=`
 .propertyCardActions a{border-radius:10px;padding:10px 9px;text-decoration:none;text-align:center;font-weight:800;font-size:12px}
 .propertyCardCounty{background:#e5e7eb;color:#111827}
 .propertyCardMaps{background:#e8f0fe;color:#174ea6}
-@media(max-width:700px){.tablewrap{display:none!important}.propertyCards{display:grid}}
+.badge.condo{background:#ede9fe;color:#5b21b6}
+@media(max-width:700px){.tablewrap{display:none!important}.propertyCards{display:grid}.filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}}
 `;
 document.head.appendChild(style);
+
+// Add Condos directly to the visible filter row.
+const filters=document.querySelector('.filters');
+if(filters&&!filters.querySelector('[data-filter="condo"]')){
+  const condoBtn=document.createElement('button');
+  condoBtn.className='chip';
+  condoBtn.dataset.filter='condo';
+  condoBtn.textContent='Condos';
+  const multiBtn=filters.querySelector('[data-filter="multi"]');
+  if(multiBtn)multiBtn.insertAdjacentElement('afterend',condoBtn);else filters.appendChild(condoBtn);
+  condoBtn.onclick=()=>{
+    filter='condo';
+    document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===condoBtn));
+    render();
+  };
+}
+
 const tableWrap=document.querySelector('.tablewrap');
 if(!tableWrap)return;
 const cards=document.createElement('div');
